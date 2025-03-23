@@ -144,7 +144,7 @@ const ContactSection = () => {
             <div className="glass-card p-8 relative overflow-hidden hover:shadow-xl transition-all duration-300">
               <div className="absolute -bottom-16 -left-16 w-40 h-40 rounded-full bg-blue-500/5 blur-[50px] pointer-events-none"></div>
               
-              <form onSubmit={handleSubmit} className="space-y-6 relative z-10" netlify>
+              <form onSubmit={handleSubmit} className="space-y-6 relative z-10" netlify name="contact">
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-white/80 mb-2 font-medium">
