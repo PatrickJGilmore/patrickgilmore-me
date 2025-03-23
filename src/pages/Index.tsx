@@ -33,8 +33,34 @@ const Index = () => {
       observer.observe(section);
     });
 
+    // Implement smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId && targetId.startsWith('#')) {
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            // Smooth scroll to target
+            targetElement.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+            
+            // Update URL hash without jumping
+            history.pushState(null, '', targetId);
+          }
+        }
+      });
+    });
+
     return () => {
       observer.disconnect();
+      // Clean up event listeners
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.removeEventListener('click', function() {});
+      });
     };
   }, []);
 

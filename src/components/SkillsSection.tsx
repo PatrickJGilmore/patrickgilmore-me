@@ -1,7 +1,6 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
 import { 
   Database, 
   Cloud, 
@@ -84,6 +83,12 @@ const SkillsSection = () => {
     }
   ];
 
+  const endorsements = [
+    { skill: "SDLC", count: 23, source: "Exela Technologies" },
+    { skill: "Vendor Management", count: 20, source: "Multiple colleagues" },
+    { skill: "Technical Leadership", count: 18, source: "Industry peers" }
+  ];
+
   return (
     <section id="skills" className="py-28 bg-gradient-to-b from-[#0b101e] to-[#151f38]">
       <div className="container mx-auto px-6">
@@ -102,7 +107,7 @@ const SkillsSection = () => {
           {skillCategories.map((category, index) => (
             <div 
               key={index}
-              className={`glass-card p-7 transition-all duration-700 ${
+              className={`glass-card p-7 transition-all duration-700 hover:translate-y-[-5px] hover:shadow-xl ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
               style={{ transitionDelay: `${index * 150}ms` }}
@@ -121,7 +126,7 @@ const SkillsSection = () => {
                       <Badge 
                         key={i} 
                         variant="secondary" 
-                        className={`transition-all duration-500 bg-white/5 hover:bg-white/10 text-white/90 py-1.5 px-3 rounded-lg ${
+                        className={`transition-all duration-500 bg-white/5 hover:bg-white/10 text-white/90 py-1.5 px-3 rounded-lg hover:scale-105 ${
                           isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
                         }`}
                         style={{ transitionDelay: `${(index * 100) + (i * 75)}ms` }}
@@ -132,56 +137,27 @@ const SkillsSection = () => {
                   </div>
                 </div>
               </div>
-              
-              {index === 0 && (
-                <div className={`mt-8 transition-all duration-700 delay-500 ${
-                  isVisible ? 'opacity-100' : 'opacity-0'
-                }`}>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-medium text-white/80">Enterprise Systems Integration</span>
-                    <span className="text-sm font-medium text-white/60">Advanced</span>
-                  </div>
-                  <Progress value={95} className="h-1.5 bg-white/5" />
-                </div>
-              )}
-              
-              {index === 1 && (
-                <div className={`mt-8 transition-all duration-700 delay-500 ${
-                  isVisible ? 'opacity-100' : 'opacity-0'
-                }`}>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-medium text-white/80">Team Leadership</span>
-                    <span className="text-sm font-medium text-white/60">Expert</span>
-                  </div>
-                  <Progress value={98} className="h-1.5 bg-white/5" />
-                </div>
-              )}
-              
-              {index === 2 && (
-                <div className={`mt-8 transition-all duration-700 delay-500 ${
-                  isVisible ? 'opacity-100' : 'opacity-0'
-                }`}>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-medium text-white/80">Automation & Scripting</span>
-                    <span className="text-sm font-medium text-white/60">Advanced</span>
-                  </div>
-                  <Progress value={90} className="h-1.5 bg-white/5" />
-                </div>
-              )}
-              
-              {index === 3 && (
-                <div className={`mt-8 transition-all duration-700 delay-500 ${
-                  isVisible ? 'opacity-100' : 'opacity-0'
-                }`}>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-medium text-white/80">Strategic Planning</span>
-                    <span className="text-sm font-medium text-white/60">Expert</span>
-                  </div>
-                  <Progress value={95} className="h-1.5 bg-white/5" />
-                </div>
-              )}
             </div>
           ))}
+        </div>
+        
+        {/* LinkedIn Endorsements */}
+        <div className={`mt-16 max-w-4xl mx-auto glass-card p-8 transition-all duration-700 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`} style={{ transitionDelay: '600ms' }}>
+          <h3 className="text-xl font-semibold mb-6 text-center">LinkedIn Endorsements</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {endorsements.map((endorsement, index) => (
+              <div 
+                key={index} 
+                className="text-center p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300 hover:scale-105"
+              >
+                <div className="text-3xl font-bold text-blue-300 mb-2">{endorsement.count}+</div>
+                <div className="text-lg font-medium mb-1">{endorsement.skill}</div>
+                <div className="text-sm text-white/60">Endorsed by {endorsement.source}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

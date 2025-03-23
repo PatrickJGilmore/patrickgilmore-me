@@ -89,7 +89,7 @@
 
 @layer components {
   .glass-card {
-    @apply bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl shadow-xl;
+    @apply bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl shadow-xl transition-all duration-300;
   }
   
   .progress-bar {
@@ -117,15 +117,15 @@
   }
   
   .btn-primary {
-    @apply inline-block px-6 py-3 rounded-lg bg-primary text-white font-medium transition-all duration-300 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20 active:translate-y-0.5;
+    @apply inline-block px-6 py-3 rounded-lg bg-primary text-white font-medium transition-all duration-300 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20 active:translate-y-0.5 hover:transform hover:scale-105;
   }
   
   .btn-outline {
-    @apply inline-block px-6 py-3 rounded-lg border border-white/20 text-white font-medium transition-all duration-300 hover:bg-white/5 hover:border-white/30 active:translate-y-0.5;
+    @apply inline-block px-6 py-3 rounded-lg border border-white/20 text-white font-medium transition-all duration-300 hover:bg-white/5 hover:border-white/30 active:translate-y-0.5 hover:transform hover:scale-105;
   }
   
   .contact-input {
-    @apply w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-primary/50 focus:ring-1 focus:ring-primary/50 focus:outline-none transition-all duration-300;
+    @apply w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-primary/50 focus:ring-1 focus:ring-primary/50 focus:outline-none transition-all duration-300 hover:border-white/20;
   }
 }
 
@@ -145,6 +145,18 @@
   .animation-delay-3000 {
     animation-delay: 3s;
   }
+  
+  .hover-lift {
+    @apply transition-transform duration-300 hover:-translate-y-1;
+  }
+  
+  .hover-grow {
+    @apply transition-transform duration-300 hover:scale-105;
+  }
+  
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-lg hover:shadow-primary/20;
+  }
 }
 
 /* Custom animations */
@@ -155,4 +167,20 @@
 
 .animate-float {
   animation: float 6s ease-in-out infinite;
+}
+
+/* Stripe-inspired card hover effects */
+.glass-card:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12), 0 0 1px rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Stripe-inspired smooth transitions */
+.section-transition {
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Ensure all section headers are centered */
+section h1, section h2, section h3 {
+  text-align: center;
 }
