@@ -18,13 +18,17 @@ const Index = () => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('animate-fade-in');
+        } else {
+          // Remove the animation class when element is out of view
+          // This allows for the animation to trigger again when scrolling back
+          entry.target.classList.remove('animate-fade-in');
         }
       });
     };
 
-    // Create observer
+    // Create observer with improved options for better triggering
     const observer = new IntersectionObserver(handleIntersection, {
-      threshold: 0.1,
+      threshold: 0.15,
       rootMargin: '0px 0px -100px 0px'
     });
 
@@ -33,7 +37,7 @@ const Index = () => {
       observer.observe(section);
     });
 
-    // Implement smooth scrolling
+    // Implement smooth scrolling with auto-centering
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -42,10 +46,25 @@ const Index = () => {
         if (targetId && targetId.startsWith('#')) {
           const targetElement = document.querySelector(targetId);
           if (targetElement) {
+            // Get the height of any fixed header if present
+            const navbarHeight = document.querySelector('header')?.offsetHeight || 0;
+            
+            // Calculate the scroll position to center the section in viewport
+            const elementRect = targetElement.getBoundingClientRect();
+            const elementTop = elementRect.top + window.pageYOffset;
+            const windowHeight = window.innerHeight;
+            const elementHeight = elementRect.height;
+            
+            let scrollPosition = elementTop - navbarHeight;
+            // Only center if element is smaller than viewport
+            if (elementHeight < windowHeight) {
+              scrollPosition = elementTop - (windowHeight - elementHeight) / 2;
+            }
+            
             // Smooth scroll to target
-            targetElement.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
+            window.scrollTo({
+              top: scrollPosition,
+              behavior: 'smooth'
             });
             
             // Update URL hash without jumping

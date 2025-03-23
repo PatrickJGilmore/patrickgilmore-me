@@ -81,7 +81,7 @@ const ContactSection = () => {
             Get In Touch
           </span>
           <h2 className="section-title">Contact Me</h2>
-          <h3 className="section-subtitle">Let's Discuss Your Project</h3>
+          <h3 className="section-subtitle">Let's Elevate Your Technical Operations</h3>
         </div>
 
         <div 

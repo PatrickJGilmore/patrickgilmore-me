@@ -50,7 +50,7 @@ const SkillsSection = () => {
       icon: <Cloud className="h-7 w-7" />,
       description: "Expertise across major cloud and enterprise platforms to drive business efficiency",
       skills: [
-        "Azure", "Google Workspace", "Atlassian Suite", "OpSgenie", 
+        "Azure", "Google Workspace", "Atlassian Suite", "OpsGenie", 
         "HubSpot", "Aha", "ClickUp", "Footprints", "Glean"
       ]
     },
