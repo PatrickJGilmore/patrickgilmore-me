@@ -10,12 +10,13 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-[#0F172A] via-[#1E293B] to-[#0F172A]">
+    <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-[#050a15] via-[#0a1428] to-[#0c1a34]">
       {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full opacity-20">
           <div className="absolute top-10 left-1/4 w-96 h-96 rounded-full bg-blue-500/30 blur-[100px] animate-float"></div>
           <div className="absolute bottom-10 right-1/3 w-80 h-80 rounded-full bg-indigo-500/20 blur-[100px] animate-float animation-delay-1000"></div>
+          <div className="absolute bottom-40 left-1/4 w-64 h-64 rounded-full bg-purple-500/10 blur-[80px] animate-float animation-delay-2000"></div>
         </div>
       </div>
 
@@ -26,7 +27,7 @@ const HeroSection = () => {
               <span className="text-blue-300 font-medium tracking-wide">Acting Manager & Senior Production Support Analyst</span>
             </div>
             
-            <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight whitespace-normal sm:whitespace-nowrap">
               <span className="block bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-blue-200">
                 Results-Driven IT Leader
               </span>

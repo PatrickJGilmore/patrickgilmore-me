@@ -1,13 +1,23 @@
 
 import { useState, useEffect, useRef } from 'react';
+import { Badge } from "@/components/ui/badge";
+import { Progress } from "@/components/ui/progress";
+import { 
+  Database, 
+  Cloud, 
+  Users, 
+  Code,
+  BarChart3, 
+  CheckCircle2, 
+  Workflow,
+  Layers
+} from 'lucide-react';
 
 interface SkillCategory {
   name: string;
-  icon: string;
-  skills: {
-    name: string;
-    proficiency: number;
-  }[];
+  icon: React.ReactNode;
+  description: string;
+  skills: string[];
 }
 
 const SkillsSection = () => {
@@ -38,99 +48,138 @@ const SkillsSection = () => {
   const skillCategories: SkillCategory[] = [
     {
       name: "Enterprise Systems",
-      icon: "bi:cloud-fill",
+      icon: <Cloud className="h-7 w-7" />,
+      description: "Expertise across major cloud and enterprise platforms to drive business efficiency",
       skills: [
-        { name: "Azure", proficiency: 90 },
-        { name: "Google Workspace", proficiency: 95 },
-        { name: "Atlassian Suite", proficiency: 88 },
-        { name: "OpSgenie", proficiency: 85 },
-        { name: "HubSpot", proficiency: 80 },
-        { name: "Aha", proficiency: 85 },
+        "Azure", "Google Workspace", "Atlassian Suite", "OpSgenie", 
+        "HubSpot", "Aha", "ClickUp", "Footprints", "Glean"
       ]
     },
     {
       name: "Technical Support & Management",
-      icon: "bi:gear-fill",
+      icon: <Users className="h-7 w-7" />,
+      description: "Leading teams and processes with efficiency and technical excellence",
       skills: [
-        { name: "Incident Management", proficiency: 95 },
-        { name: "Vendor Management", proficiency: 90 },
-        { name: "Team Leadership", proficiency: 92 },
-        { name: "Performance Management", proficiency: 88 },
-        { name: "Process Optimization", proficiency: 90 },
-        { name: "SDLC", proficiency: 85 },
+        "Incident Management", "Vendor Management", "Team Leadership", 
+        "Performance Management", "Process Optimization", "SDLC"
       ]
     },
     {
       name: "Development & Automation",
-      icon: "fa6-solid:code",
+      icon: <Code className="h-7 w-7" />,
+      description: "Creating solutions that drive productivity and streamline operations",
       skills: [
-        { name: "PowerShell", proficiency: 85 },
-        { name: "SQL", proficiency: 82 },
-        { name: "GitHub/Version Control", proficiency: 88 },
-        { name: "VisualCron", proficiency: 90 },
-        { name: "MoveIT", proficiency: 80 },
-        { name: "Postman/API Testing", proficiency: 85 },
+        "PowerShell", "SQL", "GitHub/Version Control", 
+        "VisualCron", "MoveIT", "Postman/API Testing"
       ]
     },
     {
-      name: "Soft Skills",
-      icon: "fa6-solid:users",
+      name: "Leadership & Soft Skills",
+      icon: <BarChart3 className="h-7 w-7" />,
+      description: "Building high-performing teams through mentorship and strategic vision",
       skills: [
-        { name: "Team Management", proficiency: 95 },
-        { name: "Strategic Planning", proficiency: 90 },
-        { name: "Problem Solving", proficiency: 93 },
-        { name: "Communication", proficiency: 92 },
-        { name: "Mentoring", proficiency: 90 },
-        { name: "Project Management", proficiency: 85 },
+        "Strategic Planning", "Team Management", "Problem Solving", 
+        "Communication", "Mentoring", "Project Management"
       ]
     }
   ];
 
   return (
-    <section id="skills" className="py-24 bg-gradient-to-b from-[#0F172A] to-[#1E293B]">
+    <section id="skills" className="py-28 bg-gradient-to-b from-[#0b101e] to-[#151f38]">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="section-title">My Skills</h2>
-          <h3 className="section-subtitle">Enterprise Technologies & Leadership</h3>
+          <span className="inline-block px-3 py-1 bg-blue-500/10 rounded-full text-blue-400 text-sm font-medium mb-4">
+            Expertise
+          </span>
+          <h2 className="section-title">Technical Proficiency</h2>
+          <h3 className="section-subtitle">Enterprise Systems & Leadership Excellence</h3>
         </div>
 
         <div 
           ref={sectionRef}
-          className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10"
+          className="max-w-6xl mx-auto grid gap-8 md:grid-cols-2"
         >
-          {skillCategories.map((category, categoryIndex) => (
+          {skillCategories.map((category, index) => (
             <div 
-              key={categoryIndex}
-              className={`glass-card p-6 transition-all duration-700 delay-${categoryIndex * 100} ${
+              key={index}
+              className={`glass-card p-7 transition-all duration-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
+              style={{ transitionDelay: `${index * 150}ms` }}
             >
-              <div className="mb-6 flex items-center">
-                <span className="p-2 rounded-lg bg-primary/10 text-primary mr-4">
-                  <span className="iconify" data-icon={category.icon} data-width="24" data-height="24"></span>
-                </span>
-                <h3 className="text-xl font-semibold">{category.name}</h3>
-              </div>
-
-              <div className="space-y-5">
-                {category.skills.map((skill, skillIndex) => (
-                  <div key={skillIndex} className="space-y-2">
-                    <div className="flex justify-between">
-                      <span className="text-white/80">{skill.name}</span>
-                      <span className="text-white/60">{skill.proficiency}%</span>
-                    </div>
-                    <div className="progress-bar">
-                      <div 
-                        className="progress-bar-fill"
-                        style={{ 
-                          width: isVisible ? `${skill.proficiency}%` : '0%',
-                          transitionDelay: `${(categoryIndex * 100) + (skillIndex * 100)}ms`
-                        }}
-                      ></div>
-                    </div>
+              <div className="flex items-start">
+                <div className="p-3 rounded-xl bg-blue-500/10 text-blue-400 mr-4">
+                  {category.icon}
+                </div>
+                
+                <div>
+                  <h3 className="text-xl font-semibold mb-2">{category.name}</h3>
+                  <p className="text-white/60 mb-6 text-sm">{category.description}</p>
+                  
+                  <div className="flex flex-wrap gap-2">
+                    {category.skills.map((skill, i) => (
+                      <Badge 
+                        key={i} 
+                        variant="secondary" 
+                        className={`transition-all duration-500 bg-white/5 hover:bg-white/10 text-white/90 py-1.5 px-3 rounded-lg ${
+                          isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+                        }`}
+                        style={{ transitionDelay: `${(index * 100) + (i * 75)}ms` }}
+                      >
+                        {skill}
+                      </Badge>
+                    ))}
                   </div>
-                ))}
+                </div>
               </div>
+              
+              {index === 0 && (
+                <div className={`mt-8 transition-all duration-700 delay-500 ${
+                  isVisible ? 'opacity-100' : 'opacity-0'
+                }`}>
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-medium text-white/80">Enterprise Systems Integration</span>
+                    <span className="text-sm font-medium text-white/60">Advanced</span>
+                  </div>
+                  <Progress value={95} className="h-1.5 bg-white/5" />
+                </div>
+              )}
+              
+              {index === 1 && (
+                <div className={`mt-8 transition-all duration-700 delay-500 ${
+                  isVisible ? 'opacity-100' : 'opacity-0'
+                }`}>
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-medium text-white/80">Team Leadership</span>
+                    <span className="text-sm font-medium text-white/60">Expert</span>
+                  </div>
+                  <Progress value={98} className="h-1.5 bg-white/5" />
+                </div>
+              )}
+              
+              {index === 2 && (
+                <div className={`mt-8 transition-all duration-700 delay-500 ${
+                  isVisible ? 'opacity-100' : 'opacity-0'
+                }`}>
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-medium text-white/80">Automation & Scripting</span>
+                    <span className="text-sm font-medium text-white/60">Advanced</span>
+                  </div>
+                  <Progress value={90} className="h-1.5 bg-white/5" />
+                </div>
+              )}
+              
+              {index === 3 && (
+                <div className={`mt-8 transition-all duration-700 delay-500 ${
+                  isVisible ? 'opacity-100' : 'opacity-0'
+                }`}>
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-medium text-white/80">Strategic Planning</span>
+                    <span className="text-sm font-medium text-white/60">Expert</span>
+                  </div>
+                  <Progress value={95} className="h-1.5 bg-white/5" />
+                </div>
+              )}
             </div>
           ))}
         </div>

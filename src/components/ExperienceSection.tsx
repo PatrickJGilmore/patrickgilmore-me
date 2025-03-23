@@ -1,6 +1,6 @@
 
 import { useState, useEffect, useRef } from 'react';
-import { Briefcase, Calendar } from 'lucide-react';
+import { Briefcase, Calendar, MapPin, Building, Award, ArrowUpRight } from 'lucide-react';
 
 interface ExperienceData {
   company: string;
@@ -84,64 +84,101 @@ const ExperienceSection = () => {
   ];
 
   return (
-    <section id="experience" className="py-24 bg-[#1E293B]">
+    <section id="experience" className="py-28 bg-gradient-to-b from-[#151f38] to-[#0b101e]">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="section-title">My Experience</h2>
-          <h3 className="section-subtitle">Professional Journey & Leadership</h3>
+          <span className="inline-block px-3 py-1 bg-blue-500/10 rounded-full text-blue-400 text-sm font-medium mb-4">
+            Professional Journey
+          </span>
+          <h2 className="section-title">Work Experience</h2>
+          <h3 className="section-subtitle">Leadership & Technical Excellence</h3>
         </div>
 
         <div 
           ref={sectionRef} 
-          className="max-w-5xl mx-auto relative"
+          className="max-w-5xl mx-auto"
         >
-          {/* Timeline line */}
-          <div className="absolute left-0 md:left-1/2 w-px h-full bg-white/10 transform md:translate-x-[-50%] hidden md:block"></div>
-
           {experiences.map((exp, index) => (
             <div 
               key={index}
-              className={`relative mb-12 md:mb-24 transition-all duration-700 ${
+              className={`glass-card mb-10 overflow-hidden transition-all duration-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
               style={{ transitionDelay: `${index * 150}ms` }}
             >
-              <div className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-                {/* Timeline circle */}
-                <div className="hidden md:block absolute left-[-8px] md:left-1/2 w-4 h-4 rounded-full bg-primary transform md:translate-x-[-50%] mt-2 z-10"></div>
-                
-                {/* Content */}
-                <div className={`md:w-1/2 ${index % 2 === 0 ? 'md:pr-10' : 'md:pl-10'}`}>
-                  <div className="glass-card p-6 h-full">
-                    <div className="mb-4 inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm">
+              <div className="grid md:grid-cols-5 p-0">
+                {/* Company info */}
+                <div className="md:col-span-2 p-8 md:border-r border-white/5 flex flex-col justify-between">
+                  <div>
+                    <span className="inline-flex items-center px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-sm mb-4">
                       {exp.type}
-                    </div>
+                    </span>
                     <h3 className="text-2xl font-semibold mb-2">{exp.role}</h3>
-                    <h4 className="text-xl text-blue-300 mb-3">{exp.company}</h4>
+                    <h4 className="text-xl text-blue-300 mb-5 flex items-center">
+                      <Building size={18} className="mr-2 opacity-70" />
+                      {exp.company}
+                    </h4>
                     
-                    <div className="flex items-center text-white/60 mb-4">
-                      <Calendar size={16} className="mr-2" />
+                    <div className="flex items-center text-white/60 mb-3">
+                      <Calendar size={16} className="mr-2 opacity-80" />
                       <span>{exp.period}</span>
                     </div>
                     
-                    <div className="flex items-center text-white/60 mb-6">
-                      <Briefcase size={16} className="mr-2" />
+                    <div className="flex items-center text-white/60">
+                      <MapPin size={16} className="mr-2 opacity-80" />
                       <span>{exp.location}</span>
                     </div>
-                    
-                    <ul className="space-y-2 text-white/80">
-                      {exp.achievements.map((achievement, i) => (
-                        <li key={i} className="flex items-start">
-                          <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary mt-2 mr-2"></span>
-                          <span>{achievement}</span>
-                        </li>
-                      ))}
-                    </ul>
                   </div>
+                  
+                  {index === 0 && (
+                    <div className="mt-6 pt-6 border-t border-white/5">
+                      <div className="flex items-center text-blue-300">
+                        <Award size={18} className="mr-2" />
+                        <span className="font-medium">Rock Star Award Recipient</span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+                
+                {/* Achievements */}
+                <div className="md:col-span-3 p-8 bg-white/[0.02]">
+                  <h4 className="text-lg font-semibold mb-4 flex items-center">
+                    Key Achievements 
+                    <span className="h-px w-16 bg-gradient-to-r from-blue-500/60 to-transparent ml-3"></span>
+                  </h4>
+                  
+                  <ul className="space-y-3 text-white/80">
+                    {exp.achievements.map((achievement, i) => (
+                      <li 
+                        key={i} 
+                        className={`flex items-start transition-all duration-500 ${
+                          isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-5'
+                        }`}
+                        style={{ transitionDelay: `${(index * 100) + (i * 100)}ms` }}
+                      >
+                        <div className="min-w-8 flex items-center justify-center">
+                          <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2"></div>
+                        </div>
+                        <span>{achievement}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             </div>
           ))}
+          
+          <div className={`text-center mt-12 transition-all duration-700 delay-500 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
+            <a 
+              href="downloads/patrick-gilmore-resume.pdf" 
+              target="_blank"
+              className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/5 text-white/90 hover:bg-white/10 transition-all duration-300"
+            >
+              View Full Resume <ArrowUpRight size={16} />
+            </a>
+          </div>
         </div>
       </div>
     </section>

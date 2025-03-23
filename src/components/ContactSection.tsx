@@ -1,6 +1,6 @@
 
 import { useState, useEffect, useRef, FormEvent } from 'react';
-import { Mail, Phone, Send } from 'lucide-react';
+import { Mail, Phone, Send, ExternalLink } from 'lucide-react';
 import { toast } from 'sonner';
 
 const ContactSection = () => {
@@ -49,8 +49,10 @@ const ContactSection = () => {
     setIsSubmitting(true);
 
     try {
-      // This would be replaced with your actual email service
-      // For example, using EmailJS, Formspree, or a custom API endpoint
+      // This is a frontend-only example. In production, you would connect this to:
+      // 1. An API endpoint (e.g., Netlify Forms, AWS Lambda)
+      // 2. An email service (SendGrid, Mailgun, etc.)
+      // 3. Or a form service like Formspree
       console.log('Form submitted:', formData);
       
       // Simulate API call
@@ -72,9 +74,12 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-gradient-to-b from-[#0F172A] to-[#1E293B]">
+    <section id="contact" className="py-28 bg-gradient-to-b from-[#0b101e] to-[#050a15]">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
+          <span className="inline-block px-3 py-1 bg-blue-500/10 rounded-full text-blue-400 text-sm font-medium mb-4">
+            Get In Touch
+          </span>
           <h2 className="section-title">Contact Me</h2>
           <h3 className="section-subtitle">Let's Discuss Your Project</h3>
         </div>
@@ -87,16 +92,18 @@ const ContactSection = () => {
           <div className={`md:col-span-2 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
           }`}>
-            <div className="glass-card p-8 h-full">
-              <h3 className="text-2xl font-semibold mb-6">Get In Touch</h3>
+            <div className="glass-card p-8 h-full relative overflow-hidden">
+              <div className="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-blue-500/10 blur-[60px] pointer-events-none"></div>
+              
+              <h3 className="text-2xl font-semibold mb-6">Let's Connect</h3>
               
               <p className="text-white/70 mb-8">
-                I'm always open to discussing new projects, innovative ideas, or opportunities to be part of your vision.
+                I'm open to discussing new opportunities, innovative ideas, or how I can contribute to your organization's technical excellence and leadership needs.
               </p>
               
-              <div className="space-y-6">
+              <div className="space-y-6 relative z-10">
                 <div className="flex items-start">
-                  <div className="p-3 rounded-lg bg-primary/10 text-primary mr-4">
+                  <div className="p-3 rounded-lg bg-blue-500/10 text-blue-400 mr-4">
                     <Mail size={20} />
                   </div>
                   <div>
@@ -111,21 +118,27 @@ const ContactSection = () => {
                 </div>
                 
                 <div className="flex items-start">
-                  <div className="p-3 rounded-lg bg-primary/10 text-primary mr-4">
-                    <Phone size={20} />
+                  <div className="p-3 rounded-lg bg-blue-500/10 text-blue-400 mr-4">
+                    <ExternalLink size={20} />
                   </div>
                   <div>
-                    <h4 className="text-white/90 font-medium mb-1">Connect</h4>
+                    <h4 className="text-white/90 font-medium mb-1">LinkedIn</h4>
                     <a 
                       href="https://www.linkedin.com/in/patrickjgilmore/" 
                       target="_blank" 
                       rel="noopener noreferrer" 
                       className="text-blue-300 hover:text-blue-200 transition-colors"
                     >
-                      LinkedIn Profile
+                      linkedin.com/in/patrickjgilmore
                     </a>
                   </div>
                 </div>
+              </div>
+              
+              <div className="mt-10 pt-6 border-t border-white/10">
+                <p className="text-white/60 text-sm">
+                  To enable email functionality, you'll need to connect this form to an email service like SendGrid, Mailgun, or use a form handling service such as Formspree.
+                </p>
               </div>
             </div>
           </div>
@@ -134,11 +147,13 @@ const ContactSection = () => {
           <div className={`md:col-span-3 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
           }`}>
-            <div className="glass-card p-8">
-              <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="glass-card p-8 relative overflow-hidden">
+              <div className="absolute -bottom-16 -left-16 w-40 h-40 rounded-full bg-blue-500/5 blur-[50px] pointer-events-none"></div>
+              
+              <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-white/80 mb-2">
+                    <label htmlFor="name" className="block text-white/80 mb-2 font-medium">
                       Your Name
                     </label>
                     <input
@@ -154,7 +169,7 @@ const ContactSection = () => {
                   </div>
                   
                   <div>
-                    <label htmlFor="email" className="block text-white/80 mb-2">
+                    <label htmlFor="email" className="block text-white/80 mb-2 font-medium">
                       Your Email
                     </label>
                     <input
@@ -171,7 +186,7 @@ const ContactSection = () => {
                 </div>
                 
                 <div>
-                  <label htmlFor="subject" className="block text-white/80 mb-2">
+                  <label htmlFor="subject" className="block text-white/80 mb-2 font-medium">
                     Subject
                   </label>
                   <input
@@ -187,7 +202,7 @@ const ContactSection = () => {
                 </div>
                 
                 <div>
-                  <label htmlFor="message" className="block text-white/80 mb-2">
+                  <label htmlFor="message" className="block text-white/80 mb-2 font-medium">
                     Message
                   </label>
                   <textarea
