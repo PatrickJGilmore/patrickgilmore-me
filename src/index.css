@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@500;600;700;800&display=swap');
 
 @tailwind base;
@@ -183,4 +182,14 @@
 /* Ensure all section headers are centered */
 section h1, section h2, section h3 {
   text-align: center;
+}
+
+/* Ensure section tags are properly displayed */
+section .inline-block.px-3.py-1.bg-blue-500\/10 {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: fit-content;
 }

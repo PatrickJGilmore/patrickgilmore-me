@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
@@ -8,7 +7,6 @@ import ExperienceSection from '@/components/ExperienceSection';
 import AwardsSection from '@/components/AwardsSection';
 import ActivitiesSection from '@/components/ActivitiesSection';
 import ContactSection from '@/components/ContactSection';
-import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
 
 const Index = () => {
@@ -93,7 +91,6 @@ const Index = () => {
       <AwardsSection />
       <ActivitiesSection />
       <ContactSection />
-      <Footer />
       <ScrollToTop />
     </div>
   );

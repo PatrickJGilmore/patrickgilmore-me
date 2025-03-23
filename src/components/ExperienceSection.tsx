@@ -87,7 +87,7 @@ const ExperienceSection = () => {
     <section id="experience" className="py-28 bg-gradient-to-b from-[#151f38] to-[#0b101e]">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <span className="inline-block px-3 py-1 bg-blue-500/10 rounded-full text-blue-400 text-sm font-medium mb-4">
+          <span className="inline-block px-3 py-1 bg-blue-500/10 rounded-full text-blue-400 text-sm font-medium mb-4 w-full">
             Professional Journey
           </span>
           <h2 className="section-title">Work Experience</h2>
@@ -113,7 +113,7 @@ const ExperienceSection = () => {
                     <span className="inline-flex items-center px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-sm mb-4">
                       {exp.type}
                     </span>
-                    <h3 className="text-2xl font-semibold mb-2">{exp.role}</h3>
+                    <h3 className="text-2xl font-semibold mb-2 text-left">{exp.role}</h3>
                     <h4 className="text-xl text-blue-300 mb-5 flex items-center">
                       <Building size={18} className="mr-2 opacity-70" />
                       {exp.company}
