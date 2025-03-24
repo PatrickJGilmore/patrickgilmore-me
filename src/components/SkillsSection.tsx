@@ -1,11 +1,13 @@
-
 import { useState, useEffect, useRef } from 'react';
 import { Badge } from "@/components/ui/badge";
 import { 
   Database, 
-  Cloud, 
-  Users, 
   Code,
+  MonitorIcon,
+  Terminal,
+  GitBranch,
+  Cloud,
+  Users,
   BarChart3, 
   CheckCircle2, 
   Workflow,

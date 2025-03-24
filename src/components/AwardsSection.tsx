@@ -1,10 +1,12 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { Award } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const AwardsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -56,18 +58,18 @@ const AwardsSection = () => {
               }`}
             >
               <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
-                <div className="p-4 rounded-full bg-primary/10 text-primary">
+                <div className="p-4 rounded-full bg-primary/10 text-primary shrink-0">
                   <Award size={36} />
                 </div>
                 
-                <div>
-                  <h3 className="text-2xl font-semibold mb-2">{award.title}</h3>
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4">
+                <div className="w-full">
+                  <h3 className={`text-2xl font-semibold mb-2 ${isMobile || window.innerWidth < 1024 ? 'text-left' : ''}`}>{award.title}</h3>
+                  <div className={`flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4 ${isMobile || window.innerWidth < 1024 ? 'text-left' : ''}`}>
                     <span className="text-blue-300">{award.organization}</span>
                     <span className="hidden sm:inline-block text-white/40">•</span>
                     <span className="text-white/60">{award.date}</span>
                   </div>
-                  <p className="text-white/80">{award.description}</p>
+                  <p className={`text-white/80 ${isMobile || window.innerWidth < 1024 ? 'text-left' : ''}`}>{award.description}</p>
                 </div>
               </div>
             </div>

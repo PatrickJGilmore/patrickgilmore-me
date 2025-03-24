@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef, FormEvent } from 'react';
 import { Mail, Phone, Send, ExternalLink } from 'lucide-react';
 import { toast } from 'sonner';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const ContactSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -12,6 +13,9 @@ const ContactSection = () => {
     subject: '',
     message: ''
   });
+  const [showEmail, setShowEmail] = useState(false);
+  const [showPhone, setShowPhone] = useState(false);
+  const isMobile = useIsMobile();
   
   const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -73,6 +77,18 @@ const ContactSection = () => {
     }
   };
 
+  // Email obfuscation
+  const obfuscatedEmail = "contact" + String.fromCharCode(64) + "patrickgilmore" + String.fromCharCode(46) + "me";
+  const obfuscatedPhone = "727" + String.fromCharCode(8226) + "257" + String.fromCharCode(8226) + "0037";
+
+  const handleShowEmail = () => {
+    setShowEmail(true);
+  };
+
+  const handleShowPhone = () => {
+    setShowPhone(true);
+  };
+
   return (
     <section id="contact" className="py-28 bg-gradient-to-b from-[#0b101e] to-[#050a15]">
       <div className="container mx-auto px-6">
@@ -92,13 +108,13 @@ const ContactSection = () => {
           <div className={`md:col-span-2 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
           }`}>
-            <div className="glass-card p-8 h-full relative overflow-hidden hover:shadow-xl transition-all duration-300">
+            <div className="glass-card p-8 h-full relative overflow-hidden hover:shadow-xl transition-all duration-300 w-full">
               <div className="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-blue-500/10 blur-[60px] pointer-events-none"></div>
               
               <h3 className="text-2xl font-semibold mb-6">Let's Connect</h3>
               
               <p className="text-white/70 mb-8">
-                I'm open to discussing new opportunities, innovative ideas, or how I can contribute to your organization's technical excellence and leadership needs.
+                I'm open to discussing new opportunities, innovative ideas, or how I can contribute to your organization's technical excellence.
               </p>
               
               <div className="space-y-6 relative z-10">
@@ -108,12 +124,45 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <h4 className="text-white/90 font-medium mb-1">Email</h4>
-                    <a 
-                      href="mailto:contact@patrickgilmore.me" 
-                      className="text-blue-300 hover:text-blue-200 transition-colors"
-                    >
-                      contact@patrickgilmore.me
-                    </a>
+                    {showEmail ? (
+                      <a 
+                        href={`mailto:${obfuscatedEmail}`}
+                        className="text-blue-300 hover:text-blue-200 transition-colors"
+                      >
+                        {obfuscatedEmail}
+                      </a>
+                    ) : (
+                      <button 
+                        onClick={handleShowEmail}
+                        className="text-blue-300 hover:text-blue-200 transition-colors"
+                      >
+                        Click to reveal email
+                      </button>
+                    )}
+                  </div>
+                </div>
+                
+                <div className="flex items-start">
+                  <div className="p-3 rounded-lg bg-blue-500/10 text-blue-400 mr-4">
+                    <Phone size={20} />
+                  </div>
+                  <div>
+                    <h4 className="text-white/90 font-medium mb-1">Phone</h4>
+                    {showPhone ? (
+                      <a 
+                        href={`tel:+17272570037`}
+                        className="text-blue-300 hover:text-blue-200 transition-colors"
+                      >
+                        (727) 257-0037
+                      </a>
+                    ) : (
+                      <button 
+                        onClick={handleShowPhone}
+                        className="text-blue-300 hover:text-blue-200 transition-colors"
+                      >
+                        Click to reveal phone number
+                      </button>
+                    )}
                   </div>
                 </div>
                 
@@ -141,7 +190,7 @@ const ContactSection = () => {
           <div className={`md:col-span-3 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
           }`}>
-            <div className="glass-card p-8 relative overflow-hidden hover:shadow-xl transition-all duration-300">
+            <div className="glass-card p-8 relative overflow-hidden hover:shadow-xl transition-all duration-300 w-full">
               <div className="absolute -bottom-16 -left-16 w-40 h-40 rounded-full bg-blue-500/5 blur-[50px] pointer-events-none"></div>
               
               <form onSubmit={handleSubmit} className="space-y-6 relative z-10" netlify name="contact">

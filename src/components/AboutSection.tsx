@@ -1,6 +1,7 @@
 
 import { Award, Cloud, Users } from 'lucide-react';
 import { useRef, useEffect, useState } from 'react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface AboutCardProps {
   icon: React.ReactNode;
@@ -12,6 +13,7 @@ interface AboutCardProps {
 const AboutCard = ({ icon, title, description, delay }: AboutCardProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -44,11 +46,13 @@ const AboutCard = ({ icon, title, description, delay }: AboutCardProps) => {
       }`}
     >
       <div className="flex flex-col items-start">
-        <div className="p-3 rounded-lg bg-blue-500/10 text-blue-400 mb-4">
-          {icon}
+        <div className={`flex items-center gap-4 mb-4 ${isMobile || window.innerWidth < 1024 ? 'w-full' : ''}`}>
+          <div className="p-3 rounded-lg bg-blue-500/10 text-blue-400 shrink-0">
+            {icon}
+          </div>
+          <h3 className={`text-xl font-semibold ${isMobile || window.innerWidth < 1024 ? 'text-left' : ''}`}>{title}</h3>
         </div>
-        <h3 className="text-xl font-semibold mb-2">{title}</h3>
-        <p className="text-white/70">{description}</p>
+        <p className={`text-white/70 ${isMobile || window.innerWidth < 1024 ? 'text-left pl-14' : ''}`}>{description}</p>
       </div>
     </div>
   );
@@ -57,6 +61,7 @@ const AboutCard = ({ icon, title, description, delay }: AboutCardProps) => {
 const AboutSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -103,7 +108,7 @@ const AboutSection = () => {
                 </p>
               </div>
               
-              <div className="mt-8">
+              <div className={`mt-8 ${isMobile || window.innerWidth < 1024 ? 'flex justify-center' : ''}`}>
                 <a href="#contact" className="btn-primary">Let's Connect</a>
               </div>
             </div>
