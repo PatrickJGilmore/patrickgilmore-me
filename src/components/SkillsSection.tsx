@@ -10,8 +10,8 @@ import {
   Workflow,
   Layers,
   Server,
-  Windows,
-  Linux
+  MonitorIcon,
+  Terminal
 } from 'lucide-react';
 
 interface SkillCategory {
