@@ -7,6 +7,7 @@ import ExperienceSection from '@/components/ExperienceSection';
 import AwardsSection from '@/components/AwardsSection';
 import ActivitiesSection from '@/components/ActivitiesSection';
 import ContactSection from '@/components/ContactSection';
+import ScrollToTop from '@/components/ScrollToTop';
 
 const Index = () => {
   // Add scroll reveal effect
@@ -90,6 +91,7 @@ const Index = () => {
       <AwardsSection />
       <ActivitiesSection />
       <ContactSection />
+      <ScrollToTop />
     </div>
   );
 };

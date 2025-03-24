@@ -1,7 +1,6 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { Heart, Users, Clock } from 'lucide-react';
-import { useIsMobile } from '@/hooks/use-mobile';
 
 interface ActivityProps {
   icon: React.ReactNode;
@@ -15,7 +14,6 @@ interface ActivityProps {
 const Activity = ({ icon, title, organization, period, description, delay }: ActivityProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const activityRef = useRef<HTMLDivElement>(null);
-  const isMobile = useIsMobile();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -48,13 +46,13 @@ const Activity = ({ icon, title, organization, period, description, delay }: Act
       }`}
     >
       <div className="flex flex-col md:flex-row gap-6">
-        <div className="p-4 rounded-lg bg-primary/10 text-primary shrink-0 w-fit">
+        <div className="p-4 rounded-lg bg-primary/10 text-primary shrink-0">
           {icon}
         </div>
         
-        <div className="w-full">
-          <h3 className={`text-xl font-semibold mb-2 ${isMobile || window.innerWidth < 1024 ? 'text-left' : ''}`}>{title}</h3>
-          <div className={`flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4 ${isMobile || window.innerWidth < 1024 ? 'text-left' : ''}`}>
+        <div>
+          <h3 className="text-xl font-semibold mb-2">{title}</h3>
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4">
             <span className="text-blue-300">{organization}</span>
             <span className="hidden sm:inline-block text-white/40">•</span>
             <div className="flex items-center text-white/60">
@@ -62,7 +60,7 @@ const Activity = ({ icon, title, organization, period, description, delay }: Act
               <span>{period}</span>
             </div>
           </div>
-          <p className={`text-white/80 ${isMobile || window.innerWidth < 1024 ? 'text-left' : ''}`}>{description}</p>
+          <p className="text-white/80">{description}</p>
         </div>
       </div>
     </div>

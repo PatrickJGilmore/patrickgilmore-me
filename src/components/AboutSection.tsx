@@ -1,7 +1,6 @@
 
 import { Award, Cloud, Users } from 'lucide-react';
 import { useRef, useEffect, useState } from 'react';
-import { useIsMobile } from '@/hooks/use-mobile';
 
 interface AboutCardProps {
   icon: React.ReactNode;
@@ -13,7 +12,6 @@ interface AboutCardProps {
 const AboutCard = ({ icon, title, description, delay }: AboutCardProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
-  const isMobile = useIsMobile();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -46,13 +44,11 @@ const AboutCard = ({ icon, title, description, delay }: AboutCardProps) => {
       }`}
     >
       <div className="flex flex-col items-start">
-        <div className={`flex items-center gap-4 mb-4 ${isMobile || window.innerWidth < 1024 ? 'w-full' : ''}`}>
-          <div className="p-3 rounded-lg bg-blue-500/10 text-blue-400 shrink-0">
-            {icon}
-          </div>
-          <h3 className="text-xl font-semibold text-left">{title}</h3>
+        <div className="p-3 rounded-lg bg-blue-500/10 text-blue-400 mb-4">
+          {icon}
         </div>
-        <p className={`text-white/70 text-left`}>{description}</p>
+        <h3 className="text-xl font-semibold mb-2">{title}</h3>
+        <p className="text-white/70">{description}</p>
       </div>
     </div>
   );
@@ -61,7 +57,6 @@ const AboutCard = ({ icon, title, description, delay }: AboutCardProps) => {
 const AboutSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const isMobile = useIsMobile();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -96,7 +91,7 @@ const AboutSection = () => {
               <h2 className="section-title">IT Visionary & Leader</h2>
               <h3 className="section-subtitle mb-8">Transforming Operations Through Technical Excellence</h3>
               
-              <div className="space-y-6 text-white/80 text-left">
+              <div className="space-y-6 text-white/80">
                 <p>
                   As an IT leader with over 25 years of industry experience, I've established a reputation for excellence in developing and implementing strategic initiatives that drive business growth and innovation. My leadership approach combines technical expertise with a deep understanding of business needs to deliver transformative solutions.
                 </p>
@@ -108,7 +103,7 @@ const AboutSection = () => {
                 </p>
               </div>
               
-              <div className="mt-8 flex justify-center md:justify-start">
+              <div className="mt-8">
                 <a href="#contact" className="btn-primary">Let's Connect</a>
               </div>
             </div>
