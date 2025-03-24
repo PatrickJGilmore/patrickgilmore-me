@@ -94,11 +94,12 @@ const Navbar = () => {
 
       {/* Mobile Navigation */}
       <div 
-        className={`md:hidden absolute w-full bg-black/95 backdrop-blur-md shadow-xl transition-all duration-300 ease-in-out overflow-hidden ${
+        className={`md:hidden absolute right-0 bg-[#0F172A]/95 backdrop-blur-md shadow-xl transition-all duration-300 ease-in-out overflow-hidden ${
           isMobileMenuOpen ? 'max-h-screen opacity-100 py-6' : 'max-h-0 opacity-0'
         }`}
+        style={{ width: 'auto' }}
       >
-        <nav className="container mx-auto px-6">
+        <nav className="px-6">
           <ul className="flex flex-col gap-4">
             {navLinks.map(link => (
               <li key={link.id}>

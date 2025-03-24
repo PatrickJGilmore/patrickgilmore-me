@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@500;600;700;800&display=swap');
 
 @tailwind base;
@@ -116,11 +117,11 @@
   }
   
   .btn-primary {
-    @apply inline-block px-6 py-3 rounded-lg bg-primary text-white font-medium transition-all duration-300 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20 active:translate-y-0.5 hover:transform hover:scale-105;
+    @apply inline-block px-6 py-3 rounded-lg bg-primary text-white font-medium transition-all duration-300 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20 active:translate-y-0.5;
   }
   
   .btn-outline {
-    @apply inline-block px-6 py-3 rounded-lg border border-white/20 text-white font-medium transition-all duration-300 hover:bg-white/5 hover:border-white/30 active:translate-y-0.5 hover:transform hover:scale-105;
+    @apply inline-block px-6 py-3 rounded-lg border border-white/20 text-white font-medium transition-all duration-300 hover:bg-white/5 hover:border-white/30 active:translate-y-0.5;
   }
   
   .contact-input {
@@ -145,16 +146,15 @@
     animation-delay: 3s;
   }
   
-  .hover-lift {
-    @apply transition-transform duration-300 hover:-translate-y-1;
-  }
-  
-  .hover-grow {
-    @apply transition-transform duration-300 hover:scale-105;
-  }
-  
-  .hover-glow {
-    @apply transition-all duration-300 hover:shadow-lg hover:shadow-primary/20;
+  /* Mobile-specific utilities */
+  @media (max-width: 767px) {
+    .md-center {
+      @apply text-center mx-auto;
+    }
+    
+    .md-left {
+      @apply text-left;
+    }
   }
 }
 
@@ -169,9 +169,11 @@
 }
 
 /* Stripe-inspired card hover effects */
-.glass-card:hover {
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12), 0 0 1px rgba(255, 255, 255, 0.1);
-  transform: translateY(-2px);
+@media (min-width: 768px) {
+  .glass-card:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12), 0 0 1px rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+  }
 }
 
 /* Stripe-inspired smooth transitions */
@@ -180,12 +182,22 @@
 }
 
 /* Ensure all section headers are centered */
-section h1, section h2, section h3 {
+section h2, section h3 {
   text-align: center;
 }
 
 /* Ensure section tags are properly displayed */
-section .inline-block.px-3.py-1.bg-blue-500\/10 {
+section .inline-block.px-3.py-1.rounded-full {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: fit-content;
+}
+
+/* Section tags should always be on their own line */
+section .bg-blue-500\/10 {
   display: block;
   width: 100%;
   text-align: center;

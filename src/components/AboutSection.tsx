@@ -43,12 +43,12 @@ const AboutCard = ({ icon, title, description, delay }: AboutCardProps) => {
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
       }`}
     >
-      <div className="flex flex-col items-start">
-        <div className="p-3 rounded-lg bg-blue-500/10 text-blue-400 mb-4">
+      <div className="flex flex-col items-start md:items-start">
+        <div className="p-3 rounded-lg bg-blue-500/10 text-blue-400 mb-4 mx-auto md:mx-0">
           {icon}
         </div>
-        <h3 className="text-xl font-semibold mb-2">{title}</h3>
-        <p className="text-white/70">{description}</p>
+        <h3 className="text-xl font-semibold mb-2 md-center md:text-left">{title}</h3>
+        <p className="text-white/70 md-center md:text-left">{description}</p>
       </div>
     </div>
   );
@@ -99,11 +99,11 @@ const AboutSection = () => {
                   I excel in building and mentoring high-performing teams, fostering a culture of collaboration and innovation that consistently exceeds expectations. Currently serving as the Acting Manager for a Production Support Team, I oversee workloads, resolve team disputes, write performance reviews, and handle all managerial responsibilities while maintaining technical excellence.
                 </p>
                 <p>
-                  My technical expertise spans across enterprise systems administration, development, and infrastructure management, with proficiency in Azure, Google Workspace, Atlassian products, OpSgenie, Aha, ClickUp, Footprints, GitHub, SQL databases, and automation tools like PowerShell and VisualCron.
+                  My technical expertise spans across enterprise systems administration, development, and infrastructure management, with proficiency in Azure, Google Workspace, Atlassian products, OpsGenie, Aha, ClickUp, Footprints, GitHub, SQL databases, and automation tools like PowerShell and VisualCron.
                 </p>
               </div>
               
-              <div className="mt-8">
+              <div className="mt-8 flex md:justify-start justify-center">
                 <a href="#contact" className="btn-primary">Let's Connect</a>
               </div>
             </div>

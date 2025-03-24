@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
@@ -7,19 +8,21 @@ import ExperienceSection from '@/components/ExperienceSection';
 import AwardsSection from '@/components/AwardsSection';
 import ActivitiesSection from '@/components/ActivitiesSection';
 import ContactSection from '@/components/ContactSection';
-import ScrollToTop from '@/components/ScrollToTop';
 
 const Index = () => {
   // Add scroll reveal effect
   useEffect(() => {
     const handleIntersection = (entries: IntersectionObserverEntry[]) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-fade-in');
-        } else {
-          // Remove the animation class when element is out of view
-          // This allows for the animation to trigger again when scrolling back
-          entry.target.classList.remove('animate-fade-in');
+        // Only add animations on desktop
+        if (window.innerWidth > 768) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fade-in');
+          } else {
+            // Remove the animation class when element is out of view
+            // This allows for the animation to trigger again when scrolling back
+            entry.target.classList.remove('animate-fade-in');
+          }
         }
       });
     };
@@ -50,14 +53,9 @@ const Index = () => {
             // Calculate the scroll position to center the section in viewport
             const elementRect = targetElement.getBoundingClientRect();
             const elementTop = elementRect.top + window.pageYOffset;
-            const windowHeight = window.innerHeight;
-            const elementHeight = elementRect.height;
             
-            let scrollPosition = elementTop - navbarHeight;
-            // Only center if element is smaller than viewport
-            if (elementHeight < windowHeight) {
-              scrollPosition = elementTop - (windowHeight - elementHeight) / 2;
-            }
+            // Just position beneath header, don't try to center
+            const scrollPosition = elementTop - navbarHeight;
             
             // Smooth scroll to target
             window.scrollTo({
@@ -91,7 +89,6 @@ const Index = () => {
       <AwardsSection />
       <ActivitiesSection />
       <ContactSection />
-      <ScrollToTop />
     </div>
   );
 };
