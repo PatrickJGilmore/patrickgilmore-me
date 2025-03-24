@@ -40,11 +40,8 @@ const AwardsSection = () => {
     <section id="awards" className="py-24 bg-gradient-to-b from-[#1E293B] to-[#0F172A]">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <span className="inline-block px-3 py-1 bg-blue-500/10 rounded-full text-blue-400 text-sm font-medium mb-4">
-            Recognition
-          </span>
           <h2 className="section-title">My Awards</h2>
-          <h3 className="section-subtitle">Professional Achievements</h3>
+          <h3 className="section-subtitle">Recognition & Achievements</h3>
         </div>
 
         <div 
@@ -59,18 +56,18 @@ const AwardsSection = () => {
               }`}
             >
               <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
-                <div className="p-4 rounded-full bg-primary/10 text-primary mx-auto md:mx-0">
+                <div className="p-4 rounded-full bg-primary/10 text-primary">
                   <Award size={36} />
                 </div>
                 
                 <div>
-                  <h3 className="text-2xl font-semibold mb-2 text-center md:text-left">{award.title}</h3>
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4 text-center md:text-left">
+                  <h3 className="text-2xl font-semibold mb-2">{award.title}</h3>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4">
                     <span className="text-blue-300">{award.organization}</span>
                     <span className="hidden sm:inline-block text-white/40">•</span>
                     <span className="text-white/60">{award.date}</span>
                   </div>
-                  <p className="text-white/80 text-center md:text-left">{award.description}</p>
+                  <p className="text-white/80">{award.description}</p>
                 </div>
               </div>
             </div>

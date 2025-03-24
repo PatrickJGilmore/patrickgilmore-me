@@ -1,12 +1,19 @@
 
-import { useState, useEffect, useRef } from 'react';
-import { Mail, Phone, ExternalLink } from 'lucide-react';
-import { useIsMobile } from '@/hooks/use-mobile';
+import { useState, useEffect, useRef, FormEvent } from 'react';
+import { Mail, Phone, Send, ExternalLink } from 'lucide-react';
+import { toast } from 'sonner';
 
 const ContactSection = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  
   const sectionRef = useRef<HTMLDivElement>(null);
-  const isMobile = useIsMobile();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -29,6 +36,43 @@ const ContactSection = () => {
     };
   }, []);
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      // This is a frontend-only example. In production, you would connect this to:
+      // 1. An API endpoint (e.g., Netlify Forms, AWS Lambda)
+      // 2. An email service (SendGrid, Mailgun, etc.)
+      // 3. Or a form service like Formspree
+      console.log('Form submitted:', formData);
+      
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      toast.success('Message sent successfully! I will get back to you soon.');
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+    } catch (error) {
+      toast.error('Failed to send message. Please try again.');
+      console.error('Contact form error:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="py-28 bg-gradient-to-b from-[#0b101e] to-[#050a15]">
       <div className="container mx-auto px-6">
@@ -37,63 +81,157 @@ const ContactSection = () => {
             Get In Touch
           </span>
           <h2 className="section-title">Contact Me</h2>
-          <h3 className="section-subtitle">Let's Elevate Your Technical Needs</h3>
+          <h3 className="section-subtitle">Let's Elevate Your Technical Operations</h3>
         </div>
 
         <div 
           ref={sectionRef}
-          className={`max-w-4xl mx-auto transition-all duration-700 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
+          className="max-w-5xl mx-auto grid md:grid-cols-5 gap-12"
         >
-          <div className="glass-card p-10 text-center">
-            <h3 className="text-2xl font-semibold mb-8">Ready to Discuss Your Technical Leadership Needs?</h3>
-            
-            <p className="text-white/80 mb-10 max-w-2xl mx-auto">
-              I'm available to discuss how my technical leadership and enterprise systems expertise can benefit your organization. Let's connect and explore possibilities.
-            </p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-              <div className="glass-card p-6 md:p-8 flex flex-col items-center md:items-center">
-                <div className="p-3 rounded-full bg-blue-500/10 text-blue-400 mb-4">
-                  <Mail size={24} />
-                </div>
-                <h4 className="text-xl font-medium mb-2 md:text-center">Email</h4>
-                <a 
-                  href="mailto:contact@patrickgilmore.me" 
-                  className="text-blue-300 hover:text-blue-200 transition-colors md:text-center"
-                >
-                  contact@patrickgilmore.me
-                </a>
-              </div>
+          {/* Contact Info */}
+          <div className={`md:col-span-2 transition-all duration-700 ${
+            isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+          }`}>
+            <div className="glass-card p-8 h-full relative overflow-hidden hover:shadow-xl transition-all duration-300">
+              <div className="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-blue-500/10 blur-[60px] pointer-events-none"></div>
               
-              <div className="glass-card p-6 md:p-8 flex flex-col items-center md:items-center">
-                <div className="p-3 rounded-full bg-blue-500/10 text-blue-400 mb-4">
-                  <Phone size={24} />
-                </div>
-                <h4 className="text-xl font-medium mb-2 md:text-center">Phone</h4>
-                <a 
-                  href="tel:7272570037" 
-                  className="text-blue-300 hover:text-blue-200 transition-colors md:text-center"
-                >
-                  (727) 257-0037
-                </a>
-              </div>
+              <h3 className="text-2xl font-semibold mb-6">Let's Connect</h3>
               
-              <div className="glass-card p-6 md:p-8 flex flex-col items-center md:items-center">
-                <div className="p-3 rounded-full bg-blue-500/10 text-blue-400 mb-4">
-                  <ExternalLink size={24} />
+              <p className="text-white/70 mb-8">
+                I'm open to discussing new opportunities, innovative ideas, or how I can contribute to your organization's technical excellence and leadership needs.
+              </p>
+              
+              <div className="space-y-6 relative z-10">
+                <div className="flex items-start">
+                  <div className="p-3 rounded-lg bg-blue-500/10 text-blue-400 mr-4">
+                    <Mail size={20} />
+                  </div>
+                  <div>
+                    <h4 className="text-white/90 font-medium mb-1">Email</h4>
+                    <a 
+                      href="mailto:contact@patrickgilmore.me" 
+                      className="text-blue-300 hover:text-blue-200 transition-colors"
+                    >
+                      contact@patrickgilmore.me
+                    </a>
+                  </div>
                 </div>
-                <h4 className="text-xl font-medium mb-2 md:text-center">LinkedIn</h4>
-                <a 
-                  href="https://www.linkedin.com/in/patrickjgilmore/" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="text-blue-300 hover:text-blue-200 transition-colors md:text-center"
-                >
-                  linkedin.com/in/patrickjgilmore
-                </a>
+                
+                <div className="flex items-start">
+                  <div className="p-3 rounded-lg bg-blue-500/10 text-blue-400 mr-4">
+                    <ExternalLink size={20} />
+                  </div>
+                  <div>
+                    <h4 className="text-white/90 font-medium mb-1">LinkedIn</h4>
+                    <a 
+                      href="https://www.linkedin.com/in/patrickjgilmore/" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="text-blue-300 hover:text-blue-200 transition-colors"
+                    >
+                      linkedin.com/in/patrickjgilmore
+                    </a>
+                  </div>
+                </div>
               </div>
+            </div>
+          </div>
+          
+          {/* Contact Form */}
+          <div className={`md:col-span-3 transition-all duration-700 ${
+            isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+          }`}>
+            <div className="glass-card p-8 relative overflow-hidden hover:shadow-xl transition-all duration-300">
+              <div className="absolute -bottom-16 -left-16 w-40 h-40 rounded-full bg-blue-500/5 blur-[50px] pointer-events-none"></div>
+              
+              <form onSubmit={handleSubmit} className="space-y-6 relative z-10" netlify name="contact">
+                <div className="grid sm:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="name" className="block text-white/80 mb-2 font-medium">
+                      Your Name
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      className="contact-input"
+                      placeholder="John Doe"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="email" className="block text-white/80 mb-2 font-medium">
+                      Your Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="contact-input"
+                      placeholder="john@example.com"
+                    />
+                  </div>
+                </div>
+                
+                <div>
+                  <label htmlFor="subject" className="block text-white/80 mb-2 font-medium">
+                    Subject
+                  </label>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    required
+                    className="contact-input"
+                    placeholder="How can I help you?"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="message" className="block text-white/80 mb-2 font-medium">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    rows={5}
+                    className="contact-input"
+                    placeholder="I'd like to discuss..."
+                  ></textarea>
+                </div>
+                
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="btn-primary w-full flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send size={18} />
+                      Send Message
+                    </>
+                  )}
+                </button>
+              </form>
             </div>
           </div>
         </div>

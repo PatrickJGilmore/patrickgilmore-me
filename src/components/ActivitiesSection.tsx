@@ -46,21 +46,21 @@ const Activity = ({ icon, title, organization, period, description, delay }: Act
       }`}
     >
       <div className="flex flex-col md:flex-row gap-6">
-        <div className="p-4 rounded-lg bg-primary/10 text-primary shrink-0 w-auto mx-auto md:mx-0">
+        <div className="p-4 rounded-lg bg-primary/10 text-primary shrink-0">
           {icon}
         </div>
         
         <div>
-          <h3 className="text-xl font-semibold mb-2 text-center md:text-left">{title}</h3>
-          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4 text-center md:text-left">
+          <h3 className="text-xl font-semibold mb-2">{title}</h3>
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4">
             <span className="text-blue-300">{organization}</span>
             <span className="hidden sm:inline-block text-white/40">•</span>
-            <div className="flex items-center justify-center md:justify-start text-white/60">
+            <div className="flex items-center text-white/60">
               <Clock size={14} className="mr-1" />
               <span>{period}</span>
             </div>
           </div>
-          <p className="text-white/80 text-center md:text-left">{description}</p>
+          <p className="text-white/80">{description}</p>
         </div>
       </div>
     </div>
@@ -113,11 +113,8 @@ const ActivitiesSection = () => {
     <section id="activities" className="py-24 bg-[#0F172A]">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <span className="inline-block px-3 py-1 bg-blue-500/10 rounded-full text-blue-400 text-sm font-medium mb-4">
-            Activities
-          </span>
-          <h2 className="section-title">Community Involvement</h2>
-          <h3 className="section-subtitle">Giving Back & Volunteering</h3>
+          <h2 className="section-title">Activities</h2>
+          <h3 className="section-subtitle">Community Involvement & Interests</h3>
         </div>
 
         <div 
