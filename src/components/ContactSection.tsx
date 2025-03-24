@@ -1,10 +1,12 @@
 
 import { useState, useEffect, useRef } from 'react';
-import { Mail, Phone, ExternalLink, Download } from 'lucide-react';
+import { Mail, Phone, ExternalLink } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const ContactSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -35,7 +37,7 @@ const ContactSection = () => {
             Get In Touch
           </span>
           <h2 className="section-title">Contact Me</h2>
-          <h3 className="section-subtitle">Let's Elevate Your Technical Operations</h3>
+          <h3 className="section-subtitle">Let's Elevate Your Technical Needs</h3>
         </div>
 
         <div 
@@ -51,7 +53,7 @@ const ContactSection = () => {
               I'm available to discuss how my technical leadership and enterprise systems expertise can benefit your organization. Let's connect and explore possibilities.
             </p>
             
-            <div className="grid md:grid-cols-3 gap-8 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
               <div className="glass-card p-6 md:p-8 flex flex-col items-center md:items-center">
                 <div className="p-3 rounded-full bg-blue-500/10 text-blue-400 mb-4">
                   <Mail size={24} />
@@ -92,18 +94,6 @@ const ContactSection = () => {
                   linkedin.com/in/patrickjgilmore
                 </a>
               </div>
-            </div>
-            
-            <div className="mt-10">
-              <a 
-                href="/downloads/patrickjgilmore.pdf" 
-                className="btn-primary flex items-center justify-center gap-2 mx-auto w-fit"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Download size={18} />
-                Download Resume
-              </a>
             </div>
           </div>
         </div>

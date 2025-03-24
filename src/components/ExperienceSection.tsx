@@ -1,6 +1,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { Briefcase, Calendar, MapPin, Building, Award, ArrowUpRight } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface ExperienceData {
   company: string;
@@ -14,6 +15,7 @@ interface ExperienceData {
 const ExperienceSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -110,7 +112,7 @@ const ExperienceSection = () => {
                 {/* Company info */}
                 <div className="md:col-span-2 p-8 md:border-r border-white/5 flex flex-col justify-between">
                   <div>
-                    <span className="inline-flex items-center px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-sm mb-4">
+                    <span className={`inline-flex items-center px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-sm mb-4 ${isMobile ? 'self-start' : ''}`}>
                       {exp.type}
                     </span>
                     <h3 className="text-2xl font-semibold mb-2 text-left">{exp.role}</h3>
@@ -172,7 +174,7 @@ const ExperienceSection = () => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
             <a 
-              href="downloads/patrick-gilmore-resume.pdf" 
+              href="/downloads/patrickjgilmore.pdf" 
               target="_blank"
               className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/5 text-white/90 hover:bg-white/10 transition-all duration-300"
             >

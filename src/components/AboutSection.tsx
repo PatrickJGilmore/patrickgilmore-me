@@ -1,6 +1,7 @@
 
 import { Award, Cloud, Users } from 'lucide-react';
 import { useRef, useEffect, useState } from 'react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface AboutCardProps {
   icon: React.ReactNode;
@@ -12,6 +13,7 @@ interface AboutCardProps {
 const AboutCard = ({ icon, title, description, delay }: AboutCardProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -43,12 +45,14 @@ const AboutCard = ({ icon, title, description, delay }: AboutCardProps) => {
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
       }`}
     >
-      <div className="flex flex-col items-start md:items-start">
-        <div className="p-3 rounded-lg bg-blue-500/10 text-blue-400 mb-4 mx-auto md:mx-0">
+      <div className="flex flex-col md:flex-row items-start">
+        <div className="p-3 rounded-lg bg-blue-500/10 text-blue-400 mb-4 md:mb-0 md:mr-4">
           {icon}
         </div>
-        <h3 className="text-xl font-semibold mb-2 md-center md:text-left">{title}</h3>
-        <p className="text-white/70 md-center md:text-left">{description}</p>
+        <div>
+          <h3 className="text-xl font-semibold mb-2 text-left">{title}</h3>
+          <p className="text-white/70 text-left">{description}</p>
+        </div>
       </div>
     </div>
   );
@@ -57,6 +61,7 @@ const AboutCard = ({ icon, title, description, delay }: AboutCardProps) => {
 const AboutSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -91,7 +96,7 @@ const AboutSection = () => {
               <h2 className="section-title">IT Visionary & Leader</h2>
               <h3 className="section-subtitle mb-8">Transforming Operations Through Technical Excellence</h3>
               
-              <div className="space-y-6 text-white/80">
+              <div className={`space-y-6 text-white/80 ${isMobile ? 'text-left max-w-fit' : ''}`}>
                 <p>
                   As an IT leader with over 25 years of industry experience, I've established a reputation for excellence in developing and implementing strategic initiatives that drive business growth and innovation. My leadership approach combines technical expertise with a deep understanding of business needs to deliver transformative solutions.
                 </p>
@@ -103,7 +108,7 @@ const AboutSection = () => {
                 </p>
               </div>
               
-              <div className="mt-8 flex md:justify-start justify-center">
+              <div className={`mt-8 flex ${isMobile ? 'justify-center md:justify-start' : 'md:justify-start justify-center'}`}>
                 <a href="#contact" className="btn-primary">Let's Connect</a>
               </div>
             </div>
