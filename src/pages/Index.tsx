@@ -8,14 +8,17 @@ import ExperienceSection from '@/components/ExperienceSection';
 import AwardsSection from '@/components/AwardsSection';
 import ActivitiesSection from '@/components/ActivitiesSection';
 import ContactSection from '@/components/ContactSection';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Index = () => {
+  const isMobile = useIsMobile();
+  
   // Add scroll reveal effect
   useEffect(() => {
     const handleIntersection = (entries: IntersectionObserverEntry[]) => {
       entries.forEach(entry => {
         // Only add animations on desktop
-        if (window.innerWidth > 768) {
+        if (!isMobile) {
           if (entry.isIntersecting) {
             entry.target.classList.add('animate-fade-in');
           } else {
@@ -77,7 +80,7 @@ const Index = () => {
         anchor.removeEventListener('click', function() {});
       });
     };
-  }, []);
+  }, [isMobile]);
 
   return (
     <div className="min-h-screen bg-[#0F172A] overflow-x-hidden">

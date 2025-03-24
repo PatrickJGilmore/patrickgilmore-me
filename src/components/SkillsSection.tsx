@@ -13,6 +13,7 @@ import {
   MonitorIcon,
   Terminal
 } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface SkillCategory {
   name: string;
@@ -24,6 +25,7 @@ interface SkillCategory {
 const SkillsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -121,18 +123,18 @@ const SkillsSection = () => {
             <div 
               key={index}
               className={`glass-card p-7 transition-all duration-700 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                isVisible && !isMobile ? 'opacity-100 translate-y-0' : isMobile ? 'opacity-100' : 'opacity-0 translate-y-10'
               }`}
-              style={{ transitionDelay: `${index * 150}ms` }}
+              style={!isMobile ? { transitionDelay: `${index * 150}ms` } : {}}
             >
-              <div className="flex items-start">
-                <div className="p-3 rounded-xl bg-blue-500/10 text-blue-400 mr-4">
+              <div className="flex md:items-start">
+                <div className="p-3 rounded-xl bg-blue-500/10 text-blue-400 mr-4 md:mr-4 shrink-0">
                   {category.icon}
                 </div>
                 
                 <div>
-                  <h3 className="text-xl font-semibold mb-2 md-left">{category.name}</h3>
-                  <p className="text-white/60 mb-6 text-sm">{category.description}</p>
+                  <h3 className="text-xl font-semibold mb-2 text-left">{category.name}</h3>
+                  <p className="text-white/60 mb-6 text-sm text-left">{category.description}</p>
                   
                   <div className="flex flex-wrap gap-2">
                     {category.skills.map((skill, i) => (
@@ -140,9 +142,9 @@ const SkillsSection = () => {
                         key={i} 
                         variant="secondary" 
                         className={`transition-all duration-500 bg-white/5 hover:bg-white/10 text-white/90 py-1.5 px-3 rounded-lg ${
-                          isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+                          isVisible && !isMobile ? 'opacity-100 scale-100' : isMobile ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
                         }`}
-                        style={{ transitionDelay: `${(index * 100) + (i * 75)}ms` }}
+                        style={!isMobile ? { transitionDelay: `${(index * 100) + (i * 75)}ms` } : {}}
                       >
                         {skill}
                       </Badge>
@@ -156,8 +158,8 @@ const SkillsSection = () => {
         
         {/* LinkedIn Endorsements */}
         <div className={`mt-16 max-w-4xl mx-auto glass-card p-8 transition-all duration-700 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`} style={{ transitionDelay: '600ms' }}>
+          isVisible && !isMobile ? 'opacity-100 translate-y-0' : isMobile ? 'opacity-100' : 'opacity-0 translate-y-10'
+        }`} style={!isMobile ? { transitionDelay: '600ms' } : {}}>
           <h3 className="text-xl font-semibold mb-6 text-center">LinkedIn Endorsements</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {endorsements.map((endorsement, index) => (
