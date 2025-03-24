@@ -1,12 +1,10 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { Award } from 'lucide-react';
-import { useIsMobile } from '@/hooks/use-mobile';
 
 const AwardsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const isMobile = useIsMobile();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -57,29 +55,29 @@ const AwardsSection = () => {
             <div 
               key={index}
               className={`glass-card p-8 transition-all duration-700 ${
-                isVisible && !isMobile ? 'opacity-100 scale-100' : isMobile ? 'opacity-100' : 'opacity-0 scale-95'
+                isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
               }`}
             >
-              <div className="flex flex-row items-start gap-6">
-                <div className="p-4 rounded-full bg-primary/10 text-primary shrink-0">
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
+                <div className="p-4 rounded-full bg-primary/10 text-primary mx-auto md:mx-0">
                   <Award size={36} />
                 </div>
                 
                 <div>
-                  <h3 className="text-2xl font-semibold mb-2 text-left">{award.title}</h3>
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4 text-left">
+                  <h3 className="text-2xl font-semibold mb-2 text-center md:text-left">{award.title}</h3>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4 text-center md:text-left">
                     <span className="text-blue-300">{award.organization}</span>
                     <span className="hidden sm:inline-block text-white/40">•</span>
                     <span className="text-white/60">{award.date}</span>
                   </div>
-                  <p className="text-white/80 text-left">{award.description}</p>
+                  <p className="text-white/80 text-center md:text-left">{award.description}</p>
                 </div>
               </div>
             </div>
           ))}
           
           <div className={`mt-10 text-center transition-all duration-700 delay-300 ${
-            isVisible && !isMobile ? 'opacity-100 translate-y-0' : isMobile ? 'opacity-100' : 'opacity-0 translate-y-10'
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
             <p className="text-white/70 italic">
               Throughout my 25+ year career, I've received numerous commendations for excellence in technical leadership, innovation, and team management.

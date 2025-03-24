@@ -1,7 +1,6 @@
 
 import { Award, Cloud, Users } from 'lucide-react';
 import { useRef, useEffect, useState } from 'react';
-import { useIsMobile } from '@/hooks/use-mobile';
 
 interface AboutCardProps {
   icon: React.ReactNode;
@@ -13,7 +12,6 @@ interface AboutCardProps {
 const AboutCard = ({ icon, title, description, delay }: AboutCardProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
-  const isMobile = useIsMobile();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -42,17 +40,15 @@ const AboutCard = ({ icon, title, description, delay }: AboutCardProps) => {
     <div 
       ref={cardRef}
       className={`glass-card p-6 transition-all duration-700 ${
-        isVisible && !isMobile ? 'opacity-100 translate-y-0' : isMobile ? 'opacity-100' : 'opacity-0 translate-y-10'
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
       }`}
     >
-      <div className="flex items-start">
-        <div className="p-3 rounded-lg bg-blue-500/10 text-blue-400 mr-4 shrink-0">
+      <div className="flex flex-col items-start md:items-start">
+        <div className="p-3 rounded-lg bg-blue-500/10 text-blue-400 mb-4 mx-auto md:mx-0">
           {icon}
         </div>
-        <div>
-          <h3 className="text-xl font-semibold mb-2 text-left">{title}</h3>
-          <p className="text-white/70 text-left">{description}</p>
-        </div>
+        <h3 className="text-xl font-semibold mb-2 md-center md:text-left">{title}</h3>
+        <p className="text-white/70 md-center md:text-left">{description}</p>
       </div>
     </div>
   );
@@ -61,7 +57,6 @@ const AboutCard = ({ icon, title, description, delay }: AboutCardProps) => {
 const AboutSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const isMobile = useIsMobile();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -89,12 +84,12 @@ const AboutSection = () => {
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           <div ref={sectionRef} className="grid md:grid-cols-2 gap-12 items-center">
-            <div className={`transition-all duration-700 ${isVisible && !isMobile ? 'opacity-100 translate-x-0' : isMobile ? 'opacity-100' : 'opacity-0 -translate-x-10'}`}>
+            <div className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
               <span className="inline-block px-3 py-1 bg-blue-500/10 rounded-full text-blue-400 text-sm font-medium mb-4">
                 About Me
               </span>
-              <h2 className="section-title md:text-left">IT Visionary & Leader</h2>
-              <h3 className="section-subtitle mb-8 md:text-left">Transforming Operations Through Technical Excellence</h3>
+              <h2 className="section-title">IT Visionary & Leader</h2>
+              <h3 className="section-subtitle mb-8">Transforming Operations Through Technical Excellence</h3>
               
               <div className="space-y-6 text-white/80">
                 <p>
