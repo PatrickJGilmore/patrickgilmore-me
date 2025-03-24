@@ -50,9 +50,9 @@ const AboutCard = ({ icon, title, description, delay }: AboutCardProps) => {
           <div className="p-3 rounded-lg bg-blue-500/10 text-blue-400 shrink-0">
             {icon}
           </div>
-          <h3 className={`text-xl font-semibold ${isMobile || window.innerWidth < 1024 ? 'text-left' : ''}`}>{title}</h3>
+          <h3 className="text-xl font-semibold text-left">{title}</h3>
         </div>
-        <p className={`text-white/70 ${isMobile || window.innerWidth < 1024 ? 'text-left pl-14' : ''}`}>{description}</p>
+        <p className={`text-white/70 text-left`}>{description}</p>
       </div>
     </div>
   );
@@ -96,7 +96,7 @@ const AboutSection = () => {
               <h2 className="section-title">IT Visionary & Leader</h2>
               <h3 className="section-subtitle mb-8">Transforming Operations Through Technical Excellence</h3>
               
-              <div className="space-y-6 text-white/80">
+              <div className="space-y-6 text-white/80 text-left">
                 <p>
                   As an IT leader with over 25 years of industry experience, I've established a reputation for excellence in developing and implementing strategic initiatives that drive business growth and innovation. My leadership approach combines technical expertise with a deep understanding of business needs to deliver transformative solutions.
                 </p>
@@ -108,7 +108,7 @@ const AboutSection = () => {
                 </p>
               </div>
               
-              <div className={`mt-8 ${isMobile || window.innerWidth < 1024 ? 'flex justify-center' : ''}`}>
+              <div className="mt-8 flex justify-center md:justify-start">
                 <a href="#contact" className="btn-primary">Let's Connect</a>
               </div>
             </div>
