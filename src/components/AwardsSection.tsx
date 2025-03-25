@@ -61,7 +61,7 @@ const AwardsSection = () => {
                 </div>
                 
                 <div>
-                  <h3 className="text-2xl font-semibold mb-2">{award.title}</h3>
+                  <h3 className="text-2xl font-semibold mb-2 text-left">{award.title}</h3>
                   <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4">
                     <span className="text-blue-300">{award.organization}</span>
                     <span className="hidden sm:inline-block text-white/40">•</span>

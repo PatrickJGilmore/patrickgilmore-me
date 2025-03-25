@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@500;600;700;800&display=swap');
 
 @tailwind base;
@@ -83,6 +84,13 @@
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading font-semibold;
+  }
+  
+  /* Prevent FOUC (Flash of Unstyled Content) during section transitions */
+  section {
+    will-change: opacity;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
 }
 
@@ -179,9 +187,14 @@
   transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Ensure all section headers are centered */
-section h1, section h2, section h3 {
-  text-align: center;
+/* Fix for section transitions */
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0.7; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* Ensure section tags are properly displayed */
@@ -192,4 +205,18 @@ section .inline-block.px-3.py-1.bg-blue-500\/10 {
   margin-left: auto;
   margin-right: auto;
   max-width: fit-content;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .section-title, .section-subtitle {
+    text-align: center;
+  }
+  
+  /* Fix container padding on mobile */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+  }
 }

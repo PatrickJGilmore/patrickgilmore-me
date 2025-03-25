@@ -46,12 +46,12 @@ const Activity = ({ icon, title, organization, period, description, delay }: Act
       }`}
     >
       <div className="flex flex-col md:flex-row gap-6">
-        <div className="p-4 rounded-lg bg-primary/10 text-primary shrink-0">
+        <div className="p-4 rounded-lg bg-primary/10 text-primary shrink-0 w-fit">
           {icon}
         </div>
         
         <div>
-          <h3 className="text-xl font-semibold mb-2">{title}</h3>
+          <h3 className="text-xl font-semibold mb-2 text-left">{title}</h3>
           <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4">
             <span className="text-blue-300">{organization}</span>
             <span className="hidden sm:inline-block text-white/40">•</span>

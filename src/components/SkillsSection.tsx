@@ -107,7 +107,7 @@ const SkillsSection = () => {
           {skillCategories.map((category, index) => (
             <div 
               key={index}
-              className={`glass-card p-7 transition-all duration-700 hover:translate-y-[-5px] hover:shadow-xl ${
+              className={`glass-card p-7 transition-all duration-500 hover:translate-y-[-5px] hover:shadow-xl ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
               style={{ transitionDelay: `${index * 150}ms` }}
@@ -118,7 +118,7 @@ const SkillsSection = () => {
                 </div>
                 
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">{category.name}</h3>
+                  <h3 className="text-xl font-semibold mb-2 text-left">{category.name}</h3>
                   <p className="text-white/60 mb-6 text-sm">{category.description}</p>
                   
                   <div className="flex flex-wrap gap-2">

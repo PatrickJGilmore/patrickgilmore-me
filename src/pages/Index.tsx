@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
@@ -7,35 +8,33 @@ import ExperienceSection from '@/components/ExperienceSection';
 import AwardsSection from '@/components/AwardsSection';
 import ActivitiesSection from '@/components/ActivitiesSection';
 import ContactSection from '@/components/ContactSection';
-import ScrollToTop from '@/components/ScrollToTop';
 
 const Index = () => {
-  // Add scroll reveal effect
+  // Add smooth scroll effect without flickering
   useEffect(() => {
-    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-fade-in');
-        } else {
-          // Remove the animation class when element is out of view
-          // This allows for the animation to trigger again when scrolling back
-          entry.target.classList.remove('animate-fade-in');
-        }
-      });
-    };
-
     // Create observer with improved options for better triggering
-    const observer = new IntersectionObserver(handleIntersection, {
-      threshold: 0.15,
-      rootMargin: '0px 0px -100px 0px'
-    });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fade-in');
+          }
+        });
+      },
+      { 
+        threshold: 0.15,
+        rootMargin: '0px 0px -10% 0px' // Adjusted to reduce flickering
+      }
+    );
 
-    // Observe all sections
-    document.querySelectorAll('section').forEach(section => {
-      observer.observe(section);
-    });
+    // Observe all sections with a small delay to prevent flickering
+    setTimeout(() => {
+      document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
+      });
+    }, 100);
 
-    // Implement smooth scrolling with auto-centering
+    // Implement smooth scrolling with optimized behavior
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -44,25 +43,18 @@ const Index = () => {
         if (targetId && targetId.startsWith('#')) {
           const targetElement = document.querySelector(targetId);
           if (targetElement) {
-            // Get the height of any fixed header if present
             const navbarHeight = document.querySelector('header')?.offsetHeight || 0;
             
-            // Calculate the scroll position to center the section in viewport
-            const elementRect = targetElement.getBoundingClientRect();
-            const elementTop = elementRect.top + window.pageYOffset;
-            const windowHeight = window.innerHeight;
-            const elementHeight = elementRect.height;
+            // Calculate proper scroll position
+            const elementTop = window.pageYOffset + targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementTop - navbarHeight;
             
-            let scrollPosition = elementTop - navbarHeight;
-            // Only center if element is smaller than viewport
-            if (elementHeight < windowHeight) {
-              scrollPosition = elementTop - (windowHeight - elementHeight) / 2;
-            }
-            
-            // Smooth scroll to target
-            window.scrollTo({
-              top: scrollPosition,
-              behavior: 'smooth'
+            // Use requestAnimationFrame for smoother transitions
+            window.requestAnimationFrame(() => {
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+              });
             });
             
             // Update URL hash without jumping
@@ -74,7 +66,6 @@ const Index = () => {
 
     return () => {
       observer.disconnect();
-      // Clean up event listeners
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.removeEventListener('click', function() {});
       });
@@ -91,7 +82,6 @@ const Index = () => {
       <AwardsSection />
       <ActivitiesSection />
       <ContactSection />
-      <ScrollToTop />
     </div>
   );
 };

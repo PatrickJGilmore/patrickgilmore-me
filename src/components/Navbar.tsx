@@ -1,11 +1,13 @@
 
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const isMobile = useIsMobile();
 
   // Handle scroll events
   useEffect(() => {
@@ -94,14 +96,18 @@ const Navbar = () => {
 
       {/* Mobile Navigation */}
       <div 
-        className={`md:hidden absolute w-full bg-black/95 backdrop-blur-md shadow-xl transition-all duration-300 ease-in-out overflow-hidden ${
-          isMobileMenuOpen ? 'max-h-screen opacity-100 py-6' : 'max-h-0 opacity-0'
+        className={`md:hidden absolute right-0 w-auto bg-transparent transition-all duration-300 ease-in-out overflow-hidden ${
+          isMobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
         }`}
+        style={{
+          backgroundColor: isScrolled ? 'rgba(0, 0, 0, 0.9)' : 'transparent',
+          backdropFilter: isScrolled ? 'blur(8px)' : 'none'
+        }}
       >
-        <nav className="container mx-auto px-6">
-          <ul className="flex flex-col gap-4">
+        <nav className="px-6 py-6">
+          <ul className="flex flex-col gap-4 items-start">
             {navLinks.map(link => (
-              <li key={link.id}>
+              <li key={link.id} className="w-full">
                 <a 
                   href={`#${link.id}`} 
                   className={`block py-2 text-lg ${

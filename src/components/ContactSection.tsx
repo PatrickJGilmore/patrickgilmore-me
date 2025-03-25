@@ -1,6 +1,6 @@
 
 import { useState, useEffect, useRef, FormEvent } from 'react';
-import { Mail, Phone, Send, ExternalLink } from 'lucide-react';
+import { Mail, Phone, Send, ExternalLink, Eye, EyeOff } from 'lucide-react';
 import { toast } from 'sonner';
 
 const ContactSection = () => {
@@ -12,6 +12,11 @@ const ContactSection = () => {
     subject: '',
     message: ''
   });
+  
+  // State for revealing contact info
+  const [showEmail, setShowEmail] = useState(false);
+  const [showPhone, setShowPhone] = useState(false);
+  const [showLinkedIn, setShowLinkedIn] = useState(false);
   
   const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -49,10 +54,7 @@ const ContactSection = () => {
     setIsSubmitting(true);
 
     try {
-      // This is a frontend-only example. In production, you would connect this to:
-      // 1. An API endpoint (e.g., Netlify Forms, AWS Lambda)
-      // 2. An email service (SendGrid, Mailgun, etc.)
-      // 3. Or a form service like Formspree
+      // In a real application, you would send this data to your server or form service
       console.log('Form submitted:', formData);
       
       // Simulate API call
@@ -71,6 +73,17 @@ const ContactSection = () => {
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  // Function to obfuscate email
+  const obfuscateEmail = (email: string) => {
+    const [username, domain] = email.split('@');
+    return `${username.substring(0, 3)}•••@${domain}`;
+  };
+
+  // Function to obfuscate phone
+  const obfuscatePhone = (phone: string) => {
+    return `•••-•••-${phone.substring(phone.length - 4)}`;
   };
 
   return (
@@ -95,9 +108,9 @@ const ContactSection = () => {
             <div className="glass-card p-8 h-full relative overflow-hidden hover:shadow-xl transition-all duration-300">
               <div className="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-blue-500/10 blur-[60px] pointer-events-none"></div>
               
-              <h3 className="text-2xl font-semibold mb-6">Let's Connect</h3>
+              <h3 className="text-2xl font-semibold mb-6 text-left">Let's Connect</h3>
               
-              <p className="text-white/70 mb-8">
+              <p className="text-white/70 mb-8 text-left">
                 I'm open to discussing new opportunities, innovative ideas, or how I can contribute to your organization's technical excellence and leadership needs.
               </p>
               
@@ -108,12 +121,39 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <h4 className="text-white/90 font-medium mb-1">Email</h4>
-                    <a 
-                      href="mailto:contact@patrickgilmore.me" 
-                      className="text-blue-300 hover:text-blue-200 transition-colors"
-                    >
-                      contact@patrickgilmore.me
-                    </a>
+                    <div className="flex items-center">
+                      <span className="text-blue-300">
+                        {showEmail ? 'contact@patrickgilmore.me' : obfuscateEmail('contact@patrickgilmore.me')}
+                      </span>
+                      <button 
+                        onClick={() => setShowEmail(!showEmail)}
+                        className="ml-2 p-1 text-blue-400 hover:text-blue-300 transition-colors"
+                        aria-label={showEmail ? "Hide email" : "Show email"}
+                      >
+                        {showEmail ? <EyeOff size={16} /> : <Eye size={16} />}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-start">
+                  <div className="p-3 rounded-lg bg-blue-500/10 text-blue-400 mr-4">
+                    <Phone size={20} />
+                  </div>
+                  <div>
+                    <h4 className="text-white/90 font-medium mb-1">Phone</h4>
+                    <div className="flex items-center">
+                      <span className="text-blue-300">
+                        {showPhone ? '727-257-0037' : obfuscatePhone('727-257-0037')}
+                      </span>
+                      <button 
+                        onClick={() => setShowPhone(!showPhone)}
+                        className="ml-2 p-1 text-blue-400 hover:text-blue-300 transition-colors"
+                        aria-label={showPhone ? "Hide phone" : "Show phone"}
+                      >
+                        {showPhone ? <EyeOff size={16} /> : <Eye size={16} />}
+                      </button>
+                    </div>
                   </div>
                 </div>
                 
@@ -123,14 +163,28 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <h4 className="text-white/90 font-medium mb-1">LinkedIn</h4>
-                    <a 
-                      href="https://www.linkedin.com/in/patrickjgilmore/" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="text-blue-300 hover:text-blue-200 transition-colors"
-                    >
-                      linkedin.com/in/patrickjgilmore
-                    </a>
+                    <div className="flex items-center">
+                      <span className="text-blue-300">
+                        {showLinkedIn ? 'linkedin.com/in/patrickjgilmore' : 'Click to reveal LinkedIn profile'}
+                      </span>
+                      <button 
+                        onClick={() => setShowLinkedIn(!showLinkedIn)}
+                        className="ml-2 p-1 text-blue-400 hover:text-blue-300 transition-colors"
+                        aria-label={showLinkedIn ? "Hide LinkedIn" : "Show LinkedIn"}
+                      >
+                        {showLinkedIn ? <EyeOff size={16} /> : <Eye size={16} />}
+                      </button>
+                    </div>
+                    {showLinkedIn && (
+                      <a 
+                        href="https://www.linkedin.com/in/patrickjgilmore/" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-blue-400 hover:text-blue-300 transition-colors mt-1 inline-block"
+                      >
+                        Visit Profile <ExternalLink size={14} className="inline ml-1" />
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
@@ -144,7 +198,8 @@ const ContactSection = () => {
             <div className="glass-card p-8 relative overflow-hidden hover:shadow-xl transition-all duration-300">
               <div className="absolute -bottom-16 -left-16 w-40 h-40 rounded-full bg-blue-500/5 blur-[50px] pointer-events-none"></div>
               
-              <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+              <form onSubmit={handleSubmit} className="space-y-6 relative z-10" data-netlify="true" name="contact">
+                <input type="hidden" name="form-name" value="contact" />
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-white/80 mb-2 font-medium">
