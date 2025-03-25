@@ -16,20 +16,26 @@ const Index = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-fade-in');
-          }
+          // Use requestAnimationFrame to avoid flickering
+          requestAnimationFrame(() => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('animate-fade-in');
+            }
+          });
         });
       },
       { 
-        threshold: 0.15,
-        rootMargin: '0px 0px -10% 0px' // Adjusted to reduce flickering
+        threshold: 0.05,  // Lower threshold to start animation earlier
+        rootMargin: '0px 0px -5% 0px' // Adjusted to reduce flickering
       }
     );
 
-    // Observe all sections with a small delay to prevent flickering
-    setTimeout(() => {
+    // Observe all sections with a delay to prevent flickering
+    const timer = setTimeout(() => {
       document.querySelectorAll('section').forEach(section => {
+        // Pre-apply a transitional state to avoid harsh jumps
+        section.style.opacity = '0.95';
+        section.style.transform = 'translateY(5px)';
         observer.observe(section);
       });
     }, 100);
@@ -65,6 +71,7 @@ const Index = () => {
     });
 
     return () => {
+      clearTimeout(timer);
       observer.disconnect();
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.removeEventListener('click', function() {});

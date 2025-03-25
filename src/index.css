@@ -219,4 +219,18 @@ section .inline-block.px-3.py-1.bg-blue-500\/10 {
     padding-right: 1rem;
     width: 100%;
   }
+  
+  /* Fix contact section on mobile */
+  #contact .grid {
+    max-width: 100%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  #contact .glass-card {
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
 }

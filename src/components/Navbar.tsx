@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -96,13 +95,9 @@ const Navbar = () => {
 
       {/* Mobile Navigation */}
       <div 
-        className={`md:hidden absolute right-0 w-auto bg-transparent transition-all duration-300 ease-in-out overflow-hidden ${
+        className={`md:hidden absolute right-0 w-auto bg-black/90 backdrop-blur-md transition-all duration-300 ease-in-out overflow-hidden ${
           isMobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
         }`}
-        style={{
-          backgroundColor: isScrolled ? 'rgba(0, 0, 0, 0.9)' : 'transparent',
-          backdropFilter: isScrolled ? 'blur(8px)' : 'none'
-        }}
       >
         <nav className="px-6 py-6">
           <ul className="flex flex-col gap-4 items-start">
