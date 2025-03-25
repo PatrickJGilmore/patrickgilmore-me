@@ -132,7 +132,7 @@ const ContactSection = () => {
                     <h4 className="text-white/90 font-medium mb-1">Phone</h4>
                     <div className="flex items-center">
                       {showPhone ? (
-                        <span className="text-blue-300">7272570037</span>
+                        <span className="text-blue-300">(727) 257-0037</span>
                       ) : (
                         <button 
                           onClick={() => setShowPhone(true)}
