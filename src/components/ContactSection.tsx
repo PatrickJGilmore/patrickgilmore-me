@@ -76,9 +76,9 @@ const ContactSection = () => {
 
   return (
     <section id="contact" className="py-28 bg-gradient-to-b from-[#0b101e] to-[#050a15]">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4 sm:px-6">
         <div className="text-center mb-16">
-          <span className="inline-block px-3 py-1 bg-blue-500/10 rounded-full text-blue-400 text-sm font-medium mb-4">
+          <span className="inline-block px-3 py-1 bg-blue-500/20 rounded-full text-blue-400 text-sm font-medium mb-4">
             Get In Touch
           </span>
           <h2 className="section-title">Contact Me</h2>
@@ -87,24 +87,24 @@ const ContactSection = () => {
 
         <div 
           ref={sectionRef}
-          className="max-w-5xl mx-auto grid md:grid-cols-5 gap-6 md:gap-12 px-2"
+          className="max-w-5xl mx-auto grid md:grid-cols-5 gap-6 md:gap-12 px-0 sm:px-2"
         >
           {/* Contact Info */}
           <div className={`md:col-span-2 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
           }`}>
-            <div className="glass-card p-8 h-full relative overflow-hidden hover:shadow-xl transition-all duration-300">
+            <div className="glass-card p-6 sm:p-8 h-full relative overflow-hidden hover:shadow-xl transition-all duration-300">
               <div className="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-blue-500/10 blur-[60px] pointer-events-none"></div>
               
               <h3 className="text-2xl font-semibold mb-6 text-left">Let's Connect</h3>
               
-              <p className="text-white/70 mb-8 text-left">
-                I'm open to discussing new opportunities, innovative ideas, or how I can contribute to your organization's technical excellence and leadership needs.
+              <p className="text-white/80 mb-8 text-left">
+                I'm open to discussing new opportunities, innovative ideas, or how I can contribute to your organization's technical excellence.
               </p>
               
               <div className="space-y-6 relative z-10">
                 <div className="flex items-start">
-                  <div className="p-3 rounded-lg bg-blue-500/10 text-blue-400 mr-4">
+                  <div className="p-3 rounded-lg bg-blue-500/20 text-blue-400 mr-4">
                     <Mail size={20} />
                   </div>
                   <div>
@@ -134,14 +134,14 @@ const ContactSection = () => {
                 </div>
 
                 <div className="flex items-start">
-                  <div className="p-3 rounded-lg bg-blue-500/10 text-blue-400 mr-4">
+                  <div className="p-3 rounded-lg bg-blue-500/20 text-blue-400 mr-4">
                     <Phone size={20} />
                   </div>
                   <div>
                     <h4 className="text-white/90 font-medium mb-1">Phone</h4>
                     <div className="flex items-center">
                       {showPhone ? (
-                        <span className="text-blue-300">737-257-0037</span>
+                        <span className="text-blue-300">727-257-0037</span>
                       ) : (
                         <button 
                           onClick={() => setShowPhone(true)}
@@ -164,7 +164,7 @@ const ContactSection = () => {
                 </div>
                 
                 <div className="flex items-start">
-                  <div className="p-3 rounded-lg bg-blue-500/10 text-blue-400 mr-4">
+                  <div className="p-3 rounded-lg bg-blue-500/20 text-blue-400 mr-4">
                     <ExternalLink size={20} />
                   </div>
                   <div>
@@ -174,9 +174,9 @@ const ContactSection = () => {
                         href="https://www.linkedin.com/in/patrickjgilmore/" 
                         target="_blank" 
                         rel="noopener noreferrer" 
-                        className="text-blue-400 hover:text-blue-300 transition-colors"
+                        className="text-blue-400 hover:text-blue-300 transition-colors break-words"
                       >
-                        linkedin.com/in/patrickjgilmore
+                        LinkedIn Profile
                       </a>
                     </div>
                   </div>
@@ -189,14 +189,14 @@ const ContactSection = () => {
           <div className={`md:col-span-3 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
           }`}>
-            <div className="glass-card p-8 relative overflow-hidden hover:shadow-xl transition-all duration-300">
-              <div className="absolute -bottom-16 -left-16 w-40 h-40 rounded-full bg-blue-500/5 blur-[50px] pointer-events-none"></div>
+            <div className="glass-card p-6 sm:p-8 relative overflow-hidden hover:shadow-xl transition-all duration-300">
+              <div className="absolute -bottom-16 -left-16 w-40 h-40 rounded-full bg-blue-500/10 blur-[50px] pointer-events-none"></div>
               
               <form onSubmit={handleSubmit} className="space-y-6 relative z-10" data-netlify="true" name="contact">
                 <input type="hidden" name="form-name" value="contact" />
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-white/80 mb-2 font-medium">
+                    <label htmlFor="name" className="block text-white/90 mb-2 font-medium">
                       Your Name
                     </label>
                     <input
@@ -212,7 +212,7 @@ const ContactSection = () => {
                   </div>
                   
                   <div>
-                    <label htmlFor="email" className="block text-white/80 mb-2 font-medium">
+                    <label htmlFor="email" className="block text-white/90 mb-2 font-medium">
                       Your Email
                     </label>
                     <input
@@ -229,7 +229,7 @@ const ContactSection = () => {
                 </div>
                 
                 <div>
-                  <label htmlFor="subject" className="block text-white/80 mb-2 font-medium">
+                  <label htmlFor="subject" className="block text-white/90 mb-2 font-medium">
                     Subject
                   </label>
                   <input
@@ -245,7 +245,7 @@ const ContactSection = () => {
                 </div>
                 
                 <div>
-                  <label htmlFor="message" className="block text-white/80 mb-2 font-medium">
+                  <label htmlFor="message" className="block text-white/90 mb-2 font-medium">
                     Message
                   </label>
                   <textarea
