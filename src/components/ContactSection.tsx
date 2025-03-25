@@ -1,6 +1,6 @@
 
 import { useState, useEffect, useRef, FormEvent } from 'react';
-import { Mail, Phone, Send, ExternalLink, Eye, EyeOff } from 'lucide-react';
+import { Mail, Phone, Send, ExternalLink, Eye } from 'lucide-react';
 import { toast } from 'sonner';
 
 const ContactSection = () => {
@@ -120,15 +120,6 @@ const ContactSection = () => {
                           Click to reveal
                         </button>
                       )}
-                      {showEmail && (
-                        <button 
-                          onClick={() => setShowEmail(false)}
-                          className="ml-2 p-1 text-blue-400 hover:text-blue-300 transition-colors"
-                          aria-label="Hide email"
-                        >
-                          <EyeOff size={16} />
-                        </button>
-                      )}
                     </div>
                   </div>
                 </div>
@@ -141,22 +132,13 @@ const ContactSection = () => {
                     <h4 className="text-white/90 font-medium mb-1">Phone</h4>
                     <div className="flex items-center">
                       {showPhone ? (
-                        <span className="text-blue-300">727-257-0037</span>
+                        <span className="text-blue-300">7272570037</span>
                       ) : (
                         <button 
                           onClick={() => setShowPhone(true)}
                           className="text-blue-400 hover:text-blue-300 transition-colors"
                         >
                           Click to reveal
-                        </button>
-                      )}
-                      {showPhone && (
-                        <button 
-                          onClick={() => setShowPhone(false)}
-                          className="ml-2 p-1 text-blue-400 hover:text-blue-300 transition-colors"
-                          aria-label="Hide phone"
-                        >
-                          <EyeOff size={16} />
                         </button>
                       )}
                     </div>
