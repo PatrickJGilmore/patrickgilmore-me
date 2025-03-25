@@ -16,24 +16,22 @@ const Index = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
-          // Use requestAnimationFrame with debounce mechanism to avoid flickering
-          if (entry.isIntersecting) {
-            // Use RAF with small delay to smooth out transitions
-            const raf = requestAnimationFrame(() => {
+          // Use requestAnimationFrame to avoid flickering
+          requestAnimationFrame(() => {
+            if (entry.isIntersecting) {
               entry.target.classList.add('animate-fade-in');
-            });
-            return () => cancelAnimationFrame(raf);
-          }
+            }
+          });
         });
       },
       { 
-        threshold: 0.08,  // Lower threshold to start animation earlier
-        rootMargin: '0px 0px -10% 0px' // Adjusted to reduce flickering
+        threshold: 0.05,  // Lower threshold to start animation earlier
+        rootMargin: '0px 0px -5% 0px' // Adjusted to reduce flickering
       }
     );
 
     // Observe all sections with a delay to prevent flickering
-    const sectionTimer = setTimeout(() => {
+    const timer = setTimeout(() => {
       document.querySelectorAll('section').forEach(section => {
         // Pre-apply a transitional state to avoid harsh jumps
         section.style.opacity = '0.95';
@@ -53,11 +51,11 @@ const Index = () => {
           if (targetElement) {
             const navbarHeight = document.querySelector('header')?.offsetHeight || 0;
             
-            // Calculate proper scroll position with offset
+            // Calculate proper scroll position
             const elementTop = window.pageYOffset + targetElement.getBoundingClientRect().top;
-            const offsetPosition = elementTop - navbarHeight - 10; // Added extra offset
+            const offsetPosition = elementTop - navbarHeight;
             
-            // Use RAF for smoother transitions
+            // Use requestAnimationFrame for smoother transitions
             window.requestAnimationFrame(() => {
               window.scrollTo({
                 top: offsetPosition,
@@ -73,7 +71,7 @@ const Index = () => {
     });
 
     return () => {
-      clearTimeout(sectionTimer);
+      clearTimeout(timer);
       observer.disconnect();
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.removeEventListener('click', function() {});
