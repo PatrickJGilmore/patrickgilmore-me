@@ -42,7 +42,7 @@ const HeroSection = () => {
               <a href="#contact" className="btn-primary">
                 Let's Connect
               </a>
-              <a href="downloads/patrick-gilmore-resume.pdf" target="_blank" className="btn-outline flex items-center justify-center gap-2">
+              <a href="downloads/patrickgilmore.pdf" target="_blank" className="btn-outline flex items-center justify-center gap-2">
                 <FileText size={18} /> Download Resume
               </a>
             </div>
