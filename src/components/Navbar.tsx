@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+
+import { useState, useEffect, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 
@@ -7,6 +8,8 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const isMobile = useIsMobile();
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
 
   // Handle scroll events
   useEffect(() => {
@@ -31,6 +34,24 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Handle click outside mobile menu
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        isMobileMenuOpen && 
+        mobileMenuRef.current && 
+        !mobileMenuRef.current.contains(event.target as Node) &&
+        mobileMenuButtonRef.current &&
+        !mobileMenuButtonRef.current.contains(event.target as Node)
+      ) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isMobileMenuOpen]);
 
   const handleMobileMenuToggle = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -85,6 +106,7 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <button 
+          ref={mobileMenuButtonRef}
           className="md:hidden text-white hover:text-primary transition-colors focus:outline-none"
           onClick={handleMobileMenuToggle}
           aria-label="Toggle mobile menu"
@@ -95,6 +117,7 @@ const Navbar = () => {
 
       {/* Mobile Navigation */}
       <div 
+        ref={mobileMenuRef}
         className={`md:hidden absolute right-0 w-auto bg-black/90 backdrop-blur-md transition-all duration-300 ease-in-out overflow-hidden ${
           isMobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
         }`}

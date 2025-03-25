@@ -10,37 +10,29 @@ import ActivitiesSection from '@/components/ActivitiesSection';
 import ContactSection from '@/components/ContactSection';
 
 const Index = () => {
-  // Add smooth scroll effect without flickering
+  // Add improved scroll effect
   useEffect(() => {
-    // Create observer with improved options for better triggering
+    // Create observer with better options for smoother animation
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
-          // Use requestAnimationFrame to avoid flickering
-          requestAnimationFrame(() => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('animate-fade-in');
-            }
-          });
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fade-in');
+          }
         });
       },
       { 
-        threshold: 0.05,  // Lower threshold to start animation earlier
-        rootMargin: '0px 0px -5% 0px' // Adjusted to reduce flickering
+        threshold: 0.1,  // Lower threshold to trigger earlier
+        rootMargin: '0px 0px -10% 0px' // Adjusted margin
       }
     );
 
-    // Observe all sections with a delay to prevent flickering
-    const timer = setTimeout(() => {
-      document.querySelectorAll('section').forEach(section => {
-        // Pre-apply a transitional state to avoid harsh jumps
-        section.style.opacity = '0.95';
-        section.style.transform = 'translateY(5px)';
-        observer.observe(section);
-      });
-    }, 100);
+    // Observe all sections
+    document.querySelectorAll('section').forEach(section => {
+      observer.observe(section);
+    });
 
-    // Implement smooth scrolling with optimized behavior
+    // Improved smooth scrolling implementation
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -50,20 +42,16 @@ const Index = () => {
           const targetElement = document.querySelector(targetId);
           if (targetElement) {
             const navbarHeight = document.querySelector('header')?.offsetHeight || 0;
-            
-            // Calculate proper scroll position
-            const elementTop = window.pageYOffset + targetElement.getBoundingClientRect().top;
+            const elementTop = targetElement.getBoundingClientRect().top + window.pageYOffset;
             const offsetPosition = elementTop - navbarHeight;
             
-            // Use requestAnimationFrame for smoother transitions
-            window.requestAnimationFrame(() => {
-              window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-              });
+            // Simpler smooth scroll with fewer calculations
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
             });
             
-            // Update URL hash without jumping
+            // Update URL hash without triggering another scroll
             history.pushState(null, '', targetId);
           }
         }
@@ -71,7 +59,6 @@ const Index = () => {
     });
 
     return () => {
-      clearTimeout(timer);
       observer.disconnect();
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.removeEventListener('click', function() {});

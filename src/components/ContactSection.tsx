@@ -141,7 +141,7 @@ const ContactSection = () => {
                     <h4 className="text-white/90 font-medium mb-1">Phone</h4>
                     <div className="flex items-center">
                       {showPhone ? (
-                        <span className="text-blue-300">737-257-0037</span>
+                        <span className="text-blue-300">727-257-0037</span>
                       ) : (
                         <button 
                           onClick={() => setShowPhone(true)}
@@ -174,7 +174,7 @@ const ContactSection = () => {
                         href="https://www.linkedin.com/in/patrickjgilmore/" 
                         target="_blank" 
                         rel="noopener noreferrer" 
-                        className="text-blue-400 hover:text-blue-300 transition-colors"
+                        className="text-blue-400 hover:text-blue-300 transition-colors truncate max-w-[180px]"
                       >
                         linkedin.com/in/patrickjgilmore
                       </a>
