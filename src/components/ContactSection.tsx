@@ -176,7 +176,7 @@ const ContactSection = () => {
                         rel="noopener noreferrer" 
                         className="text-blue-400 hover:text-blue-300 transition-colors truncate max-w-[180px]"
                       >
-                        linkedin.com/in/patrickjgilmore
+                        /in/patrickjgilmore
                       </a>
                     </div>
                   </div>
