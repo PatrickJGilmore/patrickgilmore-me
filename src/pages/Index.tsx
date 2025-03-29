@@ -8,6 +8,7 @@ import ExperienceSection from '@/components/ExperienceSection';
 import AwardsSection from '@/components/AwardsSection';
 import ActivitiesSection from '@/components/ActivitiesSection';
 import ContactSection from '@/components/ContactSection';
+import { Helmet } from 'react-helmet';
 
 const Index = () => {
   // Add improved scroll effect
@@ -86,6 +87,11 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-[#0F172A] overflow-x-hidden">
+      <Helmet>
+        <meta name="description" content="Patrick Gilmore - IT Leader with 25+ years experience in technical leadership, enterprise systems, and team management. Expert in transforming operations through technical excellence." />
+        <title>Patrick Gilmore | IT Leadership & Technical Excellence</title>
+        <meta name="keywords" content="IT Leadership, Technical Excellence, Enterprise Systems, Team Management, Patrick Gilmore, Production Support, IT Strategy" />
+      </Helmet>
       <Navbar />
       <HeroSection />
       <AboutSection />
