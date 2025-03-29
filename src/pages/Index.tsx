@@ -16,14 +16,16 @@ const Index = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
+          // Apply animation class immediately when the element starts to enter viewport
+          // This prevents "gaps" from appearing during scroll
           if (entry.isIntersecting) {
-            entry.target.classList.add('animate-fade-in');
+            entry.target.classList.add('animate-fade-in-fast');
           }
         });
       },
       { 
-        threshold: 0.1,  // Lower threshold to trigger earlier
-        rootMargin: '0px 0px -10% 0px' // Adjusted margin
+        threshold: 0.01,  // Much lower threshold to trigger earlier
+        rootMargin: '0px 0px -5% 0px' // Adjusted margin to trigger earlier
       }
     );
 

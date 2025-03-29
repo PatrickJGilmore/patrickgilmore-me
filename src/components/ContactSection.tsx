@@ -1,6 +1,6 @@
 
 import { useState, useEffect, useRef, FormEvent } from 'react';
-import { Mail, Phone, Send, ExternalLink, Eye } from 'lucide-react';
+import { Mail, Send, ExternalLink } from 'lucide-react';
 import { toast } from 'sonner';
 
 const ContactSection = () => {
@@ -12,10 +12,6 @@ const ContactSection = () => {
     subject: '',
     message: ''
   });
-  
-  // State for revealing contact info
-  const [showEmail, setShowEmail] = useState(false);
-  const [showPhone, setShowPhone] = useState(false);
   
   const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -108,40 +104,10 @@ const ContactSection = () => {
                     <Mail size={20} />
                   </div>
                   <div>
-                    <h4 className="text-white/90 font-medium mb-1">Email</h4>
-                    <div className="flex items-center">
-                      {showEmail ? (
-                        <span className="text-blue-300">contact@patrickgilmore.me</span>
-                      ) : (
-                        <button 
-                          onClick={() => setShowEmail(true)}
-                          className="text-blue-400 hover:text-blue-300 transition-colors"
-                        >
-                          Click to reveal
-                        </button>
-                      )}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="p-3 rounded-lg bg-blue-500/10 text-blue-400 mr-4">
-                    <Phone size={20} />
-                  </div>
-                  <div>
-                    <h4 className="text-white/90 font-medium mb-1">Phone</h4>
-                    <div className="flex items-center">
-                      {showPhone ? (
-                        <span className="text-blue-300">(727) 257-0037</span>
-                      ) : (
-                        <button 
-                          onClick={() => setShowPhone(true)}
-                          className="text-blue-400 hover:text-blue-300 transition-colors"
-                        >
-                          Click to reveal
-                        </button>
-                      )}
-                    </div>
+                    <h4 className="text-white/90 font-medium mb-1">Contact Form</h4>
+                    <p className="text-blue-300">
+                      Use the form to send me a message
+                    </p>
                   </div>
                 </div>
                 
@@ -156,9 +122,9 @@ const ContactSection = () => {
                         href="https://www.linkedin.com/in/patrickjgilmore/" 
                         target="_blank" 
                         rel="noopener noreferrer" 
-                        className="text-blue-400 hover:text-blue-300 transition-colors truncate max-w-[180px]"
+                        className="text-blue-400 hover:text-blue-300 transition-colors"
                       >
-                        patrickjgilmore
+                        Connect on LinkedIn
                       </a>
                     </div>
                   </div>

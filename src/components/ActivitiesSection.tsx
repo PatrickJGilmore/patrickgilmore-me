@@ -46,7 +46,7 @@ const Activity = ({ icon, title, organization, period, description, delay }: Act
       }`}
     >
       <div className="flex flex-col md:flex-row gap-6">
-        <div className="p-4 rounded-lg bg-primary/10 text-primary shrink-0 w-fit">
+        <div className="p-4 rounded-lg bg-primary/10 text-primary shrink-0 w-fit h-fit">
           {icon}
         </div>
         
