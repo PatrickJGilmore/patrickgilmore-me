@@ -22,9 +22,11 @@ const Index = () => {
             // Set a much faster animation
             entry.target.classList.add('animate-fade-in-ultra-fast');
             
-            // Ensure full visibility
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'none';
+            // Ensure full visibility by casting to HTMLElement
+            if (entry.target instanceof HTMLElement) {
+              entry.target.style.opacity = '1';
+              entry.target.style.transform = 'none';
+            }
           }
         });
       },
@@ -37,9 +39,12 @@ const Index = () => {
     // Pre-load all sections (prevent blank squares)
     document.querySelectorAll('section').forEach(section => {
       // Force immediate visibility for all sections to prevent blank squares
-      section.style.willChange = 'opacity, transform';
-      section.style.opacity = '1';
-      section.style.transform = 'none';
+      // Using proper type checking for TypeScript
+      if (section instanceof HTMLElement) {
+        section.style.willChange = 'opacity, transform';
+        section.style.opacity = '1';
+        section.style.transform = 'none';
+      }
       
       // Still observe for animation effects
       observer.observe(section);
