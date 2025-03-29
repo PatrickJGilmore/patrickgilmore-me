@@ -41,7 +41,7 @@ const AboutCard = ({ icon, title, description, delay }: AboutCardProps) => {
   return (
     <div 
       ref={cardRef}
-      className={`glass-card p-6 transition-all duration-700 transform hover:scale-105 hover:shadow-xl hover:bg-white/8 ${
+      className={`glass-card p-6 transition-all duration-700 ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
       }`}
     >
@@ -91,8 +91,8 @@ const AboutSection = () => {
               <span className="inline-block px-3 py-1 bg-blue-500/10 rounded-full text-blue-400 text-sm font-medium mb-4">
                 About Me
               </span>
-              <h2 className="section-title">IT Visionary & Leader</h2>
-              <h3 className="section-subtitle mb-8">Transforming Operations Through Technical Excellence</h3>
+              <h1 className="section-title">IT Visionary & Leader</h1>
+              <h2 className="section-subtitle mb-8">Transforming Operations Through Technical Excellence</h2>
               
               <div className="space-y-6 text-white/80 text-left">
                 <p>
