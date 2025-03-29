@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef, FormEvent } from 'react';
 import { Mail, Send, ExternalLink } from 'lucide-react';
 import { toast } from 'sonner';
@@ -49,19 +48,25 @@ const ContactSection = () => {
     setIsSubmitting(true);
 
     try {
-      // In a real application, you would send this data to your server or form service
-      console.log('Form submitted:', formData);
-      
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      toast.success('Message sent successfully! I will get back to you soon.');
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
+      const form = e.target as HTMLFormElement;
+      const data = new FormData(form);
+
+      const response = await fetch('/', {
+        method: 'POST',
+        body: data,
       });
+
+      if (response.ok) {
+        toast.success('Message sent successfully! I will get back to you soon.');
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        });
+      } else {
+        throw new Error('Submission failed');
+      }
     } catch (error) {
       toast.error('Failed to send message. Please try again.');
       console.error('Contact form error:', error);
@@ -140,7 +145,7 @@ const ContactSection = () => {
             <div className="glass-card p-8 relative overflow-hidden hover:shadow-xl transition-all duration-300">
               <div className="absolute -bottom-16 -left-16 w-40 h-40 rounded-full bg-blue-500/5 blur-[50px] pointer-events-none"></div>
               
-              <form onSubmit={handleSubmit} className="space-y-6 relative z-10" data-netlify="true" name="contact" action="/">
+              <form onSubmit={handleSubmit} className="space-y-6 relative z-10" data-netlify="true" name="contact" action="">
                 <input type="hidden" name="form-name" value="contact" />
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
