@@ -106,7 +106,7 @@ const ContactSection = () => {
                   <div>
                     <h4 className="text-white/90 font-medium mb-1">Contact Form</h4>
                     <p className="text-blue-300">
-                      Use the contact form
+                      Use the form to send me a message
                     </p>
                   </div>
                 </div>
@@ -124,7 +124,7 @@ const ContactSection = () => {
                         rel="noopener noreferrer" 
                         className="text-blue-400 hover:text-blue-300 transition-colors"
                       >
-                        /in/patrickjgilmore
+                        Connect on LinkedIn
                       </a>
                     </div>
                   </div>
