@@ -54,9 +54,10 @@ const Index = () => {
     // Improved smooth scrolling implementation
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
+        const target = this as HTMLAnchorElement;
         e.preventDefault();
         
-        const targetId = this.getAttribute('href');
+        const targetId = target.getAttribute('href');
         if (targetId && targetId.startsWith('#')) {
           const targetElement = document.querySelector(targetId);
           if (targetElement) {
@@ -91,6 +92,9 @@ const Index = () => {
         <meta name="description" content="Patrick Gilmore - IT Leader with 25+ years experience in technical leadership, enterprise systems, and team management. Expert in transforming operations through technical excellence." />
         <title>Patrick Gilmore | IT Leadership & Technical Excellence</title>
         <meta name="keywords" content="IT Leadership, Technical Excellence, Enterprise Systems, Team Management, Patrick Gilmore, Production Support, IT Strategy" />
+        <meta name="author" content="Patrick Gilmore" />
+        <meta property="og:updated_time" content="2023-11-27T08:00:00+00:00" />
+        <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
       </Helmet>
       <Navbar />
       <HeroSection />

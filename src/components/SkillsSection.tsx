@@ -107,7 +107,7 @@ const SkillsSection = () => {
           {skillCategories.map((category, index) => (
             <div 
               key={index}
-              className={`glass-card p-7 transition-all duration-500 hover:translate-y-[-5px] hover:shadow-xl ${
+              className={`glass-card p-7 transition-all duration-500 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
               style={{ transitionDelay: `${index * 150}ms` }}
@@ -126,7 +126,7 @@ const SkillsSection = () => {
                       <Badge 
                         key={i} 
                         variant="secondary" 
-                        className={`transition-all duration-500 bg-white/5 hover:bg-white/10 text-white/90 py-1.5 px-3 rounded-lg hover:scale-105 ${
+                        className={`transition-all duration-500 bg-white/5 text-white/90 py-1.5 px-3 rounded-lg ${
                           isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
                         }`}
                         style={{ transitionDelay: `${(index * 100) + (i * 75)}ms` }}
@@ -150,7 +150,7 @@ const SkillsSection = () => {
             {endorsements.map((endorsement, index) => (
               <div 
                 key={index} 
-                className="text-center p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300 hover:scale-105"
+                className="text-center p-4 rounded-lg bg-white/5 transition-all duration-300"
               >
                 <div className="text-3xl font-bold text-blue-300 mb-2">{endorsement.count}+</div>
                 <div className="text-lg font-medium mb-1">{endorsement.skill}</div>

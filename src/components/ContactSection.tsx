@@ -89,7 +89,7 @@ const ContactSection = () => {
           <div className={`md:col-span-2 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
           }`}>
-            <div className="glass-card p-8 h-full relative overflow-hidden hover:shadow-xl transition-all duration-300">
+            <div className="glass-card p-8 h-full relative overflow-hidden">
               <div className="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-blue-500/10 blur-[60px] pointer-events-none"></div>
               
               <h3 className="text-2xl font-semibold mb-6 text-left">Let's Connect</h3>
@@ -106,7 +106,7 @@ const ContactSection = () => {
                   <div>
                     <h4 className="text-white/90 font-medium mb-1">Contact Form</h4>
                     <p className="text-blue-300">
-                      Use the form to send me a message
+                      Send me a message to discuss your needs
                     </p>
                   </div>
                 </div>
@@ -124,7 +124,7 @@ const ContactSection = () => {
                         rel="noopener noreferrer" 
                         className="text-blue-400 hover:text-blue-300 transition-colors"
                       >
-                        Connect on LinkedIn
+                        @patrickjgilmore
                       </a>
                     </div>
                   </div>
@@ -137,7 +137,7 @@ const ContactSection = () => {
           <div className={`md:col-span-3 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
           }`}>
-            <div className="glass-card p-8 relative overflow-hidden hover:shadow-xl transition-all duration-300">
+            <div className="glass-card p-8 relative overflow-hidden">
               <div className="absolute -bottom-16 -left-16 w-40 h-40 rounded-full bg-blue-500/5 blur-[50px] pointer-events-none"></div>
               
               <form onSubmit={handleSubmit} className="space-y-6 relative z-10" data-netlify="true" name="contact">
@@ -211,7 +211,7 @@ const ContactSection = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="btn-primary w-full flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+                  className="btn-primary w-full flex items-center justify-center gap-2 active:scale-[0.98] transition-all duration-300"
                 >
                   {isSubmitting ? (
                     <>
