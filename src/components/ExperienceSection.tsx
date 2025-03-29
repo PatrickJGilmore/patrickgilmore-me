@@ -172,7 +172,7 @@ const ExperienceSection = () => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
             <a 
-              href="downloads/patrickgilmore.pdf" 
+              href="public/patrickgilmore.pdf" 
               target="_blank"
               className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/5 text-white/90 hover:bg-white/10 transition-all duration-300"
             >
