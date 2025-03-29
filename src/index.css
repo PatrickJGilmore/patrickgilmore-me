@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@500;600;700;800&display=swap');
 
 @tailwind base;
@@ -87,9 +88,11 @@
   
   /* Prevent FOUC (Flash of Unstyled Content) during section transitions */
   section {
-    will-change: opacity;
+    will-change: opacity, transform;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    opacity: 1;
+    transform: none;
   }
 }
 
@@ -196,6 +199,14 @@
   animation: fadeIn 0.5s ease-out forwards;
   /* Ensure the section is visible by default to prevent gaps */
   opacity: 1;
+}
+
+/* Ultra-fast animation for eliminating gaps completely */
+.animate-fade-in-ultra-fast {
+  animation: fadeIn 0.2s ease-out forwards;
+  /* Ensure the section is visible instantly */
+  opacity: 1;
+  transform: none;
 }
 
 @keyframes fadeIn {

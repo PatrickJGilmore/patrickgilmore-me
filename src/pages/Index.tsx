@@ -16,21 +16,32 @@ const Index = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
-          // Apply animation class immediately when the element starts to enter viewport
-          // This prevents "gaps" from appearing during scroll
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-fade-in-fast');
+          // Apply animation class immediately when the element is near viewport
+          // This prevents gaps from appearing during scroll
+          if (entry.isIntersecting || entry.intersectionRatio > 0) {
+            // Set a much faster animation
+            entry.target.classList.add('animate-fade-in-ultra-fast');
+            
+            // Ensure full visibility
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'none';
           }
         });
       },
       { 
-        threshold: 0.01,  // Much lower threshold to trigger earlier
-        rootMargin: '0px 0px -5% 0px' // Adjusted margin to trigger earlier
+        threshold: [0, 0.01, 0.1],  // Multiple thresholds for smoother transitions
+        rootMargin: '0px 0px -2% 0px' // Adjusted margin to trigger earlier
       }
     );
 
-    // Observe all sections
+    // Pre-load all sections (prevent blank squares)
     document.querySelectorAll('section').forEach(section => {
+      // Force immediate visibility for all sections to prevent blank squares
+      section.style.willChange = 'opacity, transform';
+      section.style.opacity = '1';
+      section.style.transform = 'none';
+      
+      // Still observe for animation effects
       observer.observe(section);
     });
 
@@ -47,7 +58,7 @@ const Index = () => {
             const elementTop = targetElement.getBoundingClientRect().top + window.pageYOffset;
             const offsetPosition = elementTop - navbarHeight;
             
-            // Simpler smooth scroll with fewer calculations
+            // Improved smooth scroll
             window.scrollTo({
               top: offsetPosition,
               behavior: 'smooth'

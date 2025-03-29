@@ -8,9 +8,10 @@ interface AboutCardProps {
   title: string;
   description: string;
   delay: number;
+  offsetClass?: string;
 }
 
-const AboutCard = ({ icon, title, description, delay }: AboutCardProps) => {
+const AboutCard = ({ icon, title, description, delay, offsetClass }: AboutCardProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
@@ -41,7 +42,7 @@ const AboutCard = ({ icon, title, description, delay }: AboutCardProps) => {
   return (
     <div 
       ref={cardRef}
-      className={`glass-card p-6 transition-all duration-700 ${
+      className={`glass-card p-6 transition-all duration-700 transform hover:scale-105 hover:shadow-xl hover:bg-white/8 ${offsetClass || ''} ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
       }`}
     >
@@ -123,6 +124,7 @@ const AboutSection = () => {
                 title="Technical Solutions Expertise"
                 description="Specializing in enterprise systems, cloud computing, automation, and data management solutions."
                 delay={300}
+                offsetClass="md:translate-x-8"
               />
               <AboutCard 
                 icon={<Users size={24} />}
