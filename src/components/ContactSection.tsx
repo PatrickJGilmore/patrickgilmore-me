@@ -1,19 +1,13 @@
 
-import { useState, useEffect, useRef, FormEvent } from 'react';
-import { Mail, Send, ExternalLink } from 'lucide-react';
-import { toast } from 'sonner';
+import { useState, useRef, useEffect } from 'react';
+import { Send, Mail, MapPin, Linkedin } from 'lucide-react';
+import { useToast } from "@/hooks/use-toast";
 
 const ContactSection = () => {
+  const [sending, setSending] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
-  
   const sectionRef = useRef<HTMLDivElement>(null);
+  const { toast } = useToast();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -36,200 +30,152 @@ const ContactSection = () => {
     };
   }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitting(true);
-
+    
     try {
-      // In a real application, you would send this data to your server or form service
-      console.log('Form submitted:', formData);
-      
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      toast.success('Message sent successfully! I will get back to you soon.');
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
+      setSending(true);
+
+      // Form submission is handled by Netlify automatically
+      toast({
+        title: "Message Sent",
+        description: "Thanks for reaching out! I'll get back to you soon.",
+        variant: "default",
       });
+
+      // Reset form
+      const form = e.target as HTMLFormElement;
+      form.reset();
     } catch (error) {
-      toast.error('Failed to send message. Please try again.');
-      console.error('Contact form error:', error);
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again.",
+        variant: "destructive",
+      });
     } finally {
-      setIsSubmitting(false);
+      setSending(false);
     }
   };
 
   return (
-    <section id="contact" className="py-28 bg-gradient-to-b from-[#0b101e] to-[#050a15]">
+    <section id="contact" className="py-24 bg-[#0c1525]">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <span className="inline-block px-3 py-1 bg-blue-500/10 rounded-full text-blue-400 text-sm font-medium mb-4">
-            Get In Touch
-          </span>
           <h2 className="section-title">Contact Me</h2>
-          <h3 className="section-subtitle">Let's Elevate Your Technical Operations</h3>
+          <h3 className="section-subtitle">Let's Discuss Your IT Challenges</h3>
         </div>
 
         <div 
           ref={sectionRef}
-          className="max-w-5xl mx-auto grid md:grid-cols-5 gap-6 md:gap-12 px-2"
+          className={`max-w-5xl mx-auto grid md:grid-cols-2 gap-12 transition-all duration-700 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
         >
-          {/* Contact Info */}
-          <div className={`md:col-span-2 transition-all duration-700 ${
-            isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
-          }`}>
-            <div className="glass-card p-8 h-full relative overflow-hidden hover:shadow-xl transition-all duration-300">
-              <div className="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-blue-500/10 blur-[60px] pointer-events-none"></div>
-              
-              <h3 className="text-2xl font-semibold mb-6 text-left">Let's Connect</h3>
-              
-              <p className="text-white/70 mb-8 text-left">
-                I'm open to discussing new opportunities, innovative ideas, or how I can contribute to your organization's technical excellence and leadership needs.
-              </p>
-              
-              <div className="space-y-6 relative z-10">
-                <div className="flex items-start">
-                  <div className="p-3 rounded-lg bg-blue-500/10 text-blue-400 mr-4">
-                    <Mail size={20} />
-                  </div>
-                  <div>
-                    <h4 className="text-white/90 font-medium mb-1">Contact Form</h4>
-                    <p className="text-blue-300">
-                      Use the contact form
-                    </p>
-                  </div>
+          <div className="glass-card p-8">
+            <h3 className="text-2xl font-semibold mb-8">Get in Touch</h3>
+            
+            <div className="space-y-6">
+              <div className="flex items-start space-x-4">
+                <div className="p-3 rounded-lg bg-primary/10 text-primary">
+                  <Mail size={24} />
                 </div>
-                
-                <div className="flex items-start">
-                  <div className="p-3 rounded-lg bg-blue-500/10 text-blue-400 mr-4">
-                    <ExternalLink size={20} />
-                  </div>
-                  <div>
-                    <h4 className="text-white/90 font-medium mb-1">LinkedIn</h4>
-                    <div className="flex items-center">
-                      <a 
-                        href="https://www.linkedin.com/in/patrickjgilmore/" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="text-blue-400 hover:text-blue-300 transition-colors"
-                      >
-                        /in/patrickjgilmore
-                      </a>
-                    </div>
-                  </div>
+                <div>
+                  <h4 className="text-lg font-medium mb-1">Email</h4>
+                  <a href="mailto:patrick@patrickgilmore.me" className="text-white/70 hover:text-white transition-colors">
+                    patrick@patrickgilmore.me
+                  </a>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-4">
+                <div className="p-3 rounded-lg bg-primary/10 text-primary">
+                  <MapPin size={24} />
+                </div>
+                <div>
+                  <h4 className="text-lg font-medium mb-1">Location</h4>
+                  <p className="text-white/70">Tampa, Florida, USA</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-4">
+                <div className="p-3 rounded-lg bg-primary/10 text-primary">
+                  <Linkedin size={24} />
+                </div>
+                <div>
+                  <h4 className="text-lg font-medium mb-1">LinkedIn</h4>
+                  <a 
+                    href="https://www.linkedin.com/in/patrickjgilmore/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-white/70 hover:text-white transition-colors"
+                  >
+                    patrickjgilmore
+                  </a>
                 </div>
               </div>
             </div>
           </div>
           
-          {/* Contact Form */}
-          <div className={`md:col-span-3 transition-all duration-700 ${
-            isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
-          }`}>
-            <div className="glass-card p-8 relative overflow-hidden hover:shadow-xl transition-all duration-300">
-              <div className="absolute -bottom-16 -left-16 w-40 h-40 rounded-full bg-blue-500/5 blur-[50px] pointer-events-none"></div>
+          <div className="glass-card p-8">
+            <h3 className="text-2xl font-semibold mb-6">Send me a Message</h3>
+            <p className="text-white/60 mb-6">
+              I'm interested in discussing your IT challenges and how I can help your organization succeed.
+            </p>
+            
+            <form 
+              name="contact" 
+              method="POST" 
+              data-netlify="true"
+              onSubmit={handleSubmit}
+              className="space-y-6"
+            >
+              <input type="hidden" name="form-name" value="contact" />
               
-              <form onSubmit={handleSubmit} className="space-y-6 relative z-10" data-netlify="true" name="contact">
-                <input type="hidden" name="form-name" value="contact" />
-                <div className="grid sm:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="name" className="block text-white/80 mb-2 font-medium">
-                      Your Name
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="contact-input"
-                      placeholder="John Doe"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="email" className="block text-white/80 mb-2 font-medium">
-                      Your Email
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="contact-input"
-                      placeholder="john@example.com"
-                    />
-                  </div>
-                </div>
-                
-                <div>
-                  <label htmlFor="subject" className="block text-white/80 mb-2 font-medium">
-                    Subject
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    required
-                    className="contact-input"
-                    placeholder="How can I help you?"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="message" className="block text-white/80 mb-2 font-medium">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={5}
-                    className="contact-input"
-                    placeholder="I'd like to discuss..."
-                  ></textarea>
-                </div>
-                
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="btn-primary w-full flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      <Send size={18} />
-                      Send Message
-                    </>
-                  )}
-                </button>
-              </form>
-            </div>
+              <div>
+                <label htmlFor="name" className="block text-white/80 mb-2">Name</label>
+                <input 
+                  type="text" 
+                  id="name" 
+                  name="name" 
+                  required 
+                  className="contact-input" 
+                  placeholder="Your name"
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="email" className="block text-white/80 mb-2">Email</label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email" 
+                  required 
+                  className="contact-input" 
+                  placeholder="Your email"
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="message" className="block text-white/80 mb-2">Message</label>
+                <textarea 
+                  id="message" 
+                  name="message" 
+                  required 
+                  rows={5} 
+                  className="contact-input" 
+                  placeholder="Your message"
+                />
+              </div>
+              
+              <button 
+                type="submit" 
+                disabled={sending}
+                className="btn-primary w-full flex items-center justify-center gap-2"
+              >
+                {sending ? 'Sending...' : 'Send Message'}
+                <Send size={18} />
+              </button>
+            </form>
           </div>
         </div>
       </div>

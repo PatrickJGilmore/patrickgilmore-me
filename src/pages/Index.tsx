@@ -9,6 +9,7 @@ import AwardsSection from '@/components/AwardsSection';
 import ActivitiesSection from '@/components/ActivitiesSection';
 import ContactSection from '@/components/ContactSection';
 import { Helmet } from 'react-helmet';
+import Footer from '@/components/Footer';
 
 const Index = () => {
   // Add improved scroll effect
@@ -91,15 +92,22 @@ const Index = () => {
         <meta name="description" content="Patrick Gilmore - IT Leader with 25+ years experience in technical leadership, enterprise systems, and team management. Expert in transforming operations through technical excellence." />
         <title>Patrick Gilmore | IT Leadership & Technical Excellence</title>
         <meta name="keywords" content="IT Leadership, Technical Excellence, Enterprise Systems, Team Management, Patrick Gilmore, Production Support, IT Strategy" />
+        <meta name="author" content="Patrick Gilmore" />
+        <meta property="og:type" content="website" />
+        <meta property="og:updated_time" content="2024-04-01T12:00:00Z" />
+        <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
       </Helmet>
       <Navbar />
-      <HeroSection />
-      <AboutSection />
-      <SkillsSection />
-      <ExperienceSection />
-      <AwardsSection />
-      <ActivitiesSection />
-      <ContactSection />
+      <main>
+        <HeroSection />
+        <AboutSection />
+        <SkillsSection />
+        <ExperienceSection />
+        <AwardsSection />
+        <ActivitiesSection />
+        <ContactSection />
+      </main>
+      <Footer />
     </div>
   );
 };

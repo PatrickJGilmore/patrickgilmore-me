@@ -55,8 +55,8 @@ const AwardsSection = () => {
                 isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
               }`}
             >
-              <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
-                <div className="p-4 rounded-full bg-primary/10 text-primary">
+              <div className="flex flex-col md:flex-row items-start gap-6">
+                <div className="p-4 rounded-full bg-primary/10 text-primary self-start">
                   <Award size={36} />
                 </div>
                 

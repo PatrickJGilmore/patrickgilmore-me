@@ -207,7 +207,7 @@ section {
   transform: none;
 }
 
-/* Mobile styles */
+/* Media Queries */
 @media (max-width: 768px) {
   .section-title, .section-subtitle {
     text-align: center;
@@ -232,5 +232,41 @@ section {
     max-width: 100%;
     width: 100%;
     box-sizing: border-box;
+  }
+}
+
+/* Add tablet specific styles */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    max-width: 90%;
+  }
+  
+  .section-title {
+    font-size: 2.75rem;
+  }
+}
+
+/* Add desktop styles */
+@media (min-width: 1025px) {
+  .container {
+    max-width: 1200px;
+  }
+}
+
+/* Print styles for resume */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  
+  section {
+    page-break-inside: avoid;
+  }
+  
+  .glass-card {
+    box-shadow: none;
+    border: 1px solid #ddd;
+    background: white;
   }
 }

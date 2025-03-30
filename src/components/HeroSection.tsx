@@ -33,10 +33,10 @@ const HeroSection = () => {
               </span>
             </h1>
             
-            <p className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto mb-10 leading-relaxed">
+            <h2 className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto mb-10 leading-relaxed">
               With 25+ years of experience architecting technical solutions and leading high-performing teams. 
               Specializing in enterprise systems, automation, and driving operational excellence.
-            </p>
+            </h2>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <a href="#contact" className="btn-primary">
