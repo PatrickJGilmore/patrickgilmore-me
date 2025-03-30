@@ -118,23 +118,23 @@
   }
   
   .nav-link {
-    @apply relative px-3 py-2 text-white/80 hover:text-white transition-colors duration-300;
+    @apply relative px-3 py-2 text-white/80 hover:text-white transition-colors duration-300 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bg-primary before:bottom-0 before:left-0 before:transition-all before:duration-300 hover:before:w-full;
   }
   
   .nav-link.active {
-    @apply text-white;
+    @apply text-white before:w-full;
   }
   
   .btn-primary {
-    @apply inline-block px-6 py-3 rounded-lg bg-primary text-white font-medium transition-all duration-300;
+    @apply inline-block px-6 py-3 rounded-lg bg-primary text-white font-medium transition-all duration-300 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20 active:translate-y-0.5;
   }
   
   .btn-outline {
-    @apply inline-block px-6 py-3 rounded-lg border border-white/20 text-white font-medium transition-all duration-300;
+    @apply inline-block px-6 py-3 rounded-lg border border-white/20 text-white font-medium transition-all duration-300 hover:bg-white/5 hover:border-white/30 active:translate-y-0.5;
   }
   
   .contact-input {
-    @apply w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-primary/50 focus:ring-1 focus:ring-primary/50 focus:outline-none transition-all duration-300;
+    @apply w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-primary/50 focus:ring-1 focus:ring-primary/50 focus:outline-none transition-all duration-300 hover:border-white/20;
   }
 }
 
@@ -207,42 +207,10 @@ section {
   transform: none;
 }
 
-/* Media queries for responsive design */
-@media (max-width: 1280px) {
-  .section-title {
-    font-size: 3.5rem;
-  }
-  
-  .container {
-    max-width: 1100px;
-  }
-}
-
-@media (max-width: 1024px) {
-  .section-title {
-    font-size: 3rem;
-  }
-  
-  .section-subtitle {
-    font-size: 1.25rem;
-  }
-  
-  .container {
-    max-width: 900px;
-  }
-}
-
+/* Mobile styles */
 @media (max-width: 768px) {
   .section-title, .section-subtitle {
     text-align: center;
-  }
-  
-  .section-title {
-    font-size: 2.5rem;
-  }
-  
-  .section-subtitle {
-    font-size: 1.125rem;
   }
   
   /* Fix container padding on mobile */
@@ -250,7 +218,6 @@ section {
     padding-left: 1rem;
     padding-right: 1rem;
     width: 100%;
-    max-width: 100%;
   }
   
   /* Fix contact section on mobile */
@@ -265,19 +232,5 @@ section {
     max-width: 100%;
     width: 100%;
     box-sizing: border-box;
-  }
-}
-
-@media (max-width: 480px) {
-  .section-title {
-    font-size: 2rem;
-  }
-  
-  .btn-primary, .btn-outline {
-    width: 100%;
-  }
-  
-  .glass-card {
-    padding: 1.25rem;
   }
 }
