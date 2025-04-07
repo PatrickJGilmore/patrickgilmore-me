@@ -1,17 +1,18 @@
 
 import { useState, useEffect, useRef } from 'react';
-import { Heart, Users, Clock } from 'lucide-react';
+import { Heart, Users, Clock, PawPrint } from 'lucide-react';
 
 interface ActivityProps {
   icon: React.ReactNode;
   title: string;
   organization: string;
+  organizationUrl?: string;
   period: string;
   description: string;
   delay: number;
 }
 
-const Activity = ({ icon, title, organization, period, description, delay }: ActivityProps) => {
+const Activity = ({ icon, title, organization, organizationUrl, period, description, delay }: ActivityProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const activityRef = useRef<HTMLDivElement>(null);
 
@@ -53,7 +54,18 @@ const Activity = ({ icon, title, organization, period, description, delay }: Act
         <div>
           <h3 className="text-xl font-semibold mb-2 text-left">{title}</h3>
           <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4">
-            <span className="text-blue-300">{organization}</span>
+            {organizationUrl ? (
+              <a 
+                href={organizationUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-blue-300 hover:underline"
+              >
+                {organization}
+              </a>
+            ) : (
+              <span className="text-blue-300">{organization}</span>
+            )}
             <span className="hidden sm:inline-block text-white/40">•</span>
             <div className="flex items-center text-white/60">
               <Clock size={14} className="mr-1" />
@@ -101,9 +113,10 @@ const ActivitiesSection = () => {
       description: "Working alongside compassionate individuals to provide vital resources including food, clothing, and school supplies to vulnerable families in our community. This experience has strengthened my ability to collaborate effectively, demonstrate empathy, and adapt to diverse situations."
     },
     {
-      icon: <Heart size={28} />,
+      icon: <PawPrint size={28} />,
       title: "Animal Welfare Volunteer",
       organization: "The Runaways Animal Rescue",
+      organizationUrl: "https://www.therunaways.org/",
       period: "Jan 2024 - Present",
       description: "Contributing to the nurturing and rehabilitation of sick or unwanted animals, providing compassionate care and individualized attention to address their medical needs and support their emotional well-being. This role has reinforced my ability to demonstrate initiative, adaptability, and effective problem-solving skills."
     }
@@ -127,6 +140,7 @@ const ActivitiesSection = () => {
               icon={activity.icon}
               title={activity.title}
               organization={activity.organization}
+              organizationUrl={activity.organizationUrl}
               period={activity.period}
               description={activity.description}
               delay={index * 200}

@@ -31,6 +31,7 @@ const AwardsSection = () => {
     {
       title: "Rock Star Award",
       organization: "Qolo",
+      organizationUrl: "https://www.qolo.io/",
       date: "January 2023",
       description: "Recognized for exemplifying Qolo's core values: Collaboration, Innovation, Accountability, Integrity, and Bias for Action. This award celebrates exceptional contributions to the team and company success through leadership, technical excellence, and commitment to delivering outstanding results."
     }
@@ -55,15 +56,22 @@ const AwardsSection = () => {
                 isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
               }`}
             >
-              <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
-                <div className="p-4 rounded-full bg-primary/10 text-primary">
+              <div className="flex flex-col md:flex-row items-start gap-6">
+                <div className="p-4 rounded-lg bg-primary/10 text-primary flex-shrink-0 w-fit h-fit">
                   <Award size={36} />
                 </div>
                 
                 <div>
                   <h3 className="text-2xl font-semibold mb-2 text-left">{award.title}</h3>
                   <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4">
-                    <span className="text-blue-300">{award.organization}</span>
+                    <a 
+                      href={award.organizationUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-blue-300 hover:underline"
+                    >
+                      {award.organization}
+                    </a>
                     <span className="hidden sm:inline-block text-white/40">•</span>
                     <span className="text-white/60">{award.date}</span>
                   </div>

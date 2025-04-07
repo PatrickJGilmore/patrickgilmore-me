@@ -1,9 +1,10 @@
 
 import { useState, useEffect, useRef } from 'react';
-import { Briefcase, Calendar, MapPin, Building, Award, ArrowUpRight } from 'lucide-react';
+import { Briefcase, Calendar, MapPin, Building, Award, ArrowUpRight, ExternalLink } from 'lucide-react';
 
 interface ExperienceData {
   company: string;
+  companyUrl?: string;
   role: string;
   period: string;
   location: string;
@@ -39,6 +40,7 @@ const ExperienceSection = () => {
   const experiences: ExperienceData[] = [
     {
       company: "Qolo",
+      companyUrl: "https://www.qolo.io/",
       role: "Senior Production Support Analyst (Acting Manager)",
       period: "Sep 2021 - Present",
       location: "Fort Lauderdale, Florida (Remote)",
@@ -69,6 +71,7 @@ const ExperienceSection = () => {
     },
     {
       company: "Exela Technologies",
+      companyUrl: "https://www.exelatech.com/",
       role: "Senior Application Developer",
       period: "Nov 2000 - Feb 2018",
       location: "Atlanta, Georgia (Remote)",
@@ -116,7 +119,19 @@ const ExperienceSection = () => {
                     <h3 className="text-2xl font-semibold mb-2 text-left">{exp.role}</h3>
                     <h4 className="text-xl text-blue-300 mb-5 flex items-center">
                       <Building size={18} className="mr-2 opacity-70" />
-                      {exp.company}
+                      {exp.companyUrl ? (
+                        <a 
+                          href={exp.companyUrl} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="hover:underline flex items-center"
+                        >
+                          {exp.company} 
+                          <ExternalLink size={14} className="ml-1 opacity-70" />
+                        </a>
+                      ) : (
+                        exp.company
+                      )}
                     </h4>
                     
                     <div className="flex items-center text-white/60 mb-3">
@@ -174,7 +189,7 @@ const ExperienceSection = () => {
             <a 
               href="downloads/patrickgilmore.pdf" 
               target="_blank"
-              className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/5 text-white/90 hover:bg-white/10 transition-all duration-300"
+              className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/5 text-white/90 transition-all duration-300"
             >
               View Full Resume <ArrowUpRight size={16} />
             </a>

@@ -9,14 +9,19 @@ import {
   BarChart3, 
   CheckCircle2, 
   Workflow,
-  Layers
+  Layers,
+  Server,
+  Tool
 } from 'lucide-react';
 
 interface SkillCategory {
   name: string;
   icon: React.ReactNode;
   description: string;
-  skills: string[];
+  skills: Array<{
+    name: string;
+    url?: string;
+  }>;
 }
 
 const SkillsSection = () => {
@@ -47,11 +52,18 @@ const SkillsSection = () => {
   const skillCategories: SkillCategory[] = [
     {
       name: "Enterprise Systems",
-      icon: <Cloud className="h-7 w-7" />,
+      icon: <Server className="h-7 w-7" />,
       description: "Expertise across major cloud and enterprise platforms to drive business efficiency",
       skills: [
-        "Azure", "Google Workspace", "Atlassian Suite", "OpsGenie", 
-        "HubSpot", "Aha", "ClickUp", "Footprints", "Glean"
+        { name: "Azure", url: "https://azure.microsoft.com/" },
+        { name: "Google Workspace", url: "https://workspace.google.com/" },
+        { name: "Atlassian Suite", url: "https://www.atlassian.com/" }, 
+        { name: "OpsGenie", url: "https://www.atlassian.com/software/opsgenie" }, 
+        { name: "HubSpot", url: "https://www.hubspot.com/" }, 
+        { name: "Aha", url: "https://www.aha.io/" }, 
+        { name: "ClickUp", url: "https://clickup.com/" }, 
+        { name: "Footprints", url: "https://www.bmc.com/it-solutions/footprints-service-core.html" },
+        { name: "Glean", url: "https://www.glean.com/" }
       ]
     },
     {
@@ -59,8 +71,12 @@ const SkillsSection = () => {
       icon: <Users className="h-7 w-7" />,
       description: "Leading teams and processes with efficiency and technical excellence",
       skills: [
-        "Incident Management", "Vendor Management", "Team Leadership", 
-        "Performance Management", "Process Optimization", "SDLC"
+        { name: "Incident Management" }, 
+        { name: "Vendor Management" }, 
+        { name: "Team Leadership" }, 
+        { name: "Performance Management" }, 
+        { name: "Process Optimization" }, 
+        { name: "SDLC" }
       ]
     },
     {
@@ -68,8 +84,12 @@ const SkillsSection = () => {
       icon: <Code className="h-7 w-7" />,
       description: "Creating solutions that drive productivity and streamline operations",
       skills: [
-        "PowerShell", "SQL", "GitHub/Version Control", 
-        "VisualCron", "MoveIT", "Postman/API Testing"
+        { name: "PowerShell", url: "https://learn.microsoft.com/en-us/powershell/" }, 
+        { name: "SQL", url: "https://www.microsoft.com/en-us/sql-server/" }, 
+        { name: "GitHub/Version Control", url: "https://github.com/" }, 
+        { name: "VisualCron", url: "https://www.visualcron.com/" }, 
+        { name: "MoveIT", url: "https://www.progress.com/moveit" }, 
+        { name: "Postman/API Testing", url: "https://www.postman.com/" }
       ]
     },
     {
@@ -77,8 +97,12 @@ const SkillsSection = () => {
       icon: <BarChart3 className="h-7 w-7" />,
       description: "Building high-performing teams through mentorship and strategic vision",
       skills: [
-        "Strategic Planning", "Team Management", "Problem Solving", 
-        "Communication", "Mentoring", "Project Management"
+        { name: "Strategic Planning" }, 
+        { name: "Team Management" }, 
+        { name: "Problem Solving" }, 
+        { name: "Communication" }, 
+        { name: "Mentoring" }, 
+        { name: "Project Management" }
       ]
     }
   ];
@@ -107,7 +131,7 @@ const SkillsSection = () => {
           {skillCategories.map((category, index) => (
             <div 
               key={index}
-              className={`glass-card p-7 transition-all duration-500 hover:translate-y-[-5px] hover:shadow-xl ${
+              className={`glass-card p-7 transition-all duration-500 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
               style={{ transitionDelay: `${index * 150}ms` }}
@@ -123,16 +147,36 @@ const SkillsSection = () => {
                   
                   <div className="flex flex-wrap gap-2">
                     {category.skills.map((skill, i) => (
-                      <Badge 
-                        key={i} 
-                        variant="secondary" 
-                        className={`transition-all duration-500 bg-white/5 hover:bg-white/10 text-white/90 py-1.5 px-3 rounded-lg hover:scale-105 ${
-                          isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-                        }`}
-                        style={{ transitionDelay: `${(index * 100) + (i * 75)}ms` }}
-                      >
-                        {skill}
-                      </Badge>
+                      skill.url ? (
+                        <a 
+                          key={i}
+                          href={skill.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`transition-all duration-500 bg-white/5 hover:bg-white/10 text-white/90 py-1.5 px-3 rounded-lg ${
+                            isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+                          }`}
+                          style={{ transitionDelay: `${(index * 100) + (i * 75)}ms` }}
+                        >
+                          <Badge 
+                            variant="secondary" 
+                            className="bg-transparent hover:bg-transparent border-none p-0"
+                          >
+                            {skill.name}
+                          </Badge>
+                        </a>
+                      ) : (
+                        <Badge 
+                          key={i} 
+                          variant="secondary" 
+                          className={`transition-all duration-500 bg-white/5 text-white/90 py-1.5 px-3 rounded-lg ${
+                            isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+                          }`}
+                          style={{ transitionDelay: `${(index * 100) + (i * 75)}ms` }}
+                        >
+                          {skill.name}
+                        </Badge>
+                      )
                     ))}
                   </div>
                 </div>
@@ -150,7 +194,7 @@ const SkillsSection = () => {
             {endorsements.map((endorsement, index) => (
               <div 
                 key={index} 
-                className="text-center p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300 hover:scale-105"
+                className="text-center p-4 rounded-lg bg-white/5 transition-all duration-300"
               >
                 <div className="text-3xl font-bold text-blue-300 mb-2">{endorsement.count}+</div>
                 <div className="text-lg font-medium mb-1">{endorsement.skill}</div>

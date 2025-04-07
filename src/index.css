@@ -207,7 +207,37 @@ section {
   transform: none;
 }
 
-/* Mobile styles */
+/* Media queries for different screen sizes */
+@media (max-width: 1280px) {
+  .section-title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+  }
+  
+  .container {
+    max-width: 95%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+  
+  .section-subtitle {
+    font-size: 1.125rem;
+  }
+  
+  .py-28 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+  
+  .py-24 {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
 @media (max-width: 768px) {
   .section-title, .section-subtitle {
     text-align: center;
@@ -232,5 +262,51 @@ section {
     max-width: 100%;
     width: 100%;
     box-sizing: border-box;
+  }
+  
+  .py-28 {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  
+  .py-24 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  
+  .btn-primary, .btn-outline {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1rem;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+  }
+  
+  p {
+    font-size: 0.95rem;
+  }
+  
+  .py-28 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  
+  .py-24 {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
   }
 }

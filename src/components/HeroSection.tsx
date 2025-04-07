@@ -14,9 +14,9 @@ const HeroSection = () => {
       {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full opacity-20">
-          <div className="absolute top-10 left-1/4 w-96 h-96 rounded-full bg-blue-500/30 blur-[100px] animate-float"></div>
-          <div className="absolute bottom-10 right-1/3 w-80 h-80 rounded-full bg-indigo-500/20 blur-[100px] animate-float animation-delay-1000"></div>
-          <div className="absolute bottom-40 left-1/4 w-64 h-64 rounded-full bg-purple-500/10 blur-[80px] animate-float animation-delay-2000"></div>
+          <div className="absolute top-10 left-1/4 w-96 h-96 rounded-full bg-blue-500/30 blur-[100px]"></div>
+          <div className="absolute bottom-10 right-1/3 w-80 h-80 rounded-full bg-indigo-500/20 blur-[100px]"></div>
+          <div className="absolute bottom-40 left-1/4 w-64 h-64 rounded-full bg-purple-500/10 blur-[80px]"></div>
         </div>
       </div>
 
@@ -33,10 +33,10 @@ const HeroSection = () => {
               </span>
             </h1>
             
-            <p className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto mb-10 leading-relaxed">
+            <h2 className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto mb-10 leading-relaxed">
               With 25+ years of experience architecting technical solutions and leading high-performing teams. 
               Specializing in enterprise systems, automation, and driving operational excellence.
-            </p>
+            </h2>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <a href="#contact" className="btn-primary">
@@ -60,10 +60,10 @@ const HeroSection = () => {
             </div>
           </div>
 
-          <div className="absolute bottom-8 left-0 right-0 flex justify-center animate-bounce">
+          <div className="absolute bottom-8 left-0 right-0 flex justify-center">
             <a
               href="#about"
-              className="flex items-center justify-center w-10 h-10 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300"
+              className="flex items-center justify-center w-10 h-10 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 transition-all duration-300"
               aria-label="Scroll down"
             >
               <ArrowDown size={20} className="text-white/80" />

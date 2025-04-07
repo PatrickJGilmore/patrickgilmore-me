@@ -1,6 +1,6 @@
 
 import { useState, useEffect, useRef, FormEvent } from 'react';
-import { Mail, Send, ExternalLink } from 'lucide-react';
+import { Mail, Send, ExternalLink, Linkedin } from 'lucide-react';
 import { toast } from 'sonner';
 
 const ContactSection = () => {
@@ -49,11 +49,15 @@ const ContactSection = () => {
     setIsSubmitting(true);
 
     try {
-      // In a real application, you would send this data to your server or form service
-      console.log('Form submitted:', formData);
-      
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Submit to Netlify Forms
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+          "form-name": "contact",
+          ...formData
+        }).toString()
+      });
       
       toast.success('Message sent successfully! I will get back to you soon.');
       setFormData({
@@ -89,7 +93,7 @@ const ContactSection = () => {
           <div className={`md:col-span-2 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
           }`}>
-            <div className="glass-card p-8 h-full relative overflow-hidden hover:shadow-xl transition-all duration-300">
+            <div className="glass-card p-8 h-full relative overflow-hidden transition-all duration-300">
               <div className="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-blue-500/10 blur-[60px] pointer-events-none"></div>
               
               <h3 className="text-2xl font-semibold mb-6 text-left">Let's Connect</h3>
@@ -104,16 +108,16 @@ const ContactSection = () => {
                     <Mail size={20} />
                   </div>
                   <div>
-                    <h4 className="text-white/90 font-medium mb-1">Contact Form</h4>
+                    <h4 className="text-white/90 font-medium mb-1">Email</h4>
                     <p className="text-blue-300">
-                      Use the contact form
+                      Send me a message using the form
                     </p>
                   </div>
                 </div>
                 
                 <div className="flex items-start">
                   <div className="p-3 rounded-lg bg-blue-500/10 text-blue-400 mr-4">
-                    <ExternalLink size={20} />
+                    <Linkedin size={20} />
                   </div>
                   <div>
                     <h4 className="text-white/90 font-medium mb-1">LinkedIn</h4>
@@ -124,7 +128,7 @@ const ContactSection = () => {
                         rel="noopener noreferrer" 
                         className="text-blue-400 hover:text-blue-300 transition-colors"
                       >
-                        /in/patrickjgilmore
+                        patrickjgilmore
                       </a>
                     </div>
                   </div>
@@ -137,11 +141,18 @@ const ContactSection = () => {
           <div className={`md:col-span-3 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
           }`}>
-            <div className="glass-card p-8 relative overflow-hidden hover:shadow-xl transition-all duration-300">
+            <div className="glass-card p-8 relative overflow-hidden transition-all duration-300">
               <div className="absolute -bottom-16 -left-16 w-40 h-40 rounded-full bg-blue-500/5 blur-[50px] pointer-events-none"></div>
               
-              <form onSubmit={handleSubmit} className="space-y-6 relative z-10" data-netlify="true" name="contact">
+              <form 
+                onSubmit={handleSubmit} 
+                className="space-y-6 relative z-10" 
+                data-netlify="true" 
+                name="contact"
+                method="POST"
+              >
                 <input type="hidden" name="form-name" value="contact" />
+                
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-white/80 mb-2 font-medium">
@@ -211,7 +222,7 @@ const ContactSection = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="btn-primary w-full flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+                  className="btn-primary w-full flex items-center justify-center gap-2 transition-all duration-300"
                 >
                   {isSubmitting ? (
                     <>
