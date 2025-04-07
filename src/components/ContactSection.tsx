@@ -2,10 +2,12 @@
 import { useState, useEffect, useRef, FormEvent } from 'react';
 import { Mail, Send, ExternalLink, Linkedin } from 'lucide-react';
 import { toast } from 'sonner';
+import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 
 const ContactSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formStatus, setFormStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -14,6 +16,7 @@ const ContactSection = () => {
   });
   
   const sectionRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -44,31 +47,47 @@ const ContactSection = () => {
     }));
   };
 
+  const resetForm = () => {
+    setFormData({
+      name: '',
+      email: '',
+      subject: '',
+      message: ''
+    });
+  };
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setFormStatus('idle');
 
     try {
-      // Submit to Netlify Forms
-      await fetch("/", {
+      // Use the form element directly for Netlify compatibility
+      const form = formRef.current;
+      if (!form) throw new Error("Form element not found");
+
+      const formData = new FormData(form);
+      
+      const response = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams({
-          "form-name": "contact",
-          ...formData
-        }).toString()
+        body: new URLSearchParams(formData as any).toString()
       });
       
+      if (!response.ok) {
+        throw new Error(`Form submission failed: ${response.status}`);
+      }
+
+      // Show success message
+      setFormStatus('success');
       toast.success('Message sent successfully! I will get back to you soon.');
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      });
+      resetForm();
+      
+      console.log('Form submitted successfully');
     } catch (error) {
-      toast.error('Failed to send message. Please try again.');
       console.error('Contact form error:', error);
+      setFormStatus('error');
+      toast.error('Failed to send message. Please try again or contact directly via LinkedIn.');
     } finally {
       setIsSubmitting(false);
     }
@@ -144,14 +163,43 @@ const ContactSection = () => {
             <div className="glass-card p-8 relative overflow-hidden transition-all duration-300">
               <div className="absolute -bottom-16 -left-16 w-40 h-40 rounded-full bg-blue-500/5 blur-[50px] pointer-events-none"></div>
               
+              {/* Form Status Messages */}
+              {formStatus === 'success' && (
+                <Alert className="mb-6 border-green-500/50 bg-green-500/10 text-green-400">
+                  <AlertTitle className="text-green-300">Message Sent Successfully!</AlertTitle>
+                  <AlertDescription>
+                    Thank you for reaching out. I'll get back to you as soon as possible.
+                  </AlertDescription>
+                </Alert>
+              )}
+              
+              {formStatus === 'error' && (
+                <Alert className="mb-6 border-red-500/50 bg-red-500/10 text-red-400">
+                  <AlertTitle className="text-red-300">Unable to Send Message</AlertTitle>
+                  <AlertDescription>
+                    There was a problem sending your message. Please try again or reach out via LinkedIn.
+                  </AlertDescription>
+                </Alert>
+              )}
+              
+              {/* Netlify Form - Important: name attribute and data-netlify="true" are required */}
               <form 
-                onSubmit={handleSubmit} 
-                className="space-y-6 relative z-10" 
-                data-netlify="true" 
+                ref={formRef}
+                onSubmit={handleSubmit}
+                className="space-y-6 relative z-10"
                 name="contact"
                 method="POST"
+                data-netlify="true"
+                netlify="true"
+                netlify-honeypot="bot-field"
               >
+                {/* These hidden inputs are required for Netlify forms */}
                 <input type="hidden" name="form-name" value="contact" />
+                <p className="hidden">
+                  <label>
+                    Don't fill this out if you're human: <input name="bot-field" />
+                  </label>
+                </p>
                 
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
