@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef, FormEvent } from 'react';
 import { Mail, Send, ExternalLink, Linkedin } from 'lucide-react';
 import { toast } from 'sonner';
@@ -62,7 +61,6 @@ const ContactSection = () => {
     setFormStatus('idle');
 
     try {
-      // Use the form element directly for Netlify compatibility
       const form = formRef.current;
       if (!form) throw new Error("Form element not found");
 
@@ -78,7 +76,6 @@ const ContactSection = () => {
         throw new Error(`Form submission failed: ${response.status}`);
       }
 
-      // Show success message
       setFormStatus('success');
       toast.success('Message sent successfully! I will get back to you soon.');
       resetForm();
@@ -108,7 +105,6 @@ const ContactSection = () => {
           ref={sectionRef}
           className="max-w-5xl mx-auto grid md:grid-cols-5 gap-6 md:gap-12 px-2"
         >
-          {/* Contact Info */}
           <div className={`md:col-span-2 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
           }`}>
@@ -156,14 +152,12 @@ const ContactSection = () => {
             </div>
           </div>
           
-          {/* Contact Form */}
           <div className={`md:col-span-3 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
           }`}>
             <div className="glass-card p-8 relative overflow-hidden transition-all duration-300">
               <div className="absolute -bottom-16 -left-16 w-40 h-40 rounded-full bg-blue-500/5 blur-[50px] pointer-events-none"></div>
               
-              {/* Form Status Messages */}
               {formStatus === 'success' && (
                 <Alert className="mb-6 border-green-500/50 bg-green-500/10 text-green-400">
                   <AlertTitle className="text-green-300">Message Sent Successfully!</AlertTitle>
@@ -182,7 +176,6 @@ const ContactSection = () => {
                 </Alert>
               )}
               
-              {/* Netlify Form - Important: name attribute and data-netlify="true" are required */}
               <form 
                 ref={formRef}
                 onSubmit={handleSubmit}
@@ -190,10 +183,8 @@ const ContactSection = () => {
                 name="contact"
                 method="POST"
                 data-netlify="true"
-                netlify="true"
-                netlify-honeypot="bot-field"
+                data-netlify-honeypot="bot-field"
               >
-                {/* These hidden inputs are required for Netlify forms */}
                 <input type="hidden" name="form-name" value="contact" />
                 <p className="hidden">
                   <label>
