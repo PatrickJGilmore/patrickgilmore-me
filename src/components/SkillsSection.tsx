@@ -11,7 +11,7 @@ import {
   Workflow,
   Layers,
   Server,
-  Tool
+  WrenchIcon
 } from 'lucide-react';
 
 interface SkillCategory {
