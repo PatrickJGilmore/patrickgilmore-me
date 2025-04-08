@@ -115,19 +115,19 @@ const AboutSection = () => {
               <AboutCard 
                 icon={<Award size={24} />}
                 title="Strategic IT Leadership"
-                description="Building high-performing teams that consistently deliver tangible business value and drive innovation."
+                description="Driving innovation and business growth by building high-performing teams focused on operational excellence."
                 delay={100}
               />
               <AboutCard 
                 icon={<Cloud size={24} />}
                 title="Technical Solutions Expertise"
-                description="Specializing in enterprise systems, cloud computing, automation, and data management solutions."
+                description="Expertise in enterprise systems, cloud infrastructure, automation, scripting, and efficient data management."
                 delay={300}
               />
               <AboutCard 
                 icon={<Users size={24} />}
                 title="Team Management & Mentorship"
-                description="Guiding technical professionals to achieve their potential while fostering a collaborative culture."
+                description="Developing and mentoring IT professionals within a collaborative, results-driven culture to achieve peak performance."
                 delay={500}
               />
             </div>
