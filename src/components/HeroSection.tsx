@@ -28,12 +28,12 @@ const HeroSection = () => {
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight mx-auto w-full">
               <span className="block bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-blue-200">
-                Results-Driven IT Operations Leader
+                FinTech IT Operations Leader
               </span>
             </h1>
             
             <h2 className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto mb-10 leading-relaxed">
-              With 25+ years of experience leading enterprise IT systems, driving automation, and achieving operational excellence.
+              Over 25 years managing production support teams, enhancing system reliability, implementing automation solutions, and driving operational excellence in financial technology environments.
             </h2>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
