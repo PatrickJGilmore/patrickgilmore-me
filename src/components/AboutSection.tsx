@@ -91,18 +91,21 @@ const AboutSection = () => {
               <span className="inline-block px-3 py-1 bg-blue-500/10 rounded-full text-blue-400 text-sm font-medium mb-4">
                 About Me
               </span>
-              <h1 className="section-title">IT Visionary & Leader</h1>
+              <h1 className="section-title">IT Operations Visionary & Leader</h1>
               <h2 className="section-subtitle mb-8">Transforming Operations Through Technical Excellence</h2>
               
               <div className="space-y-6 text-white/80 text-left">
                 <p>
-                  As an IT leader with over 25 years of industry experience, I've established a reputation for excellence in developing and implementing strategic initiatives that drive business growth and innovation. My leadership approach combines technical expertise with a deep understanding of business needs to deliver transformative solutions.
+                  As an IT leader with over 25 years of industry experience, I have built a reputation for driving business growth through technology. I develop and implement strategic IT initiatives that fuel innovation and optimize operations. In roles spanning financial technology (FinTech) and enterprise services, I combine deep technical expertise with business acumen to deliver transformative results.
                 </p>
                 <p>
-                  I excel in building and mentoring high-performing teams, fostering a culture of collaboration and innovation that consistently exceeds expectations. Currently serving as a Senior Production Support Analyst and Acting Manager for a Production Support Team, I oversee workloads, resolve team disputes, write performance reviews, and handle all managerial responsibilities while maintaining technical excellence.
+                  Currently, I serve as a Senior Production Support Analyst and Acting Production Support Manager at Qolo, a leading FinTech payments platform. In this capacity, I oversee end-to-end IT operations support – managing team workloads, resolving complex issues, mentoring staff, and handling all managerial responsibilities – all while maintaining hands-on technical involvement. My leadership style emphasizes collaboration, accountability, and continuous improvement to exceed expectations.
                 </p>
                 <p>
-                  My technical expertise spans across enterprise systems administration, development, and infrastructure management, with proficiency in Azure, Google Workspace, Atlassian products, OpSgenie, Aha, ClickUp, Footprints, GitHub, SQL databases, and automation tools like PowerShell and VisualCron.
+                  I pride myself on building and mentoring high-performing teams that deliver consistent results. I foster a culture of innovation and service excellence. This blend of technical know-how and people-focused leadership has enabled me to consistently elevate IT departments’ performance and reliability.
+                </p>
+                <p>
+                  My technical background spans enterprise systems administration, software development, and cloud infrastructure management. I’m proficient in a wide range of tools and platforms, including Microsoft Azure cloud services, Google Workspace productivity suite, the Atlassian collaboration stack (Jira, Confluence, OpsGenie), as well as HubSpot CRM, Aha! roadmapping, ClickUp project management, and BMC FootPrints IT service management. I also have robust experience with scripting and automation (PowerShell, VisualCron), version control (GitHub), SQL databases, managed file transfer (MoveIT), and API testing tools (Postman). This breadth of expertise allows me to bridge gaps between infrastructure, development, and business needs effectively.
                 </p>
               </div>
               
