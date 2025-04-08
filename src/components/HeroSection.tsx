@@ -23,17 +23,17 @@ const HeroSection = () => {
         <div className="max-w-4xl mx-auto">
           <div className={`text-center transition-all duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0 translate-y-10'}`}>
             <div className="inline-block px-4 py-1 mb-6 rounded-full bg-white/5 backdrop-blur-sm border border-white/10">
-              <span className="text-blue-300 font-medium tracking-wide">Senior Production Support Analyst (Acting Manager) – FinTech IT Operations</span>
+              <span className="text-blue-300 font-medium tracking-wide">Production Support Manager | FinTech IT Operations</span>
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight mx-auto w-full">
               <span className="block bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-blue-200">
-                FinTech IT Operations Leader
+                Experienced Leader in FinTech IT Support & Automation
               </span>
             </h1>
             
             <h2 className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto mb-10 leading-relaxed">
-              Over 25 years managing production support teams, enhancing system reliability, implementing automation solutions, and driving operational excellence in financial technology environments.
+              25+ years managing high-performance production support teams, improving system reliability, driving automation initiatives, and achieving operational excellence in financial technology environments.
             </h2>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
