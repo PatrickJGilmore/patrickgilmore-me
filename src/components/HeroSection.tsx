@@ -23,7 +23,7 @@ const HeroSection = () => {
         <div className="max-w-4xl mx-auto">
           <div className={`text-center transition-all duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0 translate-y-10'}`}>
             <div className="inline-block px-4 py-1 mb-6 rounded-full bg-white/5 backdrop-blur-sm border border-white/10">
-              <span className="text-blue-300 font-medium tracking-wide">FinTech IT Leader & Production Support Manager</span>
+              <span className="text-blue-300 font-medium tracking-wide">Senior Production Support Analyst (Acting Manager)</span>
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight mx-auto w-full">
@@ -33,7 +33,7 @@ const HeroSection = () => {
             </h1>
             
             <h2 className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto mb-10 leading-relaxed">
-              IT executive with 25+ years of proven success in leading high-performance teams, enhancing operational excellence, and deploying scalable enterprise solutions. Specializing in cloud infrastructure, automation, and optimizing payment platforms to deliver exceptional business results.
+              Experienced IT professional with 25+ years successfully leading high-performance teams, enhancing operational excellence, and deploying scalable enterprise solutions. Specializing in cloud infrastructure, automation, and optimizing payment platforms to deliver exceptional business results.
             </h2>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
@@ -58,7 +58,7 @@ const HeroSection = () => {
             </div>
           </div>
 
-          <div className="absolute bottom-8 left-0 right-0 flex justify-center">
+          <div className="absolute bottom-8 left-0 right-0 flex justify-center animate-bounce-slow">
             <a
               href="#about"
               className="flex items-center justify-center w-10 h-10 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 transition-all duration-300"
@@ -69,6 +69,17 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes bounceSlow {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+        }
+
+        .animate-bounce-slow {
+          animation: bounceSlow 3s infinite;
+        }
+      `}</style>
     </section>
   );
 };
