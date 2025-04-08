@@ -113,7 +113,7 @@ const ActivitiesSection = () => {
       description: "Working alongside compassionate individuals to provide vital resources including food, clothing, and school supplies to vulnerable families in our community. This experience has strengthened my ability to collaborate effectively, demonstrate empathy, and adapt to diverse situations."
     },
     {
-      icon: <PawPrint size={28} className="transform -rotate-50" />,
+      icon: <PawPrint size={28} className="transform -rotate-95" />,
       title: "Animal Welfare Volunteer",
       organization: "The Runaways Animal Rescue",
       organizationUrl: "https://www.therunaways.org/",

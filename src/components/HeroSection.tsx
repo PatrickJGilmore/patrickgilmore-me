@@ -42,8 +42,8 @@ const HeroSection = () => {
               <a href="#contact" className="btn-primary">
                 Let's Connect
               </a>
-              <a href="downloads/patrickgilmore.pdf" target="_blank" rel="noopener noreferrer" className="btn-outline flex items-center justify-center gap-1">
-                <FileText size={16} /> Download Resume
+              <a href="downloads/patrickgilmore.pdf" target="_blank" rel="noopener noreferrer" className="btn-outline flex items-center whitespace-nowrap">
+                <FileText size={16} className="mr-1 flex-shrink-0" /> Download Resume
               </a>
             </div>
 
