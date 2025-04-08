@@ -147,10 +147,10 @@ const ExperienceSection = () => {
                   
                   {index === 0 && (
                     <div className="mt-6 pt-6 border-t border-white/5">
-                      <div className="flex items-center text-blue-300">
+                      <a href="#awards" className="flex items-center text-blue-300 hover:underline">
                         <Award size={18} className="mr-2" />
                         <span className="font-medium">Rock Star Award Recipient</span>
-                      </div>
+                      </a>
                     </div>
                   )}
                 </div>
@@ -189,6 +189,7 @@ const ExperienceSection = () => {
             <a 
               href="downloads/patrickgilmore.pdf" 
               target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/5 text-white/90 transition-all duration-300"
             >
               View Full Resume <ArrowUpRight size={16} />
