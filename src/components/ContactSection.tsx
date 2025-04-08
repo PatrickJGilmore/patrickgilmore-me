@@ -185,7 +185,10 @@ const ContactSection = () => {
                 data-netlify="true"
                 data-netlify-honeypot="bot-field"
               >
+                {/* Hidden input for Netlify form name */}
                 <input type="hidden" name="form-name" value="contact" />
+                
+                {/* Honeypot field */}
                 <p className="hidden">
                   <label>
                     Don't fill this out if you're human: <input name="bot-field" />
@@ -255,7 +258,7 @@ const ContactSection = () => {
                     rows={5}
                     className="contact-input"
                     placeholder="I'd like to discuss..."
-                  ></textarea>
+                  />
                 </div>
                 
                 <button
