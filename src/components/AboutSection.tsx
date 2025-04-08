@@ -92,11 +92,11 @@ const AboutSection = () => {
                 About Me
               </span>
               <h1 className="section-title">IT Operations Leader</h1>
-              <h2 className="section-subtitle mb-8">Driving Excellence Through Technical Leadership</h2>
+              <h2 className="section-subtitle mb-8">Combining Technical Expertise with Strategic Leadership</h2>
               
               <div className="space-y-6 text-white/80 text-left">
                 <p>
-                  With over 25 years of experience, I specialize in leading IT operations and production support teams within the financial technology (FinTech) industry. Currently, as Production Support Manager at Qolo—a leading FinTech payments platform—I manage team workloads, oversee critical IT operations, resolve complex issues, and mentor staff, all while staying hands-on with technical solutions. My leadership emphasizes collaboration, accountability, continuous improvement, and delivering exceptional system reliability and service excellence.
+                  I am an IT operations leader with over 25 years of experience in IT operations and production support, primarily in the FinTech industry. I have a proven track record of keeping mission-critical systems running smoothly and reliably. Currently serving as Production Support Manager at Qolo, a FinTech payments platform, I lead a team dedicated to ensuring smooth, uninterrupted payment operations. Throughout my career, I have navigated fast-paced FinTech environments by combining deep technical expertise with strategic problem-solving.
                 </p>
                 <p>
                   Throughout my career, I've combined deep technical expertise in enterprise systems administration, software development, and cloud infrastructure management with strategic business acumen. I have successfully driven automation initiatives, streamlined processes, and optimized system performance to achieve measurable operational improvements. My technical proficiency includes platforms and tools such as Microsoft Azure, Google Workspace, Atlassian suite (Jira, Confluence, OpsGenie), HubSpot CRM, Aha!, ClickUp, BMC FootPrints, SQL databases, GitHub, PowerShell scripting, VisualCron automation, MoveIT secure file transfers, and Postman API testing.
