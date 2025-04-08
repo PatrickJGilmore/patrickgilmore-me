@@ -126,11 +126,11 @@
   }
   
   .btn-primary {
-    @apply inline-block px-6 py-3 rounded-lg bg-primary text-white font-medium transition-all duration-300 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20 active:translate-y-0.5 w-44 text-center;
+    @apply inline-block px-6 py-3 rounded-lg bg-primary text-white font-medium transition-all duration-300 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20 active:translate-y-0.5 w-48 text-center;
   }
   
   .btn-outline {
-    @apply inline-block px-6 py-3 rounded-lg border border-white/20 text-white font-medium transition-all duration-300 hover:bg-white/5 hover:border-white/30 active:translate-y-0.5 w-44 text-center;
+    @apply inline-block px-6 py-3 rounded-lg border border-white/20 text-white font-medium transition-all duration-300 hover:bg-white/5 hover:border-white/30 active:translate-y-0.5 w-48 text-center;
   }
   
   .contact-input {

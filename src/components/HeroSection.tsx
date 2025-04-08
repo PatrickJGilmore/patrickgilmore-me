@@ -39,11 +39,11 @@ const HeroSection = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <a href="#contact" className="btn-primary w-44">
+              <a href="#contact" className="btn-primary">
                 Let's Connect
               </a>
-              <a href="downloads/patrickgilmore.pdf" target="_blank" rel="noopener noreferrer" className="btn-outline w-44 flex items-center justify-center gap-2">
-                <FileText size={18} /> Download Resume
+              <a href="downloads/patrickgilmore.pdf" target="_blank" rel="noopener noreferrer" className="btn-outline flex items-center justify-center gap-1">
+                <FileText size={16} /> Download Resume
               </a>
             </div>
 
