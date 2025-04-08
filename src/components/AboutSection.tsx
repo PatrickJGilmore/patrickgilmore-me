@@ -91,7 +91,7 @@ const AboutSection = () => {
               <span className="inline-block px-3 py-1 bg-blue-500/10 rounded-full text-blue-400 text-sm font-medium mb-4">
                 About Me
               </span>
-              <h1 className="section-title">IT Operations Leader & Innovator</h1>
+              <h1 className="section-title">IT Operations Leader</h1>
               <h2 className="section-subtitle mb-8">Driving Excellence Through Technical Leadership</h2>
               
               <div className="space-y-6 text-white/80 text-left">
