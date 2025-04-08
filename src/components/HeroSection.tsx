@@ -33,7 +33,7 @@ const HeroSection = () => {
               </span>
             </h1>
 
-            <h2 className="text-4xl md:text-3xl lg:text-3xl font-bold mb-6 leading-tight mx-auto w-full">
+            <h2 className="text-4xl md:text-1xl lg:text-1xl font-bold mb-6 leading-tight mx-auto w-full">
               <span className="block bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-blue-200">
                 25+ Years of Innovation in Enterprise Systems and Operations
               </span>
