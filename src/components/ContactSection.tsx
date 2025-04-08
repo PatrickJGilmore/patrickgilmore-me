@@ -65,7 +65,6 @@ const ContactSection = () => {
       const form = formRef.current;
       if (!form) throw new Error("Form element not found");
 
-      // Using Netlify's form submission
       const formData = new FormData(form);
       
       const response = await fetch("/", {
@@ -185,7 +184,7 @@ const ContactSection = () => {
                 name="contact"
                 method="POST"
                 data-netlify="true"
-                netlify-honeypot="bot-field"
+                data-netlify-honeypot="bot-field"
               >
                 <input type="hidden" name="form-name" value="contact" />
                 <p className="hidden">

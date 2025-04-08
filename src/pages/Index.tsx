@@ -88,15 +88,9 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-[#0F172A] overflow-x-hidden">
       <Helmet>
-        <title>Patrick Gilmore | IT Leadership & Technical Excellence in Production Support</title>
-        <meta name="description" content="Patrick Gilmore - IT Leader with 25+ years experience in technical leadership, enterprise systems, team management, and production support excellence. Expert in transforming operations through technical expertise and automation." />
-        <meta name="keywords" content="Patrick Gilmore, IT Leadership, Technical Excellence, Enterprise Systems, Team Management, Production Support, IT Strategy, Qolo, Exela Technologies, Rock Star Award" />
-        <meta name="author" content="Patrick Gilmore" />
-        <link rel="canonical" href="https://patrickgilmore.me/" />
-        <meta property="og:title" content="Patrick Gilmore | IT Leadership & Technical Excellence" />
-        <meta property="og:description" content="IT Leader with 25+ years experience in technical leadership, enterprise systems, and team management." />
-        <meta property="og:type" content="website" />
-        <meta name="robots" content="index, follow" />
+        <meta name="description" content="Patrick Gilmore - IT Leader with 25+ years experience in technical leadership, enterprise systems, and team management. Expert in transforming operations through technical excellence." />
+        <title>Patrick Gilmore | IT Leadership & Technical Excellence</title>
+        <meta name="keywords" content="IT Leadership, Technical Excellence, Enterprise Systems, Team Management, Patrick Gilmore, Production Support, IT Strategy" />
       </Helmet>
       <Navbar />
       <HeroSection />
