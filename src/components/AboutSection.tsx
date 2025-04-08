@@ -92,7 +92,7 @@ const AboutSection = () => {
                 About Me
               </span>
               <h1 className="section-title">IT Operations Leader</h1>
-              <h2 className="section-subtitle mb-8">Combining Technical Expertise with Strategic Leadership</h2>
+              <h2 className="section-subtitle mb-8">Technical Expertise with Strategic Leadership</h2>
               
               <div className="space-y-6 text-white/80 text-left">
                 <p>
