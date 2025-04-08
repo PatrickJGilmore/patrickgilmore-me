@@ -23,7 +23,7 @@ const HeroSection = () => {
         <div className="max-w-4xl mx-auto">
           <div className={`text-center transition-all duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0 translate-y-10'}`}>
             <div className="inline-block px-4 py-1 mb-6 rounded-full bg-white/5 backdrop-blur-sm border border-white/10">
-              <span className="text-blue-300 font-medium tracking-wide">Production Support Manager | FinTech IT Operations</span>
+              <span className="text-blue-300 font-medium tracking-wide">Production Support Manager</span>
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight mx-auto w-full">
