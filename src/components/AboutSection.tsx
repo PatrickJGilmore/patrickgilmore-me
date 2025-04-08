@@ -102,7 +102,7 @@ const AboutSection = () => {
                   My team leadership style thrives on mentoring and collaboration. I build high-performing teams by encouraging professional growth, open communication, and trust. With a hands-on approach, I work closely with cross-functional teams, breaking down silos and uniting people toward common goals. I am passionate about driving operational excellence and continuous improvement – refining processes and implementing best practices to boost efficiency and system reliability. I take pride in seeing my team members grow and succeed.
                 </p>
                 <p>
-                  I take pride in building and mentoring high-performing teams that consistently deliver results. My people-focused leadership style fosters innovation, motivates teams, and bridges the gap between technology and business needs—enabling IT departments to support growth, innovation, and operational stability.
+                  Blending professionalism with personality, I remain approachable and down-to-earth, even in high-pressure IT operations environments. Colleagues and team members appreciate my calm, confident presence and genuine commitment to their success. I believe that a people-first mindset is key to system reliability and innovation, ensuring every team member feels empowered to contribute. Even with decades of experience behind me, I approach each challenge with curiosity and a dedication to learning—proving there’s always room to grow and improve.
                 </p>
               </div>
               
