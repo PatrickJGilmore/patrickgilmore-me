@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@500;600;700;800&display=swap');
 
 @tailwind base;
@@ -246,23 +247,21 @@ section {
   .container {
     padding-left: 1rem;
     padding-right: 1rem;
+    width: 100%;
+  }
+  
+  /* Fix contact section on mobile */
+  #contact .grid {
     max-width: 100%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
   }
   
-  /* Ensure consistent section widths */
-  section > div.container {
-    width: 100%;
-  }
-  
-  section .max-w-4xl,
-  section .max-w-5xl,
-  section .max-w-6xl {
-    width: 100%;
+  #contact .glass-card {
     max-width: 100%;
-  }
-  
-  .glass-card {
     width: 100%;
+    box-sizing: border-box;
   }
   
   .py-28 {
@@ -310,15 +309,4 @@ section {
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
   }
-}
-
-/* Fix contact section on mobile */
-#contact .grid {
-  max-width: 100%;
-  width: 100%;
-}
-
-#contact .glass-card {
-  width: 100%;
-  box-sizing: border-box;
 }

@@ -1,6 +1,5 @@
-
 import { useState, useEffect, useRef, FormEvent } from 'react';
-import { Mail, Send, Linkedin } from 'lucide-react';
+import { Mail, Send, ExternalLink, Linkedin } from 'lucide-react';
 import { toast } from 'sonner';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 
@@ -93,8 +92,8 @@ const ContactSection = () => {
 
   return (
     <section id="contact" className="py-28 bg-gradient-to-b from-[#0b101e] to-[#050a15]">
-      <div className="container mx-auto px-4 sm:px-6">
-        <div className="text-center mb-12 md:mb-16">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-16">
           <span className="inline-block px-3 py-1 bg-blue-500/10 rounded-full text-blue-400 text-sm font-medium mb-4">
             Get In Touch
           </span>
@@ -104,12 +103,12 @@ const ContactSection = () => {
 
         <div 
           ref={sectionRef}
-          className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-12"
+          className="max-w-5xl mx-auto grid md:grid-cols-5 gap-6 md:gap-12 px-2"
         >
-          <div className={`md:col-span-2 transition-all duration-700 w-full ${
+          <div className={`md:col-span-2 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
           }`}>
-            <div className="glass-card p-6 sm:p-8 h-full relative overflow-hidden transition-all duration-300 w-full">
+            <div className="glass-card p-8 h-full relative overflow-hidden transition-all duration-300">
               <div className="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-blue-500/10 blur-[60px] pointer-events-none"></div>
               
               <h3 className="text-2xl font-semibold mb-6 text-left">Let's Connect</h3>
@@ -153,10 +152,10 @@ const ContactSection = () => {
             </div>
           </div>
           
-          <div className={`md:col-span-3 transition-all duration-700 w-full ${
+          <div className={`md:col-span-3 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
           }`}>
-            <div className="glass-card p-6 sm:p-8 relative overflow-hidden transition-all duration-300 w-full">
+            <div className="glass-card p-8 relative overflow-hidden transition-all duration-300">
               <div className="absolute -bottom-16 -left-16 w-40 h-40 rounded-full bg-blue-500/5 blur-[50px] pointer-events-none"></div>
               
               {formStatus === 'success' && (
@@ -180,7 +179,7 @@ const ContactSection = () => {
               <form 
                 ref={formRef}
                 onSubmit={handleSubmit}
-                className="space-y-6 relative z-10 w-full"
+                className="space-y-6 relative z-10"
                 name="contact"
                 method="POST"
                 data-netlify="true"
@@ -193,7 +192,7 @@ const ContactSection = () => {
                   </label>
                 </p>
                 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                <div className="grid sm:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-white/80 mb-2 font-medium">
                       Your Name
