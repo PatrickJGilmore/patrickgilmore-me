@@ -32,18 +32,12 @@ const HeroSection = () => {
                 Results-Driven FinTech IT Leader
               </span>
             </h1>
-
-            <h2 className="text-4xl md:text-1xl lg:text-1xl font-bold mb-6 leading-tight mx-auto w-full">
-              <span className="block bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-blue-200">
-                25+ Years of Innovation in Enterprise Systems and Operations
-              </span>
-            </h2>
             
-            <h3 className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto mb-10 leading-relaxed">
+            <h2 className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto mb-10 leading-relaxed">
               A dynamic IT executive with over 25 years of experience architecting enterprise solutions and leading high-
               performance teams in the FinTech and financial services domain. Proven track record in leveraging cloud infrastructure, 
               automation, and strategic vision to drive operational excellence, optimize payment platforms, and deliver measurable business value.
-            </h3>
+            </h2>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <a href="#contact" className="btn-primary">
