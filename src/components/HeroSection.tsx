@@ -33,7 +33,7 @@ const HeroSection = () => {
             </h1>
             
             <h2 className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto mb-10 leading-relaxed">
-              Proven leader with 25+ years managing high-performing IT support teams, achieving superior system reliability, pioneering automation processes, and maintaining exceptional operational standards in FinTech industries.
+              Proven leader with 25+ years managing high-performing IT teams, achieving superior system reliability, pioneering automation processes, and maintaining exceptional operational standards in FinTech industries.
             </h2>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
