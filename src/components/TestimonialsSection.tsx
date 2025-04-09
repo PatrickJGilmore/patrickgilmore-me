@@ -74,8 +74,8 @@ const TestimonialCard = ({ quote, author, position, company, rating }: Testimoni
 
 const TestimonialsSection = () => {
   return (
-    <section id="testimonials" className="py-24 bg-gradient-to-b from-[#0c1a34] to-[#050a15] relative overflow-hidden">
-      {/* Background elements */}
+    <section id="testimonials" className="py-24 bg-gradient-to-b from-[#0F172A] via-[#0c1a34] to-[#050a15] relative overflow-hidden">
+      {/* Background elements for smoother transition */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full opacity-20">
           <div className="absolute top-10 left-1/4 w-96 h-96 rounded-full bg-purple-500/20 blur-[100px]"></div>
