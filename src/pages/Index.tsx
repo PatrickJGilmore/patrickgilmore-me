@@ -9,7 +9,6 @@ import AwardsSection from '@/components/AwardsSection';
 import ActivitiesSection from '@/components/ActivitiesSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import ContactSection from '@/components/ContactSection';
-import Footer from '@/components/Footer';
 import { Helmet } from 'react-helmet';
 
 const Index = () => {
@@ -103,7 +102,6 @@ const Index = () => {
       <ActivitiesSection />
       <TestimonialsSection />
       <ContactSection />
-      <Footer />
     </div>
   );
 };
