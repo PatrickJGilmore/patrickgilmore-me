@@ -7,7 +7,9 @@ import SkillsSection from '@/components/SkillsSection';
 import ExperienceSection from '@/components/ExperienceSection';
 import AwardsSection from '@/components/AwardsSection';
 import ActivitiesSection from '@/components/ActivitiesSection';
+import TestimonialsSection from '@/components/TestimonialsSection';
 import ContactSection from '@/components/ContactSection';
+import Footer from '@/components/Footer';
 import { Helmet } from 'react-helmet';
 
 const Index = () => {
@@ -99,7 +101,9 @@ const Index = () => {
       <ExperienceSection />
       <AwardsSection />
       <ActivitiesSection />
+      <TestimonialsSection />
       <ContactSection />
+      <Footer />
     </div>
   );
 };
