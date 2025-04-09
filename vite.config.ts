@@ -4,13 +4,13 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 import { htmlPrerender } from "vite-plugin-html-prerender";
 
-// List your routes to pre-render; update these paths as needed.
+// List your routes to pre-render
 const routes = ["/", "/about", "/contact"];
 
 export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
-    port: 8080,
+    port: 8080
   },
   plugins: [
     react(),
@@ -19,7 +19,7 @@ export default defineConfig(({ mode }) => ({
       htmlPrerender({
         staticDir: path.join(__dirname, "dist"),
         routes,
-        // Limit parallelism to reduce load on the build container:
+        // Limit parallelism to reduce memory load during pre-rendering
         parallel: 1,
         minify: {
           collapseBooleanAttributes: true,
