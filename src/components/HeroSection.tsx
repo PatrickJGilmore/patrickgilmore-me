@@ -1,3 +1,4 @@
+
 import { ArrowDown, FileText, Linkedin } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
@@ -70,16 +71,18 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <style jsx>{`
-        @keyframes bounceSlow {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-10px); }
-        }
+      <style>
+        {`
+          @keyframes bounceSlow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+          }
 
-        .animate-bounce-slow {
-          animation: bounceSlow 3s infinite;
-        }
-      `}</style>
+          .animate-bounce-slow {
+            animation: bounceSlow 3s infinite;
+          }
+        `}
+      </style>
     </section>
   );
 };
