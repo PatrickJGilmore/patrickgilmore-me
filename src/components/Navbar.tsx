@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -11,12 +10,10 @@ const Navbar = () => {
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
 
-  // Handle scroll events
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
       
-      // Update active section based on scroll position
       const sections = document.querySelectorAll('section[id]');
       const scrollPosition = window.scrollY + 100;
 
@@ -35,7 +32,6 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Handle click outside mobile menu
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -66,9 +62,9 @@ const Navbar = () => {
     { id: 'about', label: 'About' },
     { id: 'skills', label: 'Skills' },
     { id: 'experience', label: 'Experience' },
-    { id: 'testimonials', label: 'Testimonials' },
     { id: 'awards', label: 'Awards' },
     { id: 'activities', label: 'Activities' },
+    { id: 'testimonials', label: 'Testimonials' },
     { id: 'contact', label: 'Contact' }
   ];
 
@@ -79,7 +75,6 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
-        {/* Logo */}
         <a 
           href="#home" 
           className="text-2xl font-heading font-bold text-white flex items-center gap-2 hover:text-primary transition-colors"
@@ -88,7 +83,6 @@ const Navbar = () => {
           Patrick Gilmore
         </a>
 
-        {/* Desktop Navigation */}
         <nav className="hidden md:block">
           <ul className="flex gap-8">
             {navLinks.map(link => (
@@ -105,7 +99,6 @@ const Navbar = () => {
           </ul>
         </nav>
 
-        {/* Mobile Menu Button */}
         <button 
           ref={mobileMenuButtonRef}
           className="md:hidden text-white hover:text-primary transition-colors focus:outline-none"
@@ -116,7 +109,6 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Navigation */}
       <div 
         ref={mobileMenuRef}
         className={`md:hidden absolute right-0 w-auto bg-black/90 backdrop-blur-md transition-all duration-300 ease-in-out overflow-hidden ${
