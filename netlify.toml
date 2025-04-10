@@ -1,17 +1,23 @@
-
 [build]
   command = "npm run build"
-  publish = "dist"
+  publish = "out"  # Next.js defaults to 'out' for static exports
 
 [build.environment]
   NODE_VERSION = "18"
 
-# Skip puppeteer-based prerendering on Netlify
+# Skip puppeteer (not needed for static sites)
 [context.production.environment]
   CI = "true"
 
-# Handle SPA routing
+# Cache static assets
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# SPA fallback (only needed if using client-side routing)
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+  conditions = { Role = "!files", Path = "!/_next/static/*" }
