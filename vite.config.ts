@@ -27,11 +27,6 @@ export default defineConfig(({ mode }) => ({
           decodeEntities: true,
           keepClosingSlash: true,
           sortAttributes: true
-        },
-        // Configure puppeteer to use system Chrome when available
-        puppeteerOptions: {
-          headless: true,
-          args: ['--no-sandbox', '--disable-setuid-sandbox']
         }
       })
   ].filter(Boolean),
