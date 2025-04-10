@@ -16,7 +16,8 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     mode === 'development' && componentTagger(),
-    mode === "production" &&
+    // Only use htmlPrerender in production and when not in a CI environment like Netlify
+    mode === "production" && !process.env.CI &&
       htmlPrerender({
         staticDir: path.join(__dirname, "dist"),
         routes,
@@ -26,6 +27,11 @@ export default defineConfig(({ mode }) => ({
           decodeEntities: true,
           keepClosingSlash: true,
           sortAttributes: true
+        },
+        // Configure puppeteer to use system Chrome when available
+        puppeteerOptions: {
+          headless: true,
+          args: ['--no-sandbox', '--disable-setuid-sandbox']
         }
       })
   ].filter(Boolean),
@@ -35,6 +41,9 @@ export default defineConfig(({ mode }) => ({
     }
   },
   build: {
+    // Avoid directory loading issues
+    outDir: 'dist',
+    emptyOutDir: true,
     rollupOptions: {
       output: {
         manualChunks: {
