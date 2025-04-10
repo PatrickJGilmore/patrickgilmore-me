@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef, FormEvent } from 'react';
 import { Mail, Send, ExternalLink, Linkedin } from 'lucide-react';
 import { toast } from 'sonner';
@@ -18,7 +17,6 @@ const ContactSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
-  // Email obfuscation logic
   const emailParts = ['contact', 'patrick', 'gilmore', 'me'];
   const getObfuscatedEmail = () => {
     return `${emailParts[0]}@${emailParts[1]}${emailParts[2]}.${emailParts[3]}`;
@@ -147,7 +145,7 @@ const ContactSection = () => {
                       </a>
                     </p>
                     <p className="text-white/60 text-sm mt-1">
-                      Or use the form on the right
+                      Or use the contact form
                     </p>
                   </div>
                 </div>
@@ -207,10 +205,8 @@ const ContactSection = () => {
                 data-netlify="true"
                 data-netlify-honeypot="bot-field"
               >
-                {/* Hidden input for Netlify form name */}
                 <input type="hidden" name="form-name" value="contact" />
                 
-                {/* Honeypot field */}
                 <p className="hidden">
                   <label>
                     Don't fill this out if you're human: <input name="bot-field" />

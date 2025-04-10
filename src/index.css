@@ -100,12 +100,17 @@
     @apply bg-gradient-to-br from-[#050a15] via-[#0a1428] to-[#0c1a34];
   }
 
-  #about, #skills {
+  /* Updated gradient for about section to blend better with sections above and below */
+  #about {
     @apply bg-gradient-to-b from-[#0c1a34] to-[#151f38];
   }
 
+  #skills {
+    @apply bg-gradient-to-b from-[#151f38] to-[#1E293B];
+  }
+
   #experience {
-    @apply bg-gradient-to-b from-[#151f38] to-[#0b101e];
+    @apply bg-gradient-to-b from-[#1E293B] to-[#0b101e];
   }
 
   #awards {
