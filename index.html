@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -22,15 +23,28 @@
     
     <!-- Defer non-critical CSS loading -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@500;600;700;800&display=swap">
-    </noscript>
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@500;600;700;800&display=swap"></noscript>
     
     <meta name="robots" content="index,follow">
     
     <!-- Defer Iconify loading -->
     <script defer src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
     
+    <!-- Defer Google Analytics -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-B0190LKKP1', { 'send_page_view': false });
+      // Only load GA script after page has loaded
+      window.addEventListener('load', function() {
+        const script = document.createElement('script');
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-B0190LKKP1';
+        script.async = true;
+        document.head.appendChild(script);
+      });
+    </script>
+
     <!-- Twitter Cards metadata -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@patrickgilmore">
@@ -52,6 +66,9 @@
           ]
         }
     </script>
+    
+    <!-- Required Lovable script tag -->
+    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
   </head>
 
   <body>
@@ -78,18 +95,6 @@
       </p>
       <button type="submit">Send</button>
     </form>
-
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B0190LKKP1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){ dataLayer.push(arguments); }
-      gtag('js', new Date());
-      gtag('config', 'G-B0190LKKP1', { 'send_page_view': false });
-    </script>
-
-    <!-- GPT Engineer script -->
-    <script type="module" src="https://cdn.gpteng.co/gptengineer.js"></script>
 
   </body>
 </html>
