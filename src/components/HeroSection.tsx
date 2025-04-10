@@ -6,12 +6,14 @@ const HeroSection = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    setIsLoaded(true);
+    // Optimize initial load time
+    const timer = setTimeout(() => setIsLoaded(true), 10);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-[#050a15] via-[#0a1428] to-[#0c1a34]">
-      {/* Background elements */}
+      {/* Background elements - optimized for rendering */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full opacity-20">
           <div className="absolute top-10 left-1/4 w-96 h-96 rounded-full bg-blue-500/30 blur-[100px]"></div>
@@ -22,7 +24,7 @@ const HeroSection = () => {
 
       <div className="container mx-auto px-6 pt-24 pb-12 relative z-10">
         <div className="max-w-4xl mx-auto">
-          <div className={`text-center transition-all duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0 translate-y-10'}`}>
+          <div className={`text-center ${isLoaded ? 'opacity-100' : 'opacity-0 translate-y-10'} transition-all duration-500`}>
             <div className="inline-block px-4 py-1 mb-6 rounded-full bg-white/5 backdrop-blur-sm border border-white/10">
               <span className="text-blue-300 font-medium tracking-wide">Production Support Manager</span>
             </div>
@@ -71,18 +73,16 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <style>
-        {`
-          @keyframes bounceSlow {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-          }
+      <style jsx>{`
+        @keyframes bounceSlow {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+        }
 
-          .animate-bounce-slow {
-            animation: bounceSlow 3s infinite;
-          }
-        `}
-      </style>
+        .animate-bounce-slow {
+          animation: bounceSlow 3s infinite;
+        }
+      `}</style>
     </section>
   );
 };

@@ -9,7 +9,17 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Forbidden from "./pages/Forbidden";
 
-const queryClient = new QueryClient();
+// Create a client with better cache config
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 60000, // 1 minute
+      gcTime: 300000, // 5 minutes
+      refetchOnWindowFocus: false,
+      retry: 1
+    },
+  },
+});
 
 const App = () => {
   // Force dark mode
