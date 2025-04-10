@@ -13,21 +13,21 @@ const ContactSection = () => {
     subject: '',
     message: ''
   });
-  
+  // New state to hold the mailto URL—initially empty
+  const [mailUrl, setMailUrl] = useState('');
+
   const sectionRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
+  // Break the email into parts so it's not statically written in the markup
   const emailParts = ['contact', 'patrick', 'gilmore', 'me'];
   const getObfuscatedEmail = () => {
     return `${emailParts[0]}@${emailParts[1]}${emailParts[2]}.${emailParts[3]}`;
   };
 
-  const handleEmailClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    window.location.href = `mailto:${getObfuscatedEmail()}`;
-  };
-
+  // On mount, compute and set the mailto URL so it's added only on the client-side
   useEffect(() => {
+    setMailUrl(`mailto:${getObfuscatedEmail()}`);
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -74,14 +74,14 @@ const ContactSection = () => {
       const form = formRef.current;
       if (!form) throw new Error("Form element not found");
 
-      const formData = new FormData(form);
-      
+      const formDataObj = new FormData(form);
+
       const response = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData as any).toString()
+        body: new URLSearchParams(formDataObj as any).toString()
       });
-      
+
       if (!response.ok) {
         throw new Error(`Form submission failed: ${response.status}`);
       }
@@ -89,7 +89,7 @@ const ContactSection = () => {
       setFormStatus('success');
       toast.success('Message sent successfully! I will get back to you soon.');
       resetForm();
-      
+
       console.log('Form submitted successfully');
     } catch (error) {
       console.error('Contact form error:', error);
@@ -136,8 +136,8 @@ const ContactSection = () => {
                     <h4 className="text-white/90 font-medium mb-1">Email</h4>
                     <p className="text-blue-300">
                       <a 
-                        href="#" 
-                        onClick={handleEmailClick}
+                        // Only attach the mailto link when it’s computed on the client-side
+                        href={mailUrl || "#"} 
                         className="hover:underline"
                         aria-label="Send me an email"
                       >
