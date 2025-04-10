@@ -1,3 +1,4 @@
+
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
@@ -19,8 +20,7 @@ export default defineConfig(({ mode }) => ({
       htmlPrerender({
         staticDir: path.join(__dirname, "dist"),
         routes,
-        // Limit parallelism to reduce memory load during pre-rendering
-        parallel: 1,
+        // Remove the parallel property as it doesn't exist in the HtmlPrerenderOptions type
         minify: {
           collapseBooleanAttributes: true,
           collapseWhitespace: true,
