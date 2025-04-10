@@ -1,23 +1,18 @@
 [build]
   command = "npm run build"
-  publish = "out"  # Next.js defaults to 'out' for static exports
+  publish = "dist"  # Vite uses 'dist' by default
 
 [build.environment]
   NODE_VERSION = "18"
 
-# Skip puppeteer (not needed for static sites)
-[context.production.environment]
-  CI = "true"
-
 # Cache static assets
 [[headers]]
-  for = "/_next/static/*"
+  for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# SPA fallback (only needed if using client-side routing)
+# SPA fallback
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-  conditions = { Role = "!files", Path = "!/_next/static/*" }
