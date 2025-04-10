@@ -1,6 +1,6 @@
 
 import { useState, useEffect, useRef } from 'react';
-import { Briefcase, Calendar, MapPin, Building, Award, ArrowUpRight, ExternalLink } from 'lucide-react';
+import { Briefcase, Calendar, MapPin, Building, Award, ArrowUpRight, ExternalLink, Trophy } from 'lucide-react';
 
 interface ExperienceData {
   company: string;
@@ -149,7 +149,12 @@ const ExperienceSection = () => {
                     <div className="mt-6 pt-6 border-t border-white/5">
                       <div className="flex items-center text-blue-300">
                         <Award size={18} className="mr-2" />
-                        <span className="font-medium">Rock Star Award Recipient</span>
+                        <a 
+                          href="#awards" 
+                          className="font-medium hover:underline flex items-center"
+                        >
+                          Rock Star Award Recipient
+                        </a>
                       </div>
                     </div>
                   )}

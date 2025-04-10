@@ -105,7 +105,7 @@ const TestimonialsSection = () => {
         >
           <CarouselContent>
             {testimonials.map((testimonial, index) => (
-              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/2 p-2">
+              <CarouselItem key={index} className="md:basis-1/3 lg:basis-1/3 p-2">
                 <TestimonialCard {...testimonial} />
               </CarouselItem>
             ))}

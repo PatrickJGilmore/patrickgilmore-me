@@ -94,6 +94,35 @@
     opacity: 1;
     transform: none;
   }
+
+  /* Unified gradient backgrounds for better transitions */
+  #home {
+    @apply bg-gradient-to-br from-[#050a15] via-[#0a1428] to-[#0c1a34];
+  }
+
+  #about, #skills {
+    @apply bg-gradient-to-b from-[#0c1a34] to-[#151f38];
+  }
+
+  #experience {
+    @apply bg-gradient-to-b from-[#151f38] to-[#0b101e];
+  }
+
+  #awards {
+    @apply bg-gradient-to-b from-[#0b101e] to-[#0F172A];
+  }
+
+  #activities {
+    @apply bg-gradient-to-b from-[#0F172A] to-[#0c1a34];
+  }
+
+  #testimonials {
+    @apply bg-gradient-to-b from-[#0c1a34] via-[#0b101e] to-[#050a15];
+  }
+
+  #contact {
+    @apply bg-gradient-to-b from-[#050a15] to-[#030508];
+  }
 }
 
 @layer components {

@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef, FormEvent } from 'react';
 import { Mail, Send, ExternalLink, Linkedin } from 'lucide-react';
 import { toast } from 'sonner';
@@ -16,6 +17,17 @@ const ContactSection = () => {
   
   const sectionRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
+
+  // Email obfuscation logic
+  const emailParts = ['contact', 'patrick', 'gilmore', 'me'];
+  const getObfuscatedEmail = () => {
+    return `${emailParts[0]}@${emailParts[1]}${emailParts[2]}.${emailParts[3]}`;
+  };
+
+  const handleEmailClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.location.href = `mailto:${getObfuscatedEmail()}`;
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -125,7 +137,17 @@ const ContactSection = () => {
                   <div>
                     <h4 className="text-white/90 font-medium mb-1">Email</h4>
                     <p className="text-blue-300">
-                      Send me a message using the form
+                      <a 
+                        href="#" 
+                        onClick={handleEmailClick}
+                        className="hover:underline"
+                        aria-label="Send me an email"
+                      >
+                        Send me an email
+                      </a>
+                    </p>
+                    <p className="text-white/60 text-sm mt-1">
+                      Or use the form on the right
                     </p>
                   </div>
                 </div>

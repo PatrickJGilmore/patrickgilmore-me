@@ -1,6 +1,6 @@
 
 import { useState, useEffect, useRef } from 'react';
-import { Award } from 'lucide-react';
+import { Award, Trophy } from 'lucide-react';
 
 const AwardsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -58,7 +58,7 @@ const AwardsSection = () => {
             >
               <div className="flex flex-col md:flex-row items-start gap-6">
                 <div className="p-4 rounded-lg bg-primary/10 text-primary flex-shrink-0 w-fit h-fit">
-                  <Award size={36} />
+                  <Trophy size={36} />
                 </div>
                 
                 <div>
