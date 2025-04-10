@@ -13,21 +13,24 @@ const ContactSection = () => {
     subject: '',
     message: ''
   });
-  // New state to hold the mailto URL—initially empty
-  const [mailUrl, setMailUrl] = useState('');
 
   const sectionRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
-  // Break the email into parts so it's not statically written in the markup
+  // Break the email into parts so it's not written in plain text.
   const emailParts = ['contact', 'patrick', 'gilmore', 'me'];
   const getObfuscatedEmail = () => {
     return `${emailParts[0]}@${emailParts[1]}${emailParts[2]}.${emailParts[3]}`;
   };
 
-  // On mount, compute and set the mailto URL so it's added only on the client-side
+  // Attach an onClick handler to set mailto using the obfuscated email.
+  const handleEmailClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const email = getObfuscatedEmail();
+    window.location.href = `mailto:${email}`;
+  };
+
   useEffect(() => {
-    setMailUrl(`mailto:${getObfuscatedEmail()}`);
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -136,8 +139,8 @@ const ContactSection = () => {
                     <h4 className="text-white/90 font-medium mb-1">Email</h4>
                     <p className="text-blue-300">
                       <a 
-                        // Only attach the mailto link when it’s computed on the client-side
-                        href={mailUrl || "#"} 
+                        href="#"
+                        onClick={handleEmailClick}
                         className="hover:underline"
                         aria-label="Send me an email"
                       >
