@@ -1,3 +1,4 @@
+
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
@@ -14,8 +15,9 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     react(),
-    ...(mode === 'development' ? [componentTagger()] : []),
-    ...(mode === "production" && !process.env.CI ? [
+    mode === 'development' && componentTagger(),
+    // Only use htmlPrerender in production and when not in a CI environment like Netlify
+    mode === "production" && !process.env.CI &&
       htmlPrerender({
         staticDir: path.join(__dirname, "dist"),
         routes,
@@ -27,14 +29,14 @@ export default defineConfig(({ mode }) => ({
           sortAttributes: true
         }
       })
-    ] : [])
-  ],
+  ].filter(Boolean),
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src")
     }
   },
   build: {
+    // Avoid directory loading issues
     outDir: 'dist',
     emptyOutDir: true,
     rollupOptions: {
@@ -47,7 +49,7 @@ export default defineConfig(({ mode }) => ({
             '@tanstack/react-query'
           ],
           ui: [
-            path.resolve(__dirname, 'src/components/ui')
+            '@/components/ui',
           ]
         },
       },
@@ -61,11 +63,4 @@ export default defineConfig(({ mode }) => ({
       },
     },
   },
-  optimizeDeps: {
-    include: [
-      'react',
-      'react-dom',
-      '@tanstack/react-query'
-    ]
-  }
 }));
