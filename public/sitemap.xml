@@ -6,36 +6,4 @@
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
-  <url>
-    <loc>https://patrickgilmore.me/#about</loc>
-    <lastmod>2025-04-10T00:00:00Z</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://patrickgilmore.me/#skills</loc>
-    <lastmod>2025-04-10T00:00:00Z</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://patrickgilmore.me/#experience</loc>
-    <lastmod>2025-04-10T00:00:00Z</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://patrickgilmore.me/#awards</loc>
-    <lastmod>2025-04-10T00:00:00Z</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://patrickgilmore.me/#activities</loc>
-    <lastmod>2025-04-10T00:00:00Z</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://patrickgilmore.me/#testimonials</loc>
-    <lastmod>2025-04-10T
+</urlset>
