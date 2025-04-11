@@ -97,7 +97,8 @@ const SkillsSection = () => {
         { name: "MoveIT", url: "https://www.progress.com/moveit" }, 
         { name: "Postman/API Testing", url: "https://www.postman.com/" },
         { name: "SSMS", url: "https://learn.microsoft.com/en-us/sql/ssms/sql-server-management-studio-ssms" },
-        { name: "Octopus", url: "https://octopus.com/" }
+        { name: "Octopus", url: "https://octopus.com/" },
+        { name: "Python", url: "https://www.python.org/" }
       ]
     },
     {
