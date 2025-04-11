@@ -64,7 +64,9 @@ const SkillsSection = () => {
         { name: "Glean", url: "https://www.glean.com/" },
         { name: "Linux", url: "https://www.linux.org/" },
         { name: "Windows Server", url: "https://www.microsoft.com/en-us/windows-server" },
-        { name: "Microsoft Office", url: "https://www.microsoft.com/en-us/microsoft-365/microsoft-office" }
+        { name: "Microsoft Office", url: "https://www.microsoft.com/en-us/microsoft-365/microsoft-office" },
+        { name: "Slack", url: "https://slack.com/" },
+        { name: "Microsoft Teams", url: "https://www.microsoft.com/en-us/microsoft-teams/group-chat-software" }
       ]
     },
     {
@@ -80,9 +82,7 @@ const SkillsSection = () => {
         { name: "SDLC" },
         { name: "Jira Service Management", url: "https://www.atlassian.com/software/jira/service-management" },
         { name: "OpsGenie", url: "https://www.atlassian.com/software/opsgenie" },
-        { name: "Footprints", url: "https://www.bmc.com/it-solutions/footprints-service-core.html" },
-        { name: "Slack", url: "https://slack.com/" },
-        { name: "Microsoft Teams", url: "https://www.microsoft.com/en-us/microsoft-teams/group-chat-software" }
+        { name: "Footprints", url: "https://www.bmc.com/it-solutions/footprints-service-core.html" }
       ]
     },
     {
