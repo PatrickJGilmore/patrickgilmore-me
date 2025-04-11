@@ -29,8 +29,7 @@ const HeroSection = () => {
               <span className="text-blue-300 font-medium tracking-wide">Production Support Manager</span>
             </div>
             
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight mx-auto w-full" style={{color: '#ffffff', visibility: 'visible', opacity: '1'}}>
-              Patrick Gilmore
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight mx-auto w-full">
               <span className="block bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-blue-200">
                 Strategic Leader in FinTech IT Operations
               </span>
