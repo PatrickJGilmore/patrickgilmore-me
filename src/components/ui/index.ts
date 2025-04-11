@@ -31,13 +31,20 @@ export * from "./separator"
 export * from "./sheet"
 export * from "./skeleton"
 export * from "./slider"
-export * from "./sonner"
 export * from "./switch"
 export * from "./table"
 export * from "./tabs"
 export * from "./textarea"
 export * from "./toast"
-export * from "./toaster"
 export * from "./toggle"
 export * from "./toggle-group"
 export * from "./tooltip"
+
+// Handle the naming conflict by re-exporting specifically
+import { Toaster as SonnerToaster } from "./sonner"
+import { Toaster } from "./toaster"
+
+export {
+  SonnerToaster,
+  Toaster
+}
