@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
@@ -12,43 +11,45 @@ import ContactSection from '@/components/ContactSection';
 import { Helmet } from 'react-helmet';
 
 const Index = () => {
-  // Add improved scroll effect
+  // Force content visibility for SEO
   useEffect(() => {
-    // Create observer with better options for smoother animation
+    // Immediately make all content visible for SEO
+    document.querySelectorAll('section, h1, h2, h3, h4, h5, h6, p, a, span, div').forEach(element => {
+      if (element instanceof HTMLElement) {
+        element.style.opacity = '1';
+        element.style.visibility = 'visible';
+        element.style.transform = 'none';
+      }
+    });
+    
+    // Create observer with better options for smoother animation but keeping content visible
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
-          // Apply animation class immediately when the element is near viewport
-          // This prevents gaps from appearing during scroll
-          if (entry.isIntersecting || entry.intersectionRatio > 0) {
-            // Set a much faster animation
-            entry.target.classList.add('animate-fade-in-ultra-fast');
-            
-            // Ensure full visibility by casting to HTMLElement
-            if (entry.target instanceof HTMLElement) {
-              entry.target.style.opacity = '1';
-              entry.target.style.transform = 'none';
-            }
+          // Apply immediate visibility
+          if (entry.target instanceof HTMLElement) {
+            entry.target.style.opacity = '1';
+            entry.target.style.visibility = 'visible';
+            entry.target.style.transform = 'none';
           }
         });
       },
       { 
-        threshold: [0, 0.01, 0.1],  // Multiple thresholds for smoother transitions
-        rootMargin: '0px 0px -2% 0px' // Adjusted margin to trigger earlier
+        threshold: [0, 0.01, 0.1],
+        rootMargin: '0px'
       }
     );
 
     // Pre-load all sections (prevent blank squares)
     document.querySelectorAll('section').forEach(section => {
-      // Force immediate visibility for all sections to prevent blank squares
-      // Using proper type checking for TypeScript
+      // Force immediate visibility for all sections for SEO
       if (section instanceof HTMLElement) {
         section.style.willChange = 'opacity, transform';
         section.style.opacity = '1';
+        section.style.visibility = 'visible';
         section.style.transform = 'none';
       }
       
-      // Still observe for animation effects
       observer.observe(section);
     });
 
@@ -92,6 +93,10 @@ const Index = () => {
         <meta name="description" content="Patrick Gilmore - IT Leader with 25+ years experience in technical leadership, enterprise systems, and team management. Expert in transforming operations through technical excellence." />
         <title>Patrick Gilmore | IT Leadership & Technical Excellence</title>
         <meta name="keywords" content="IT Leadership, Technical Excellence, Enterprise Systems, Team Management, Patrick Gilmore, Production Support, IT Strategy" />
+        <meta property="og:title" content="Patrick Gilmore | IT Leadership & Technical Excellence" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://patrickgilmore.me/" />
+        <meta property="og:description" content="IT Leader with 25+ years experience in technical leadership, enterprise systems, and team management." />
       </Helmet>
       <Navbar />
       <HeroSection />

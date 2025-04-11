@@ -24,12 +24,20 @@ const queryClient = new QueryClient({
 });
 
 const App = () => {
-  // Force dark mode
+  // Force dark mode and ensure content visibility for SEO
   useEffect(() => {
     document.documentElement.classList.add('dark');
     
     // Mark document as loaded for prerendering
     document.documentElement.classList.add('app-loaded');
+    
+    // Force all content to be visible for SEO
+    document.querySelectorAll('section, h1, h2, h3, p, a, span, div').forEach(el => {
+      if (el instanceof HTMLElement) {
+        el.style.opacity = '1';
+        el.style.visibility = 'visible';
+      }
+    });
   }, []);
 
   return (
@@ -42,6 +50,13 @@ const App = () => {
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <meta name="description" content="Patrick Gilmore - IT Leader with 25+ years experience in technical leadership, enterprise systems, and team management. Expert in transforming operations through technical excellence." />
             <title>Patrick Gilmore | IT Leadership & Technical Excellence</title>
+            {/* Add more SEO-related meta tags */}
+            <meta name="robots" content="index, follow" />
+            <meta name="author" content="Patrick Gilmore" />
+            <meta property="og:type" content="website" />
+            <meta property="og:title" content="Patrick Gilmore | IT Leadership & Technical Excellence" />
+            <meta property="og:description" content="Patrick Gilmore - IT Leader with 25+ years experience in technical leadership, enterprise systems, and team management." />
+            <meta property="og:url" content="https://patrickgilmore.me/" />
           </Helmet>
           <Toaster />
           <SonnerToaster />
