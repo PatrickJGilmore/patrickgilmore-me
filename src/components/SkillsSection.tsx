@@ -63,7 +63,8 @@ const SkillsSection = () => {
         { name: "ClickUp", url: "https://clickup.com/" }, 
         { name: "Glean", url: "https://www.glean.com/" },
         { name: "Linux", url: "https://www.linux.org/" },
-        { name: "Windows Server", url: "https://www.microsoft.com/en-us/windows-server" }
+        { name: "Windows Server", url: "https://www.microsoft.com/en-us/windows-server" },
+        { name: "Microsoft Office", url: "https://www.microsoft.com/en-us/microsoft-365/microsoft-office" }
       ]
     },
     {
