@@ -50,80 +50,82 @@ const SkillsSection = () => {
   }, []);
 
   const skillCategories: SkillCategory[] = [
-      {
-        name: "Cloud & Systems Engineering",
-        icon: <Server className="h-7 w-7" />,
-        description: "Designing/maintaining cloud infrastructure, enterprise systems, and DevOps workflows.",
-        skills: [
-          { name: "Azure", url: "https://azure.microsoft.com/" },
-          { name: "Google Workspace", url: "https://workspace.google.com/" },
-          { name: "Linux", url: "https://www.linux.org/" },
-          { name: "Windows Server", url: "https://www.microsoft.com/en-us/windows-server" },
-          { name: "System Administration" },
-          { name: "Cloudflare", url: "https://www.cloudflare.com/" },
-          { name: "Netlify", url: "https://www.netlify.com/" },
-          { name: "SSMS", url: "https://learn.microsoft.com/en-us/sql/ssms/sql-server-management-studio-ssms" },
-          { name: "Incident Management" },
-          { name: "OpsGenie", url: "https://www.atlassian.com/software/opsgenie" },
-          { name: "Docker", url: "https://www.docker.com/" } // Moved from Software Development
-        ]
-      },
-      {
-        name: "Technical Leadership",
-        icon: <Users className="h-7 w-7" />,
-        description: "Building high-performing teams and optimizing technical operations.",
-        skills: [
-          { name: "Vendor Management" },
-          { name: "Team Leadership" },
-          { name: "Performance Management" },
-          { name: "Process Optimization" },
-          { name: "SDLC" },
-          { name: "Jira Service Management", url: "https://www.atlassian.com/software/jira/service-management" },
-          { name: "Footprints", url: "https://www.bmc.com/it-solutions/footprints-service-core.html" },
-          { name: "ClickUp", url: "https://clickup.com/" },
-          { name: "Atlassian Suite", url: "https://www.atlassian.com/" },
-          { name: "Octopus", url: "https://octopus.com/" } // Moved from Software Development
-        ]
-      },
-      {
-        name: "Software Engineering",
-        icon: <Code className="h-7 w-7" />,
-        description: "Full-stack development and intelligent automation solutions.",
-        skills: [
-          { name: "PowerShell", url: "https://learn.microsoft.com/en-us/powershell/" },
-          { name: "SQL", url: "https://www.microsoft.com/en-us/sql-server/" },
-          { name: "GitHub", url: "https://github.com/" },
-          { name: "VisualCron", url: "https://www.visualcron.com/" },
-          { name: "MoveIT", url: "https://www.progress.com/moveit" },
-          { name: "Postman/API Testing", url: "https://www.postman.com/" },
-          { name: "Python", url: "https://www.python.org/" },
-          { name: "HTML", url: "https://developer.mozilla.org/en-US/docs/Web/HTML" },
-          { name: "CSS", url: "https://developer.mozilla.org/en-US/docs/Web/CSS" },
-          { name: "JavaScript", url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
-          { name: "React", url: "https://reactjs.org/" },
-          { name: "OpenAI APIs", url: "https://openai.com/api/" },
-          { name: "AI-Powered Automation" },
-          { name: "ChatGPT", url: "https://chatgpt.com/" }
-        ]
-      },
-      {
-        name: "Business Alignment",
-        icon: <BarChart3 className="h-7 w-7" />,
-        description: "Translating technical capabilities into business outcomes.",
-        skills: [
-          { name: "Strategic Planning" },
-          { name: "Problem Solving" },
-          { name: "Technical Writing" },
-          { name: "Project Management" },
-          { name: "Mentoring" },
-          { name: "Aha", url: "https://www.aha.io/" }, // Roadmapping tool
-          { name: "Glean", url: "https://www.glean.com/" },
-          { name: "Microsoft Office", url: "https://www.microsoft.com/en-us/microsoft-365/microsoft-office" },
-          { name: "Slack", url: "https://slack.com/" },
-          { name: "Microsoft Teams", url: "https://www.microsoft.com/en-us/microsoft-teams/group-chat-software" },
-          { name: "HubSpot", url: "https://www.hubspot.com/" }
-        ]
-      }
+    {
+      name: "Cloud & Production Systems",
+      icon: <Server className="h-7 w-7" />,
+      description: "Ensuring 24/7 reliability of enterprise infrastructure and business-critical applications",
+      skills: [
+        { name: "Azure", url: "https://azure.microsoft.com/" },
+        { name: "Linux", url: "https://www.linux.org/" },
+        { name: "Windows Server", url: "https://www.microsoft.com/en-us/windows-server" },
+        { name: "System Administration" },
+        { name: "Cloudflare", url: "https://www.cloudflare.com/" },
+        { name: "Docker", url: "https://www.docker.com/" },
+        { name: "Active Directory" },
+        { name: "Disaster Recovery" },
+        { name: "Troubleshooting" },
+        { name: "Networking" },
+        { name: "Microsoft SQL Server", url: "https://www.microsoft.com/en-us/sql-server" },
+        { name: "OpsGenie", url: "https://www.atlassian.com/software/opsgenie" },
+        { name: "SSMS", url: "https://learn.microsoft.com/en-us/sql/ssms/sql-server-management-studio-ssms" }
+      ]
+    },
+    {
+      name: "Technical Operations Leadership",
+      icon: <Users className="h-7 w-7" />,
+      description: "Directing incident response and optimizing production workflows",
+      skills: [
+        { name: "Incident Management" },
+        { name: "Root Cause Analysis" },
+        { name: "Process Improvement" },
+        { name: "Application Support" },
+        { name: "Jira Service Management", url: "https://www.atlassian.com/software/jira/service-management" },
+        { name: "Octopus", url: "https://octopus.com/" },
+        { name: "ClickUp", url: "https://clickup.com/" },
+        { name: "Footprints", url: "https://www.bmc.com/it-solutions/footprints-service-core.html" },
+        { name: "Production Support" },
+        { name: "Software Documentation" },
+        { name: "Performance Monitoring" }
+      ]
+    },
+    {
+      name: "Business-Aligned Engineering",
+      icon: <Code className="h-7 w-7" />,
+      description: "Developing solutions that bridge technical and organizational needs",
+      skills: [
+        { name: "Python", url: "https://www.python.org/" },
+        { name: "PowerShell", url: "https://learn.microsoft.com/en-us/powershell/" },
+        { name: "SQL", url: "https://www.microsoft.com/en-us/sql-server/" },
+        { name: "React", url: "https://reactjs.org/" },
+        { name: "SDLC" },
+        { name: "Agile Methodologies" },
+        { name: "Requirements Analysis" },
+        { name: "GitHub", url: "https://github.com/" },
+        { name: "Postman/API Testing", url: "https://www.postman.com/" },
+        { name: "Visio", url: "https://www.microsoft.com/en-us/microsoft-365/visio/flowchart-software" },
+        { name: "Aha", url: "https://www.aha.io/" },
+        { name: "HTML", url: "https://developer.mozilla.org/en-US/docs/Web/HTML" },
+        { name: "CSS", url: "https://developer.mozilla.org/en-US/docs/Web/CSS" }
+      ]
+    },
+    {
+      name: "Stakeholder Strategy",
+      icon: <BarChart3 className="h-7 w-7" />,
+      description: "Translating system capabilities into business value",
+      skills: [
+        { name: "Vendor Management" },
+        { name: "Enterprise Architecture" },
+        { name: "Business Analysis" },
+        { name: "Project Management" },
+        { name: "Technical Writing" },
+        { name: "Microsoft Office", url: "https://www.microsoft.com/en-us/microsoft-365/microsoft-office" },
+        { name: "Slack", url: "https://slack.com/" },
+        { name: "Microsoft Teams", url: "https://www.microsoft.com/en-us/microsoft-teams/group-chat-software" },
+        { name: "HubSpot", url: "https://www.hubspot.com/" },
+        { name: "Strategic Planning" },
+        { name: "Problem Solving" }
+      ]
+    }
   ];
 
   const endorsements = [
