@@ -9,8 +9,8 @@ if (root) {
   const reactRoot = createRoot(root);
   reactRoot.render(<App />);
   
-  // Emit an event when app is rendered to help prerendering
-  document.dispatchEvent(new Event('app-rendered'));
+  // Add class to indicate app is loaded for prerendering
+  document.documentElement.classList.add('app-loaded');
 } else {
   console.error("Root element not found");
 }

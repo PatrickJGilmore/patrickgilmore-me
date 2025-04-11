@@ -33,8 +33,8 @@ export default defineConfig(({ mode }) => ({
           sortAttributes: true
         },
         // Important: Render the content with real HTML, not just JS
-        renderAfterEvent: 'app-rendered',
-        postProcess: (renderedRoute) => {
+        waitForSelector: '.app-loaded', // Wait for app-loaded class instead of event
+        postProcess: (renderedRoute: { html: string }) => {
           // Clean up any empty elements that could affect SEO
           renderedRoute.html = renderedRoute.html.replace(/<div[^>]*>\s*<\/div>/g, '');
           return renderedRoute;
