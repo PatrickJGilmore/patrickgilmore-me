@@ -131,6 +131,7 @@ const SkillsSection = () => {
   const endorsements = [
       { skill: "SDLC", count: 23, source: "Exela Technologies" },
       { skill: "Process Improvement", count: 12, source: "Cross-Functional Teams" },
+      { skill: "Business Analysis", count: 18, source: "Cross-Functional Teams" },
       { skill: "Enterprise Architecture", count: 8, source: "Technical Partners" }
   ];
 
@@ -211,7 +212,7 @@ const SkillsSection = () => {
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`} style={{ transitionDelay: '600ms' }}>
           <h3 className="text-xl font-semibold mb-6 text-center">LinkedIn Endorsements</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {endorsements.map((endorsement, index) => (
               <div 
                 key={index} 
