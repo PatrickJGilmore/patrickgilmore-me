@@ -58,11 +58,9 @@ const SkillsSection = () => {
         { name: "Azure", url: "https://azure.microsoft.com/" },
         { name: "Google Workspace", url: "https://workspace.google.com/" },
         { name: "Atlassian Suite", url: "https://www.atlassian.com/" }, 
-        { name: "OpsGenie", url: "https://www.atlassian.com/software/opsgenie" }, 
         { name: "HubSpot", url: "https://www.hubspot.com/" }, 
         { name: "Aha", url: "https://www.aha.io/" }, 
         { name: "ClickUp", url: "https://clickup.com/" }, 
-        { name: "Footprints", url: "https://www.bmc.com/it-solutions/footprints-service-core.html" },
         { name: "Glean", url: "https://www.glean.com/" },
         { name: "Linux", url: "https://www.linux.org/" },
         { name: "Windows Server", url: "https://www.microsoft.com/en-us/windows-server" }
@@ -80,6 +78,8 @@ const SkillsSection = () => {
         { name: "Process Optimization" }, 
         { name: "SDLC" },
         { name: "Jira Service Management", url: "https://www.atlassian.com/software/jira/service-management" },
+        { name: "OpsGenie", url: "https://www.atlassian.com/software/opsgenie" },
+        { name: "Footprints", url: "https://www.bmc.com/it-solutions/footprints-service-core.html" },
         { name: "Slack", url: "https://slack.com/" },
         { name: "Microsoft Teams", url: "https://www.microsoft.com/en-us/microsoft-teams/group-chat-software" }
       ]
