@@ -58,7 +58,7 @@ const AwardsSection = () => {
             >
               <div className="flex flex-col md:flex-row items-start gap-6">
                 <div className="p-4 rounded-lg bg-primary/10 text-primary flex-shrink-0 w-fit h-fit">
-                  <Trophy size={36} />
+                  <Trophy size={28} />
                 </div>
                 
                 <div>
