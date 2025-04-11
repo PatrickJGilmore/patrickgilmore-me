@@ -127,9 +127,11 @@ const SkillsSection = () => {
   ];
 
   const endorsements = [
-    { skill: "SDLC", count: 23, source: "Exela Technologies" },
-    { skill: "Vendor Management", count: 20, source: "Multiple colleagues" },
-    { skill: "Technical Leadership", count: 18, source: "Industry peers" }
+      { skill: "SDLC", count: 23, source: "Exela Technologies" },
+      { skill: "Vendor Management", count: 20, source: "Multiple Colleagues" },
+      { skill: "Process Improvement", count: 12, source: "Cross-Functional Teams" },
+      { skill: "Enterprise Architecture", count: 8, source: "Technical Partners" },
+      { skill: "Cloud Infrastructure", count: 6, source: "Microsoft SQL Server Experts" }
   ];
 
   return (
