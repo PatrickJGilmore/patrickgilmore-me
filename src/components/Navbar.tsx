@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -59,6 +60,7 @@ const Navbar = () => {
   };
 
   const navLinks = [
+    { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
     { id: 'skills', label: 'Skills' },
     { id: 'experience', label: 'Experience' },
@@ -76,9 +78,13 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
         <a 
-          href="#home" 
+          href="/"
           className="text-2xl font-heading font-bold text-white flex items-center gap-2 hover:text-primary transition-colors"
-          onClick={() => handleNavLinkClick('home')}
+          onClick={(e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            handleNavLinkClick('home');
+          }}
         >
           Patrick Gilmore
         </a>
