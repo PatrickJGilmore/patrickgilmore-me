@@ -49,10 +49,12 @@ const SkillsSection = () => {
     };
   }, []);
 
-  const skillCategories: SkillCategory[] = {
+  const skillCategories: SkillCategory[] = [
+  {
     name: "Enterprise Systems & Administration",
     icon: <Server className="h-7 w-7" />,
-    description: "Expertise across major cloud and enterprise platforms along with robust system administration.",
+    description:
+      "Expertise across major cloud and enterprise platforms along with robust system administration.",
     skills: [
       { name: "Azure", url: "https://azure.microsoft.com/" },
       { name: "Google Workspace", url: "https://workspace.google.com/" },
@@ -88,7 +90,8 @@ const SkillsSection = () => {
   {
     name: "Development, Automation & Web",
     icon: <Code className="h-7 w-7" />,
-    description: "Creating solutions that drive productivity, streamline operations, and build dynamic digital experiences.",
+    description:
+      "Creating solutions that drive productivity, streamline operations, and build dynamic digital experiences.",
     skills: [
       { name: "PowerShell", url: "https://learn.microsoft.com/en-us/powershell/" },
       { name: "SQL", url: "https://www.microsoft.com/en-us/sql-server/" },
@@ -110,7 +113,8 @@ const SkillsSection = () => {
   {
     name: "Leadership & Soft Skills",
     icon: <BarChart3 className="h-7 w-7" />,
-    description: "Building high-performing teams through mentorship, strategic vision, and effective communication.",
+    description:
+      "Building high-performing teams through mentorship, strategic vision, and effective communication.",
     skills: [
       { name: "Strategic Planning" },
       { name: "Problem Solving" },
@@ -118,8 +122,8 @@ const SkillsSection = () => {
       { name: "Mentoring" },
       { name: "Project Management" }
     ]
-    }
-  ];
+  }
+];
 
   const endorsements = [
     { skill: "SDLC", count: 23, source: "Exela Technologies" },
