@@ -5,12 +5,8 @@ import path from "path";
 import { htmlPrerender } from "vite-plugin-html-prerender";
 import { componentTagger } from "lovable-tagger";
 
-// List your routes to pre-render - include all routes your site has
-const routes = [
-  "/", 
-  "/404", 
-  "/403"
-];
+// List your routes to pre-render
+const routes = ["/", "/about", "/contact"];
 
 export default defineConfig(({ mode }) => ({
   server: {
@@ -20,19 +16,18 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     mode === 'development' && componentTagger(),
-    // Always use htmlPrerender in production builds, even on Netlify
-    mode === "production" &&
+    // Only use htmlPrerender in production and when not in a CI environment like Netlify
+    mode === "production" && !process.env.CI &&
       htmlPrerender({
         staticDir: path.join(__dirname, "dist"),
         routes,
         minify: {
           collapseBooleanAttributes: true,
-          collapseWhitespace: false, // Don't collapse whitespace to preserve readability for SEO
+          collapseWhitespace: true,
           decodeEntities: true,
           keepClosingSlash: true,
           sortAttributes: true
         }
-        // Removed unsupported options: renderAfterDocumentEvent and renderAfterTime
       })
   ].filter(Boolean),
   resolve: {
@@ -64,13 +59,8 @@ export default defineConfig(({ mode }) => ({
     minify: 'terser',
     terserOptions: {
       compress: {
-        drop_console: false, // Keep console logs for debugging
-      },
-      format: {
-        comments: false, // Remove comments from production builds
+        drop_console: true,
       },
     },
-    // Important: Enable SSR functionality
-    ssrManifest: true,
   },
 }));
