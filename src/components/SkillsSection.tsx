@@ -103,10 +103,10 @@ const SkillsSection = () => {
         { name: "Requirements Analysis" },
         { name: "GitHub", url: "https://github.com/" },
         { name: "Postman/API Testing", url: "https://www.postman.com/" },
-        { name: "JavaScript", url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
         { name: "Aha", url: "https://www.aha.io/" },
         { name: "HTML", url: "https://developer.mozilla.org/en-US/docs/Web/HTML" },
-        { name: "CSS", url: "https://developer.mozilla.org/en-US/docs/Web/CSS" }
+        { name: "CSS", url: "https://developer.mozilla.org/en-US/docs/Web/CSS" },
+        { name: "JavaScript", url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" }
       ]
     },
     {
