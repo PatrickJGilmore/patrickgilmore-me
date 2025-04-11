@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   
+  // Add class to indicate app is loaded for prerendering
+  document.documentElement.classList.add('app-loaded');
+  
   // Signal that prerendering is complete
   document.dispatchEvent(new Event('prerender-complete'));
 }, { once: true });

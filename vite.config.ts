@@ -31,12 +31,6 @@ export default defineConfig(({ mode }) => ({
           decodeEntities: true,
           keepClosingSlash: true,
           sortAttributes: true
-        },
-        // Important: Render the content with real HTML, not just JS
-        postProcess: (renderedRoute: { html: string }) => {
-          // Clean up any empty elements that could affect SEO
-          renderedRoute.html = renderedRoute.html.replace(/<div[^>]*>\s*<\/div>/g, '');
-          return renderedRoute;
         }
       })
   ].filter(Boolean),
