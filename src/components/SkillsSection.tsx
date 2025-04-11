@@ -72,7 +72,7 @@ const SkillsSection = () => {
     },
     {
       name: "Technical Operations Leadership",
-      icon: <Users className="h-7 w-7" />,
+      icon: <LifeBuoy className="h-7 w-7" />,
       description: "Directing incident response and optimizing production workflows",
       skills: [
         { name: "Incident Management" },
