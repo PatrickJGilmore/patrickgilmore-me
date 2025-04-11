@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="app-loaded dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,7 +15,7 @@
     <link rel="canonical" href="https://patrickgilmore.me">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-    <meta name="last-modified" content="2025-04-10">
+    <meta name="last-modified" content="2025-04-11">
     
     <!-- Preconnect to required origins for better performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -67,12 +67,54 @@
         }
     </script>
     
+    <!-- Force SEO visibility -->
+    <style>
+      html, body, #root, div, section, header, footer, nav {
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+      h1, h2, h3, h4, h5, h6, p, a, span, li {
+        opacity: 1 !important;
+        visibility: visible !important;
+        color: #ffffff !important;
+        text-shadow: none !important;
+      }
+      .animate-bounce, .animate-bounce-slow, [class*="animate-"] {
+        animation: none !important;
+      }
+    </style>
+    
+    <!-- Load prerender script early -->
+    <script src="/prerender.js"></script>
+    
     <!-- Required Lovable script tag -->
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
   </head>
 
   <body>
-    <div id="root"></div>
+    <div id="root" style="opacity: 1; visibility: visible;">
+      <!-- Static SEO content as fallback -->
+      <noscript>
+        <header>
+          <h1>Patrick Gilmore | IT Leadership & Technical Excellence</h1>
+          <p>Senior Production Support Analyst (Acting Manager)</p>
+        </header>
+        <main>
+          <section id="about">
+            <h2>About Me</h2>
+            <p>IT operations leader with over 25 years of experience in IT operations and production support, primarily in the FinTech industry.</p>
+          </section>
+          <section id="skills">
+            <h2>Skills</h2>
+            <p>Technical leadership, team management, enterprise systems, automation, and operational excellence.</p>
+          </section>
+          <section id="contact">
+            <h2>Contact</h2>
+            <p>Connect with Patrick Gilmore on <a href="https://www.linkedin.com/in/patrickjgilmore/">LinkedIn</a></p>
+          </section>
+        </main>
+      </noscript>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
 
     <!-- Hidden netlify form in public/index.html (or similar) -->

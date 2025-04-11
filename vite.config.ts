@@ -27,11 +27,14 @@ export default defineConfig(({ mode }) => ({
         routes,
         minify: {
           collapseBooleanAttributes: true,
-          collapseWhitespace: true,
+          collapseWhitespace: false, // Don't collapse whitespace to preserve readability for SEO
           decodeEntities: true,
           keepClosingSlash: true,
           sortAttributes: true
-        }
+        },
+        // Advanced SEO rendering options
+        renderAfterDocumentEvent: "prerender-complete",
+        renderAfterTime: 5000, // Ensure enough time for content to load
       })
   ].filter(Boolean),
   resolve: {
@@ -64,6 +67,9 @@ export default defineConfig(({ mode }) => ({
     terserOptions: {
       compress: {
         drop_console: false, // Keep console logs for debugging
+      },
+      format: {
+        comments: false, // Remove comments from production builds
       },
     },
     // Important: Enable SSR functionality

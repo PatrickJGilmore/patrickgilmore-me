@@ -26,22 +26,50 @@ const queryClient = new QueryClient({
 const App = () => {
   // Force dark mode and ensure content visibility for SEO
   useEffect(() => {
-    document.documentElement.classList.add('dark');
-    
     // Mark document as loaded for prerendering
     document.documentElement.classList.add('app-loaded');
+    document.documentElement.classList.add('dark');
+
+    // Immediately force all content to be visible without any animations or transitions
+    const forceVisibility = () => {
+      document.querySelectorAll('section, h1, h2, h3, h4, h5, h6, p, a, span, div, li, nav, button').forEach(el => {
+        if (el instanceof HTMLElement) {
+          el.style.opacity = '1';
+          el.style.visibility = 'visible';
+          el.style.display = el.style.display === 'none' ? 'block' : el.style.display;
+          el.style.transform = 'none';
+          el.style.transition = 'none';
+          el.style.animation = 'none';
+          // Ensure text has visible color
+          if (['H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'P', 'A', 'SPAN', 'LI'].includes(el.tagName)) {
+            el.style.color = '#ffffff';
+          }
+        }
+      });
+      
+      // Signal prerender complete
+      document.dispatchEvent(new Event('prerender-complete'));
+    };
+
+    // Apply immediately and after a delay to catch any late-rendered content
+    forceVisibility();
+    setTimeout(forceVisibility, 500);
+    setTimeout(forceVisibility, 1500); // Extra run for safety
     
-    // Force all content to be visible for SEO
-    document.querySelectorAll('section, h1, h2, h3, p, a, span, div').forEach(el => {
+    // Remove any animation classes
+    document.querySelectorAll('[class*="animate-"]').forEach(el => {
       if (el instanceof HTMLElement) {
-        el.style.opacity = '1';
-        el.style.visibility = 'visible';
+        el.classList.forEach(className => {
+          if (className.startsWith('animate-')) {
+            el.classList.remove(className);
+          }
+        });
       }
     });
   }, []);
 
   return (
-    <ThemeProvider attribute="class" defaultTheme="dark">
+    <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark">
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
           <Helmet>
@@ -50,13 +78,27 @@ const App = () => {
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <meta name="description" content="Patrick Gilmore - IT Leader with 25+ years experience in technical leadership, enterprise systems, and team management. Expert in transforming operations through technical excellence." />
             <title>Patrick Gilmore | IT Leadership & Technical Excellence</title>
-            {/* Add more SEO-related meta tags */}
             <meta name="robots" content="index, follow" />
             <meta name="author" content="Patrick Gilmore" />
             <meta property="og:type" content="website" />
             <meta property="og:title" content="Patrick Gilmore | IT Leadership & Technical Excellence" />
             <meta property="og:description" content="Patrick Gilmore - IT Leader with 25+ years experience in technical leadership, enterprise systems, and team management." />
             <meta property="og:url" content="https://patrickgilmore.me/" />
+            
+            {/* Additional SEO meta tags */}
+            <meta name="keywords" content="IT Leadership, Technical Excellence, Enterprise Systems, Team Management, Patrick Gilmore, Production Support, IT Strategy" />
+            <style>{`
+              /* Ensure all content is visible for crawlers */
+              html, body, #root, [id], [class] {
+                opacity: 1 !important;
+                visibility: visible !important;
+              }
+              h1, h2, h3, h4, h5, h6, p, a, span, div, li {
+                opacity: 1 !important;
+                visibility: visible !important;
+                color: #ffffff !important;
+              }
+            `}</style>
           </Helmet>
           <Toaster />
           <SonnerToaster />

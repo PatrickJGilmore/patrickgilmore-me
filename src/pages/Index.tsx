@@ -13,46 +13,49 @@ import { Helmet } from 'react-helmet';
 const Index = () => {
   // Force content visibility for SEO
   useEffect(() => {
-    // Immediately make all content visible for SEO
-    document.querySelectorAll('section, h1, h2, h3, h4, h5, h6, p, a, span, div').forEach(element => {
-      if (element instanceof HTMLElement) {
-        element.style.opacity = '1';
-        element.style.visibility = 'visible';
-        element.style.transform = 'none';
-      }
-    });
-    
-    // Create observer with better options for smoother animation but keeping content visible
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          // Apply immediate visibility
-          if (entry.target instanceof HTMLElement) {
-            entry.target.style.opacity = '1';
-            entry.target.style.visibility = 'visible';
-            entry.target.style.transform = 'none';
+    // Function to force immediate visibility of all content
+    const forceElementsVisible = () => {
+      // Target all important content elements
+      const elements = document.querySelectorAll('section, h1, h2, h3, h4, h5, h6, p, a, span, div, li, button, nav');
+      elements.forEach(element => {
+        if (element instanceof HTMLElement) {
+          // Override any styles that might hide content
+          element.style.opacity = '1';
+          element.style.visibility = 'visible';
+          element.style.transform = 'none';
+          element.style.transition = 'none';
+          element.style.animation = 'none';
+          
+          // Ensure text elements have visible colors
+          if (['H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'P', 'A', 'SPAN', 'LI'].includes(element.tagName)) {
+            element.style.color = '#ffffff';
+            element.style.textShadow = 'none';
           }
-        });
-      },
-      { 
-        threshold: [0, 0.01, 0.1],
-        rootMargin: '0px'
-      }
-    );
-
-    // Pre-load all sections (prevent blank squares)
-    document.querySelectorAll('section').forEach(section => {
-      // Force immediate visibility for all sections for SEO
-      if (section instanceof HTMLElement) {
-        section.style.willChange = 'opacity, transform';
-        section.style.opacity = '1';
-        section.style.visibility = 'visible';
-        section.style.transform = 'none';
-      }
+          
+          // Make sure display isn't none
+          if (element.style.display === 'none') {
+            element.style.display = 'block';
+          }
+        }
+      });
       
-      observer.observe(section);
-    });
-
+      // Signal that content is ready for prerendering
+      document.dispatchEvent(new Event('prerender-complete'));
+    };
+    
+    // Remove any scroll or intersection observers that might affect rendering
+    if (window.IntersectionObserver) {
+      // Create a dummy observer to disable any existing ones
+      const observer = new IntersectionObserver(() => {});
+      observer.disconnect();
+    }
+    
+    // Run visibility enforcement multiple times
+    forceElementsVisible();
+    setTimeout(forceElementsVisible, 100);
+    setTimeout(forceElementsVisible, 500);
+    setTimeout(forceElementsVisible, 1000);
+    
     // Improved smooth scrolling implementation
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
@@ -79,8 +82,16 @@ const Index = () => {
       });
     });
 
+    // Add static content fallback for crawlers
+    const metaRobots = document.querySelector('meta[name="robots"]');
+    if (!metaRobots) {
+      const robotsMeta = document.createElement('meta');
+      robotsMeta.name = 'robots';
+      robotsMeta.content = 'index, follow';
+      document.head.appendChild(robotsMeta);
+    }
+
     return () => {
-      observer.disconnect();
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.removeEventListener('click', function() {});
       });
@@ -97,6 +108,19 @@ const Index = () => {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://patrickgilmore.me/" />
         <meta property="og:description" content="IT Leader with 25+ years experience in technical leadership, enterprise systems, and team management." />
+        <style>{`
+          /* Force content visibility for SEO */
+          html, body, #root, main, div, section, article, header, footer, nav {
+            opacity: 1 !important;
+            visibility: visible !important;
+          }
+          h1, h2, h3, h4, h5, h6, p, a, span, li, ul, ol {
+            opacity: 1 !important;
+            visibility: visible !important;
+            color: #ffffff !important;
+            text-shadow: none !important;
+          }
+        `}</style>
       </Helmet>
       <Navbar />
       <HeroSection />
