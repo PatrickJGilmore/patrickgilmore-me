@@ -49,7 +49,7 @@ const SkillsSection = () => {
     };
   }, []);
 
-  const skillCategories: SkillCategory[] = [
+const skillCategories: SkillCategory[] = [
     {
       name: "Cloud Infrastructure & Operations",
       icon: <Server className="h-7 w-7" />,
@@ -68,15 +68,16 @@ const SkillsSection = () => {
       ]
     },
     {
-      name: "Engineering Leadership",
+      name: "Engineering Leadership & Process Management",  // Renamed
       icon: <Users className="h-7 w-7" />,
-      description: "Driving high-performing teams, projects, and processes through strong leadership.",
+      description: "Leading technical teams and optimizing development workflows.",  // Updated
       skills: [
         { name: "Vendor Management" },
         { name: "Team Leadership" },
         { name: "Performance Management" },
         { name: "Process Optimization" },
         { name: "SDLC" },
+        { name: "Project Management" },  // Moved from Strategy
         { name: "Jira Service Management", url: "https://www.atlassian.com/software/jira/service-management" },
         { name: "Footprints", url: "https://www.bmc.com/it-solutions/footprints-service-core.html" },
         { name: "ClickUp", url: "https://clickup.com/" },
@@ -108,15 +109,14 @@ const SkillsSection = () => {
       ]
     },
     {
-      name: "Strategy & Communication",
+      name: "Strategic Collaboration & Communication",  // Renamed
       icon: <BarChart3 className="h-7 w-7" />,
-      description: "Aligning technical vision with business goals through strategic thinking and clear communication.",
+      description: "Aligning technical execution with business objectives through collaboration.",  // Updated
       skills: [
         { name: "Strategic Planning" },
         { name: "Problem Solving" },
         { name: "Communication" },
         { name: "Mentoring" },
-        { name: "Project Management" },
         { name: "Technical Writing" },
         { name: "Glean", url: "https://www.glean.com/" },
         { name: "Microsoft Office", url: "https://www.microsoft.com/en-us/microsoft-365/microsoft-office" },
