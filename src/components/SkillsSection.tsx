@@ -51,48 +51,43 @@ const SkillsSection = () => {
 
   const skillCategories: SkillCategory[] = [
     {
-      name: "Cloud & Infrastructure",
+      name: "Cloud Infrastructure & Operations",
       icon: <Server className="h-7 w-7" />,
-      description: "Expertise in cloud platforms, enterprise tools, and robust system administration.",
+      description: "Expertise in cloud platforms, system administration, and IT operations.",
       skills: [
         { name: "Azure", url: "https://azure.microsoft.com/" },
         { name: "Google Workspace", url: "https://workspace.google.com/" },
-        { name: "Atlassian Suite", url: "https://www.atlassian.com/" },
-        { name: "HubSpot", url: "https://www.hubspot.com/" },
-        { name: "Aha", url: "https://www.aha.io/" },
-        { name: "ClickUp", url: "https://clickup.com/" },
-        { name: "Glean", url: "https://www.glean.com/" },
         { name: "Linux", url: "https://www.linux.org/" },
         { name: "Windows Server", url: "https://www.microsoft.com/en-us/windows-server" },
-        { name: "Microsoft Office", url: "https://www.microsoft.com/en-us/microsoft-365/microsoft-office" },
-        { name: "Slack", url: "https://slack.com/" },
-        { name: "Microsoft Teams", url: "https://www.microsoft.com/en-us/microsoft-teams/group-chat-software" },
         { name: "System Administration" },
         { name: "Cloudflare", url: "https://www.cloudflare.com/" },
         { name: "Netlify", url: "https://www.netlify.com/" },
-        { name: "SSMS", url: "https://learn.microsoft.com/en-us/sql/ssms/sql-server-management-studio-ssms" }
+        { name: "SSMS", url: "https://learn.microsoft.com/en-us/sql/ssms/sql-server-management-studio-ssms" },
+        { name: "Incident Management" },
+        { name: "OpsGenie", url: "https://www.atlassian.com/software/opsgenie" }
       ]
     },
     {
-      name: "Technical Leadership",
+      name: "Engineering Leadership",
       icon: <Users className="h-7 w-7" />,
-      description: "Leading teams and processes with efficiency and technical excellence.",
+      description: "Driving high-performing teams, projects, and processes through strong leadership.",
       skills: [
-        { name: "Incident Management" },
         { name: "Vendor Management" },
         { name: "Team Leadership" },
         { name: "Performance Management" },
         { name: "Process Optimization" },
         { name: "SDLC" },
         { name: "Jira Service Management", url: "https://www.atlassian.com/software/jira/service-management" },
-        { name: "OpsGenie", url: "https://www.atlassian.com/software/opsgenie" },
-        { name: "Footprints", url: "https://www.bmc.com/it-solutions/footprints-service-core.html" }
+        { name: "Footprints", url: "https://www.bmc.com/it-solutions/footprints-service-core.html" },
+        { name: "ClickUp", url: "https://clickup.com/" },
+        { name: "Aha", url: "https://www.aha.io/" },
+        { name: "Atlassian Suite", url: "https://www.atlassian.com/" }
       ]
     },
     {
-      name: "Software & Automation",
+      name: "Software Development & Automation",
       icon: <Code className="h-7 w-7" />,
-      description: "Building solutions to enhance productivity and streamline operations.",
+      description: "Building, scripting, and automating software and workflows for efficiency.",
       skills: [
         { name: "PowerShell", url: "https://learn.microsoft.com/en-us/powershell/" },
         { name: "SQL", url: "https://www.microsoft.com/en-us/sql-server/" },
@@ -115,18 +110,23 @@ const SkillsSection = () => {
     {
       name: "Strategy & Communication",
       icon: <BarChart3 className="h-7 w-7" />,
-      description: "Driving success through strategic vision and effective communication.",
+      description: "Aligning technical vision with business goals through strategic thinking and clear communication.",
       skills: [
         { name: "Strategic Planning" },
         { name: "Problem Solving" },
         { name: "Communication" },
         { name: "Mentoring" },
         { name: "Project Management" },
-        { name: "Technical Writing" }
+        { name: "Technical Writing" },
+        { name: "Glean", url: "https://www.glean.com/" },
+        { name: "Microsoft Office", url: "https://www.microsoft.com/en-us/microsoft-365/microsoft-office" },
+        { name: "Slack", url: "https://slack.com/" },
+        { name: "Microsoft Teams", url: "https://www.microsoft.com/en-us/microsoft-teams/group-chat-software" },
+        { name: "HubSpot", url: "https://www.hubspot.com/" }
       ]
     }
   ];
-  
+
   const endorsements = [
     { skill: "SDLC", count: 23, source: "Exela Technologies" },
     { skill: "Vendor Management", count: 20, source: "Multiple colleagues" },
