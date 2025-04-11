@@ -53,8 +53,7 @@ const SkillsSection = () => {
   {
     name: "Enterprise Systems & Administration",
     icon: <Server className="h-7 w-7" />,
-    description:
-      "Expertise across major cloud and enterprise platforms along with robust system administration.",
+    description: "Expertise across major cloud and enterprise platforms along with robust system administration.",
     skills: [
       { name: "Azure", url: "https://azure.microsoft.com/" },
       { name: "Google Workspace", url: "https://workspace.google.com/" },
@@ -68,7 +67,10 @@ const SkillsSection = () => {
       { name: "Microsoft Office", url: "https://www.microsoft.com/en-us/microsoft-365/microsoft-office" },
       { name: "Slack", url: "https://slack.com/" },
       { name: "Microsoft Teams", url: "https://www.microsoft.com/en-us/microsoft-teams/group-chat-software" },
-      { name: "System Administration" }
+      { name: "System Administration" },
+      { name: "Cloudflare", url: "https://www.cloudflare.com/" },
+      { name: "Netlify", url: "https://www.netlify.com/" },
+      { name: "SSMS", url: "https://learn.microsoft.com/en-us/sql/ssms/sql-server-management-studio-ssms" }
     ]
   },
   {
@@ -90,37 +92,34 @@ const SkillsSection = () => {
   {
     name: "Development, Automation & Web",
     icon: <Code className="h-7 w-7" />,
-    description:
-      "Creating solutions that drive productivity, streamline operations, and build dynamic digital experiences.",
+    description: "Creating solutions that drive productivity, streamline operations, and build dynamic digital experiences.",
     skills: [
       { name: "PowerShell", url: "https://learn.microsoft.com/en-us/powershell/" },
       { name: "SQL", url: "https://www.microsoft.com/en-us/sql-server/" },
-      { name: "GitHub/Version Control", url: "https://github.com/" },
+      { name: "GitHub", url: "https://github.com/" },
       { name: "VisualCron", url: "https://www.visualcron.com/" },
       { name: "MoveIT", url: "https://www.progress.com/moveit" },
       { name: "Postman/API Testing", url: "https://www.postman.com/" },
-      { name: "SSMS", url: "https://learn.microsoft.com/en-us/sql/ssms/sql-server-management-studio-ssms" },
       { name: "Octopus", url: "https://octopus.com/" },
       { name: "Python", url: "https://www.python.org/" },
       { name: "HTML", url: "https://developer.mozilla.org/en-US/docs/Web/HTML" },
       { name: "CSS", url: "https://developer.mozilla.org/en-US/docs/Web/CSS" },
       { name: "JavaScript", url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
       { name: "React", url: "https://reactjs.org/" },
-      { name: "Cloudflare", url: "https://www.cloudflare.com/" },
-      { name: "Netlify", url: "https://www.netlify.com/" }
+      { name: "Docker", url: "https://www.docker.com/" }
     ]
   },
   {
     name: "Leadership & Soft Skills",
     icon: <BarChart3 className="h-7 w-7" />,
-    description:
-      "Building high-performing teams through mentorship, strategic vision, and effective communication.",
+    description: "Building high-performing teams through mentorship, strategic vision, and effective communication.",
     skills: [
       { name: "Strategic Planning" },
       { name: "Problem Solving" },
       { name: "Communication" },
       { name: "Mentoring" },
-      { name: "Project Management" }
+      { name: "Project Management" },
+      { name: "Technical Writing" }
     ]
   }
 ];
