@@ -31,10 +31,8 @@ export default defineConfig(({ mode }) => ({
           decodeEntities: true,
           keepClosingSlash: true,
           sortAttributes: true
-        },
-        // Advanced SEO rendering options
-        renderAfterDocumentEvent: "prerender-complete",
-        renderAfterTime: 5000, // Ensure enough time for content to load
+        }
+        // Removed unsupported options: renderAfterDocumentEvent and renderAfterTime
       })
   ].filter(Boolean),
   resolve: {
