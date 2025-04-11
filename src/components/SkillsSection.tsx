@@ -49,81 +49,81 @@ const SkillsSection = () => {
     };
   }, []);
 
-  const skillCategories: SkillCategory[] = [
-  {
-    name: "Enterprise Systems & Administration",
-    icon: <Server className="h-7 w-7" />,
-    description: "Expertise across major cloud and enterprise platforms along with robust system administration.",
-    skills: [
-      { name: "Azure", url: "https://azure.microsoft.com/" },
-      { name: "Google Workspace", url: "https://workspace.google.com/" },
-      { name: "Atlassian Suite", url: "https://www.atlassian.com/" },
-      { name: "HubSpot", url: "https://www.hubspot.com/" },
-      { name: "Aha", url: "https://www.aha.io/" },
-      { name: "ClickUp", url: "https://clickup.com/" },
-      { name: "Glean", url: "https://www.glean.com/" },
-      { name: "Linux", url: "https://www.linux.org/" },
-      { name: "Windows Server", url: "https://www.microsoft.com/en-us/windows-server" },
-      { name: "Microsoft Office", url: "https://www.microsoft.com/en-us/microsoft-365/microsoft-office" },
-      { name: "Slack", url: "https://slack.com/" },
-      { name: "Microsoft Teams", url: "https://www.microsoft.com/en-us/microsoft-teams/group-chat-software" },
-      { name: "System Administration" },
-      { name: "Cloudflare", url: "https://www.cloudflare.com/" },
-      { name: "Netlify", url: "https://www.netlify.com/" },
-      { name: "SSMS", url: "https://learn.microsoft.com/en-us/sql/ssms/sql-server-management-studio-ssms" }
-    ]
-  },
-  {
-    name: "Technical Support & Management",
-    icon: <Users className="h-7 w-7" />,
-    description: "Leading teams and processes with efficiency and technical excellence.",
-    skills: [
-      { name: "Incident Management" },
-      { name: "Vendor Management" },
-      { name: "Team Leadership" },
-      { name: "Performance Management" },
-      { name: "Process Optimization" },
-      { name: "SDLC" },
-      { name: "Jira Service Management", url: "https://www.atlassian.com/software/jira/service-management" },
-      { name: "OpsGenie", url: "https://www.atlassian.com/software/opsgenie" },
-      { name: "Footprints", url: "https://www.bmc.com/it-solutions/footprints-service-core.html" }
-    ]
-  },
-  {
-    name: "Development, Automation & Web",
-    icon: <Code className="h-7 w-7" />,
-    description: "Creating solutions that drive productivity, streamline operations, and build dynamic digital experiences.",
-    skills: [
-      { name: "PowerShell", url: "https://learn.microsoft.com/en-us/powershell/" },
-      { name: "SQL", url: "https://www.microsoft.com/en-us/sql-server/" },
-      { name: "GitHub", url: "https://github.com/" },
-      { name: "VisualCron", url: "https://www.visualcron.com/" },
-      { name: "MoveIT", url: "https://www.progress.com/moveit" },
-      { name: "Postman/API Testing", url: "https://www.postman.com/" },
-      { name: "Octopus", url: "https://octopus.com/" },
-      { name: "Python", url: "https://www.python.org/" },
-      { name: "HTML", url: "https://developer.mozilla.org/en-US/docs/Web/HTML" },
-      { name: "CSS", url: "https://developer.mozilla.org/en-US/docs/Web/CSS" },
-      { name: "JavaScript", url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
-      { name: "React", url: "https://reactjs.org/" },
-      { name: "Docker", url: "https://www.docker.com/" }
-    ]
-  },
-  {
-    name: "Leadership & Soft Skills",
-    icon: <BarChart3 className="h-7 w-7" />,
-    description: "Building high-performing teams through mentorship, strategic vision, and effective communication.",
-    skills: [
-      { name: "Strategic Planning" },
-      { name: "Problem Solving" },
-      { name: "Communication" },
-      { name: "Mentoring" },
-      { name: "Project Management" },
-      { name: "Technical Writing" }
-    ]
-  }
-];
-
+    const skillCategories: SkillCategory[] = [
+    {
+      name: "Cloud & Infrastructure",
+      icon: <Server className="h-7 w-7" />,
+      description: "Expertise in cloud platforms, enterprise tools, and robust system administration.",
+      skills: [
+        { name: "Azure", url: "https://azure.microsoft.com/" },
+        { name: "Google Workspace", url: "https://workspace.google.com/" },
+        { name: "Atlassian Suite", url: "https://www.atlassian.com/" },
+        { name: "HubSpot", url: "https://www.hubspot.com/" },
+        { name: "Aha", url: "https://www.aha.io/" },
+        { name: "ClickUp", url: "https://clickup.com/" },
+        { name: "Glean", url: "https://www.glean.com/" },
+        { name: "Linux", url: "https://www.linux.org/" },
+        { name: "Windows Server", url: "https://www.microsoft.com/en-us/windows-server" },
+        { name: "Microsoft Office", url: "https://www.microsoft.com/en-us/microsoft-365/microsoft-office" },
+        { name: "Slack", url: "https://slack.com/" },
+        { name: "Microsoft Teams", url: "https://www.microsoft.com/en-us/microsoft-teams/group-chat-software" },
+        { name: "System Administration" },
+        { name: "Cloudflare", url: "https://www.cloudflare.com/" },
+        { name: "Netlify", url: "https://www.netlify.com/" },
+        { name: "SSMS", url: "https://learn.microsoft.com/en-us/sql/ssms/sql-server-management-studio-ssms" }
+      ]
+    },
+    {
+      name: "Technical Leadership",
+      icon: <Users className="h-7 w-7" />,
+      description: "Leading teams and processes with efficiency and technical excellence.",
+      skills: [
+        { name: "Incident Management" },
+        { name: "Vendor Management" },
+        { name: "Team Leadership" },
+        { name: "Performance Management" },
+        { name: "Process Optimization" },
+        { name: "SDLC" },
+        { name: "Jira Service Management", url: "https://www.atlassian.com/software/jira/service-management" },
+        { name: "OpsGenie", url: "https://www.atlassian.com/software/opsgenie" },
+        { name: "Footprints", url: "https://www.bmc.com/it-solutions/footprints-service-core.html" }
+      ]
+    },
+    {
+      name: "Software & Automation",
+      icon: <Code className="h-7 w-7" />,
+      description: "Building solutions to enhance productivity and streamline operations.",
+      descriptions: [
+        { name: "PowerShell", url: "https://learn.microsoft.com/en-us/powershell/" },
+        { name: "SQL", url: "https://www.microsoft.com/en-us/sql-server/" },
+        { name: "GitHub", url: "https://github.com/" },
+        { name: "VisualCron", url: "https://www.visualcron.com/" },
+        { name: "MoveIT", url: "https://www.progress.com/moveit" },
+        { name: "Postman/API Testing", url: "https://www.postman.com/" },
+        { name: "Octopus", url: "https://octopus.com/" },
+        { name: "Python", url: "https://www.python.org/" },
+        { name: "HTML", url: "https://developer.mozilla.org/en-US/docs/Web/HTML" },
+        { name: "CSS", url: "https://developer.mozilla.org/en-US/docs/Web/CSS" },
+        { name: "JavaScript", url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+        { name: "React", url: "https://reactjs.org/" },
+        { name: "Docker", url: "https://www.docker.com/" }
+      ]
+    },
+    {
+      name: "Strategy & Communication",
+      icon: <BarChart3 className="h-7 w-7" />,
+      description: "Driving success through strategic vision and effective communication.",
+      skills: [
+        { name: "Strategic Planning" },
+        { name: "Problem Solving" },
+        { name: "Communication" },
+        { name: "Mentoring" },
+        { name: "Project Management" },
+        { name: "Technical Writing" }
+      ]
+    }
+  ];
+  
   const endorsements = [
     { skill: "SDLC", count: 23, source: "Exela Technologies" },
     { skill: "Vendor Management", count: 20, source: "Multiple colleagues" },
