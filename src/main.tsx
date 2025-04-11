@@ -1,27 +1,12 @@
-import { ViteSSG } from 'vite-ssg';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import App from './App';
-import About from './pages/About';
 
-// Define routes
-const routes = [
-  {
-    path: '/',
-    element: <App />,
-  },
-  {
-    path: '/about',
-    element: <About />,
-  },
-];
+import { createRoot } from 'react-dom/client'
+import App from './App.tsx'
+import './index.css'
 
-// Create router
-const router = createBrowserRouter(routes);
-
-// Render with ViteSSG
-export const ViteSSGApp = ViteSSG(
-  <RouterProvider router={router} />,
-  ({ app }) => {
-    // Optional: Add global providers here if needed
-  }
-);
+// Create root and render app
+const root = document.getElementById("root");
+if (root) {
+  createRoot(root).render(<App />);
+} else {
+  console.error("Root element not found");
+}
