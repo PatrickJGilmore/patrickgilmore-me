@@ -63,7 +63,9 @@ const SkillsSection = () => {
         { name: "Aha", url: "https://www.aha.io/" }, 
         { name: "ClickUp", url: "https://clickup.com/" }, 
         { name: "Footprints", url: "https://www.bmc.com/it-solutions/footprints-service-core.html" },
-        { name: "Glean", url: "https://www.glean.com/" }
+        { name: "Glean", url: "https://www.glean.com/" },
+        { name: "Linux", url: "https://www.linux.org/" },
+        { name: "Windows Server", url: "https://www.microsoft.com/en-us/windows-server" }
       ]
     },
     {
@@ -76,7 +78,10 @@ const SkillsSection = () => {
         { name: "Team Leadership" }, 
         { name: "Performance Management" }, 
         { name: "Process Optimization" }, 
-        { name: "SDLC" }
+        { name: "SDLC" },
+        { name: "Jira Service Management", url: "https://www.atlassian.com/software/jira/service-management" },
+        { name: "Slack", url: "https://slack.com/" },
+        { name: "Microsoft Teams", url: "https://www.microsoft.com/en-us/microsoft-teams/group-chat-software" }
       ]
     },
     {
@@ -89,7 +94,10 @@ const SkillsSection = () => {
         { name: "GitHub/Version Control", url: "https://github.com/" }, 
         { name: "VisualCron", url: "https://www.visualcron.com/" }, 
         { name: "MoveIT", url: "https://www.progress.com/moveit" }, 
-        { name: "Postman/API Testing", url: "https://www.postman.com/" }
+        { name: "Postman/API Testing", url: "https://www.postman.com/" },
+        { name: "SSMS", url: "https://learn.microsoft.com/en-us/sql/ssms/sql-server-management-studio-ssms" },
+        { name: "Git", url: "https://git-scm.com/" },
+        { name: "Octopus", url: "https://octopus.com/" }
       ]
     },
     {
