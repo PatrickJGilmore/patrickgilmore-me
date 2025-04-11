@@ -93,7 +93,7 @@ const skillCategories: SkillCategory[] = [
     name: "Software & Automation",
     icon: <Code className="h-7 w-7" />,
     description: "Building solutions to enhance productivity and streamline operations.",
-    descriptions: [
+    skills: [
       { name: "PowerShell", url: "https://learn.microsoft.com/en-us/powershell/" },
       { name: "SQL", url: "https://www.microsoft.com/en-us/sql-server/" },
       { name: "GitHub", url: "https://github.com/" },
@@ -106,7 +106,10 @@ const skillCategories: SkillCategory[] = [
       { name: "CSS", url: "https://developer.mozilla.org/en-US/docs/Web/CSS" },
       { name: "JavaScript", url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
       { name: "React", url: "https://reactjs.org/" },
-      { name: "Docker", url: "https://www.docker.com/" }
+      { name: "Docker", url: "https://www.docker.com/" },
+      { name: "OpenAI APIs", url: "https://openai.com/api/" },
+      { name: "AI-Powered Automation" },
+      { name: "ChatGPT", url: "https://chatgpt.com/" }
     ]
   },
   {
