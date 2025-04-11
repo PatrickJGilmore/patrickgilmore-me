@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useEffect } from "react";
 import { ThemeProvider } from "next-themes";
+import { Helmet } from "react-helmet";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Forbidden from "./pages/Forbidden";
@@ -26,12 +27,22 @@ const App = () => {
   // Force dark mode
   useEffect(() => {
     document.documentElement.classList.add('dark');
+    
+    // Mark document as loaded for prerendering
+    document.documentElement.classList.add('app-loaded');
   }, []);
 
   return (
     <ThemeProvider attribute="class" defaultTheme="dark">
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
+          <Helmet>
+            <html lang="en" />
+            <meta charSet="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <meta name="description" content="Patrick Gilmore - IT Leader with 25+ years experience in technical leadership, enterprise systems, and team management. Expert in transforming operations through technical excellence." />
+            <title>Patrick Gilmore | IT Leadership & Technical Excellence</title>
+          </Helmet>
           <Toaster />
           <SonnerToaster />
           <BrowserRouter>

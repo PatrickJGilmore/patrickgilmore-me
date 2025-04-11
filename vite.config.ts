@@ -5,8 +5,12 @@ import path from "path";
 import { htmlPrerender } from "vite-plugin-html-prerender";
 import { componentTagger } from "lovable-tagger";
 
-// List your routes to pre-render
-const routes = ["/", "/about", "/contact"];
+// List your routes to pre-render - include all routes your site has
+const routes = [
+  "/", 
+  "/404", 
+  "/403"
+];
 
 export default defineConfig(({ mode }) => ({
   server: {
@@ -16,8 +20,8 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     mode === 'development' && componentTagger(),
-    // Only use htmlPrerender in production and when not in a CI environment like Netlify
-    mode === "production" && !process.env.CI &&
+    // Always use htmlPrerender in production builds, even on Netlify
+    mode === "production" &&
       htmlPrerender({
         staticDir: path.join(__dirname, "dist"),
         routes,
@@ -27,6 +31,13 @@ export default defineConfig(({ mode }) => ({
           decodeEntities: true,
           keepClosingSlash: true,
           sortAttributes: true
+        },
+        // Important: Render the content with real HTML, not just JS
+        renderAfterEvent: 'app-rendered',
+        postProcess: (renderedRoute) => {
+          // Clean up any empty elements that could affect SEO
+          renderedRoute.html = renderedRoute.html.replace(/<div[^>]*>\s*<\/div>/g, '');
+          return renderedRoute;
         }
       })
   ].filter(Boolean),
@@ -62,5 +73,7 @@ export default defineConfig(({ mode }) => ({
         drop_console: true,
       },
     },
+    // Important: Enable SSR functionality
+    ssrManifest: true,
   },
 }));
