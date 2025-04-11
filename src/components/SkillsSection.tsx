@@ -11,6 +11,7 @@ import {
   Workflow,
   Layers,
   Server,
+  LifeBuoy,
   WrenchIcon
 } from 'lucide-react';
 
