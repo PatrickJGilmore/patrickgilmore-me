@@ -25,12 +25,27 @@ if (root) {
 if (isBot) {
   // Force all elements to be visible to crawlers
   setTimeout(() => {
-    document.querySelectorAll('*').forEach(el => {
+    // Ensure all text elements are visible
+    document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, li, span').forEach(el => {
       if (el instanceof HTMLElement) {
         el.style.opacity = "1";
         el.style.visibility = "visible";
         el.style.display = el.style.display === "none" ? "block" : el.style.display;
       }
     });
-  }, 1000);
+    
+    // Ensure all heading tags are properly exposed to search engines
+    document.querySelectorAll('h1, h2, h3').forEach(el => {
+      if (el instanceof HTMLElement) {
+        // Make sure the parent elements are visible too
+        let parent = el.parentElement;
+        while (parent) {
+          parent.style.opacity = "1";
+          parent.style.visibility = "visible";
+          parent.style.display = parent.style.display === "none" ? "block" : parent.style.display;
+          parent = parent.parentElement;
+        }
+      }
+    });
+  }, 100); // Reduce delay for faster processing
 }

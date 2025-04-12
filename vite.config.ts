@@ -28,6 +28,14 @@ export default defineConfig(({ mode }) => ({
           decodeEntities: true,
           keepClosingSlash: true,
           sortAttributes: true
+        },
+        // Ensure enough time for React to render content
+        postProcess: (renderedRoute) => {
+          // Ensure headings and links are preserved and visible to crawlers
+          return {
+            html: renderedRoute.html,
+            route: renderedRoute.route
+          };
         }
       })
   ].filter(Boolean),

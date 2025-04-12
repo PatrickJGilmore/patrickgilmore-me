@@ -14,11 +14,27 @@
       }
     });
     
-    // Ensure all sections are visible
-    document.querySelectorAll('section').forEach(function(section) {
-      section.style.opacity = "1";
-      section.style.visibility = "visible";
-      section.style.display = "block";
+    // Ensure all headings and links are visible and properly exposed to search engines
+    const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+    headings.forEach(function(heading) {
+      heading.style.opacity = "1";
+      heading.style.visibility = "visible";
+      heading.style.display = "block";
+      // Ensure any parent containers are visible
+      let parent = heading.parentElement;
+      while (parent) {
+        parent.style.opacity = "1";
+        parent.style.visibility = "visible";
+        parent.style.display = parent.style.display === "none" ? "block" : parent.style.display;
+        parent = parent.parentElement;
+      }
+    });
+
+    // Ensure all links are properly exposed
+    document.querySelectorAll('a').forEach(function(link) {
+      link.style.opacity = "1";
+      link.style.visibility = "visible";
+      link.style.display = link.style.display === "none" ? "inline" : link.style.display;
     });
     
     // Add static content for SEO in case JavaScript fails

@@ -6,9 +6,9 @@
 [build.environment]
   NODE_VERSION = "18"
 
-# Skip puppeteer-based prerendering on Netlify
+# Setting this to false to enable prerendering on Netlify
 [context.production.environment]
-  CI = "true"
+  CI = "false"
 
 # Handle SPA routing
 [[redirects]]
