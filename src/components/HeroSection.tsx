@@ -13,18 +13,6 @@ const HeroSection = () => {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-[#050a15] via-[#0a1428] to-[#0c1a34]">
-      {/* Screen reader only heading for SEO */}
-      <h1 className="sr-only">Patrick Gilmore | IT Leadership & Technical Excellence - Strategic Leader in FinTech IT Operations</h1>
-      <h2 className="sr-only">Proven leader with 25+ years managing high-performing IT teams, achieving superior system reliability, pioneering automation processes, and maintaining exceptional operational standards in FinTech industries.</h2>
-      
-      {/* Hidden internal navigation for SEO */}
-      <nav className="sr-only">
-        <a href="/#about">About Patrick Gilmore</a>
-        <a href="/#skills">Skills & Expertise</a>
-        <a href="/#experience">Professional Experience</a>
-        <a href="/#contact">Contact Information</a>
-      </nav>
-
       {/* Background elements - optimized for rendering */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full opacity-20">
@@ -41,17 +29,15 @@ const HeroSection = () => {
               <span className="text-blue-300 font-medium tracking-wide">Production Support Manager</span>
             </div>
             
-            {/* Visual heading (not an H1 for SEO, since we have the sr-only H1) */}
-            <div className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight mx-auto w-full">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight mx-auto w-full">
               <span className="block bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-blue-200">
                 Strategic Leader in FinTech IT Operations
               </span>
-            </div>
+            </h1>
             
-            {/* Visual subheading (not an H2 for SEO, since we have the sr-only H2) */}
-            <div className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto mb-10 leading-relaxed">
+            <h2 className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto mb-10 leading-relaxed">
               Proven leader with 25+ years managing high-performing IT teams, achieving superior system reliability, pioneering automation processes, and maintaining exceptional operational standards in FinTech industries.
-            </div>
+            </h2>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <a href="#contact" className="btn-primary">
@@ -95,19 +81,6 @@ const HeroSection = () => {
 
         .animate-bounce-slow {
           animation: bounceSlow 3s infinite;
-        }
-        
-        /* Add screen reader only class for SEO */
-        .sr-only {
-          position: absolute;
-          width: 1px;
-          height: 1px;
-          padding: 0;
-          margin: -1px;
-          overflow: hidden;
-          clip: rect(0, 0, 0, 0);
-          white-space: nowrap;
-          border-width: 0;
         }
       `}</style>
     </section>

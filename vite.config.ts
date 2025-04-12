@@ -5,8 +5,8 @@ import path from "path";
 import { htmlPrerender } from "vite-plugin-html-prerender";
 import { componentTagger } from "lovable-tagger";
 
-// List your routes to pre-render - expand to include all major routes
-const routes = ["/", "/about", "/contact", "/404", "/403"];
+// List your routes to pre-render
+const routes = ["/", "/about", "/contact"];
 
 export default defineConfig(({ mode }) => ({
   server: {
@@ -15,7 +15,6 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     react(),
-    // Add componentTagger in development mode
     mode === 'development' && componentTagger(),
     // Only use htmlPrerender in production and when not in a CI environment like Netlify
     mode === "production" && !process.env.CI &&
@@ -37,22 +36,9 @@ export default defineConfig(({ mode }) => ({
     }
   },
   build: {
-    // Ensure proper output directory
+    // Avoid directory loading issues
     outDir: 'dist',
     emptyOutDir: true,
-    // Force minification for all files
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true,
-        pure_funcs: ['console.log', 'console.info', 'console.debug']
-      },
-      format: {
-        comments: false
-      }
-    },
-    // Chunk optimizations
     rollupOptions: {
       output: {
         manualChunks: {
@@ -70,9 +56,11 @@ export default defineConfig(({ mode }) => ({
     },
     chunkSizeWarningLimit: 1000,
     cssCodeSplit: true,
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+      },
+    },
   },
-  // Ensure content is visible to crawlers
-  ssr: {
-    noExternal: ['react-helmet']
-  }
 }));
