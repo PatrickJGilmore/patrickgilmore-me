@@ -25,9 +25,7 @@ export default defineConfig(({ mode }) => ({
           decodeEntities: true,
           keepClosingSlash: true,
           sortAttributes: true
-        },
-        // Wait for a specific time to ensure content is rendered
-        renderAfterTime: 5000,
+        }
       })
   ].filter(Boolean),
   resolve: {
