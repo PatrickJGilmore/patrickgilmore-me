@@ -5,8 +5,8 @@ import path from "path";
 import { htmlPrerender } from "vite-plugin-html-prerender";
 import { componentTagger } from "lovable-tagger";
 
-// List your routes to pre-render
-const routes = ["/", "/about", "/contact"];
+// List your routes to pre-render - expand to include all major routes
+const routes = ["/", "/about", "/contact", "/404", "/403"];
 
 // Define a type for the rendered route if needed
 interface RenderedRoute {
