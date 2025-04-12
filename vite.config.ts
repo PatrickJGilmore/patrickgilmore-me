@@ -8,6 +8,12 @@ import { componentTagger } from "lovable-tagger";
 // List your routes to pre-render
 const routes = ["/", "/about", "/contact"];
 
+// Define a type for the rendered route if needed
+interface RenderedRoute {
+  html: string;
+  route: string;
+}
+
 export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
@@ -28,15 +34,8 @@ export default defineConfig(({ mode }) => ({
           decodeEntities: true,
           keepClosingSlash: true,
           sortAttributes: true
-        },
-        // Ensure enough time for React to render content
-        postProcess: (renderedRoute) => {
-          // Ensure headings and links are preserved and visible to crawlers
-          return {
-            html: renderedRoute.html,
-            route: renderedRoute.route
-          };
         }
+        // Removed the postProcess option since it's not supported by the library's type definitions
       })
   ].filter(Boolean),
   resolve: {
