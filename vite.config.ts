@@ -2,18 +2,9 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
-import { htmlPrerender } from "vite-plugin-html-prerender";
 import { componentTagger } from "lovable-tagger";
+import prerenderSpa from "vite-plugin-prerender-spa"; // NEW plugin
 
-// List all routes defined in your App.tsx:
-// Your router defines:
-//   "/" -> Index
-//   "/404" -> NotFound
-//   "/403" -> Forbidden
-//   Redirects: "/index.html", "/home", "/about-me", "/skills", "/experience", "/awards", "/activities", "/testimonials", "/contact"
-// (The wildcard "*" is handled by NotFound)
-// Even though many are redirects, including them here ensures that if these URLs are requested,
-// they will produce prerendered HTML (typically with a client-side redirect) that search engines can follow.
 const routes = [
   "/",
   "/404",
@@ -37,18 +28,11 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     mode === "development" && componentTagger(),
-    // Only use htmlPrerender in production and when not in a CI environment such as Netlify
     mode === "production" && !process.env.CI &&
-      htmlPrerender({
+      prerenderSpa({
         staticDir: path.join(__dirname, "dist"),
         routes,
-        minify: {
-          collapseBooleanAttributes: true,
-          collapseWhitespace: true,
-          decodeEntities: true,
-          keepClosingSlash: true,
-          sortAttributes: true,
-        },
+        renderAfterDocumentEvent: "seo:ready",
       }),
   ].filter(Boolean),
   resolve: {
