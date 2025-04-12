@@ -3,7 +3,6 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { htmlPrerender } from "vite-plugin-html-prerender";
-import { componentTagger } from "lovable-tagger";
 
 // List your routes to pre-render
 const routes = ["/", "/about", "/contact"];
@@ -15,7 +14,6 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     react(),
-    mode === 'development' && componentTagger(),
     // Only use htmlPrerender in production and when not in a CI environment like Netlify
     mode === "production" && !process.env.CI &&
       htmlPrerender({
@@ -27,7 +25,9 @@ export default defineConfig(({ mode }) => ({
           decodeEntities: true,
           keepClosingSlash: true,
           sortAttributes: true
-        }
+        },
+        // Wait for a specific time to ensure content is rendered
+        renderAfterTime: 5000,
       })
   ].filter(Boolean),
   resolve: {
@@ -63,4 +63,8 @@ export default defineConfig(({ mode }) => ({
       },
     },
   },
+  // Make sure all content is accessible to crawlers
+  ssr: {
+    noExternal: ['react-helmet']
+  }
 }));
