@@ -8,12 +8,6 @@ import { componentTagger } from "lovable-tagger";
 // List your routes to pre-render - expand to include all major routes
 const routes = ["/", "/about", "/contact", "/404", "/403"];
 
-// Define a type for the rendered route if needed
-interface RenderedRoute {
-  html: string;
-  route: string;
-}
-
 export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
@@ -35,7 +29,6 @@ export default defineConfig(({ mode }) => ({
           keepClosingSlash: true,
           sortAttributes: true
         }
-        // Removed the postProcess option since it's not supported by the library's type definitions
       })
   ].filter(Boolean),
   resolve: {
@@ -44,9 +37,22 @@ export default defineConfig(({ mode }) => ({
     }
   },
   build: {
-    // Avoid directory loading issues
+    // Ensure proper output directory
     outDir: 'dist',
     emptyOutDir: true,
+    // Force minification for all files
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+        pure_funcs: ['console.log', 'console.info', 'console.debug']
+      },
+      format: {
+        comments: false
+      }
+    },
+    // Chunk optimizations
     rollupOptions: {
       output: {
         manualChunks: {
@@ -64,14 +70,8 @@ export default defineConfig(({ mode }) => ({
     },
     chunkSizeWarningLimit: 1000,
     cssCodeSplit: true,
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-      },
-    },
   },
-  // Make sure all content is accessible to crawlers
+  // Ensure content is visible to crawlers
   ssr: {
     noExternal: ['react-helmet']
   }

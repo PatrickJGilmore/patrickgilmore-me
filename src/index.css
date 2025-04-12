@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@500;600;700;800&display=swap');
 
 @tailwind base;
@@ -66,6 +67,19 @@
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading font-semibold;
+  }
+  
+  /* Screen reader only class for SEO elements */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
   }
   
   /* Prevent FOUC (Flash of Unstyled Content) during section transitions */
@@ -223,7 +237,7 @@ section {
   transform: none;
 }
 
-/* Media queries for different screen sizes */
+/* Enhanced media queries for better responsiveness without changing the look */
 @media (max-width: 1280px) {
   .section-title {
     font-size: clamp(2.5rem, 5vw, 3.5rem);
@@ -325,4 +339,31 @@ section {
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
   }
+}
+
+/* Additional responsive rules that maintain current visual design */
+@media (max-width: 350px) {
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  
+  .text-4xl {
+    font-size: 1.75rem;
+  }
+  
+  .text-lg {
+    font-size: 0.9rem;
+  }
+}
+
+/* Ensure content is visible in prerendered output */
+[data-bot-detected="true"] .sr-only,
+.prerendered-page .sr-only {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
 }
